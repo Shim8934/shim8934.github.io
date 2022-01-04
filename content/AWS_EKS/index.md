@@ -1,14 +1,15 @@
 ---
 emoji: ✅
 title: Elastic Kubernetes Service 설치 가이드
-date: '2021-12-20 00:00:00'
+date: '2022-01-04 00:00:00'
 author: shim8934
 tags: EKS eksctl kubectl
 categories: EKS eksctl
 ---
-# EKS 설치 가이드 및 참고 사이트 링크
+### EKS 설치 가이드 및 참고 사이트 링크
 
-1. aws CLI Version 2 설치 - https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/install-cliv2-linux.html 참고
+#### 1. aws CLI Version 2 설치
+   * https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/install-cliv2-linux.html 참고
 
    * 설치 파일 다운 및 진행 후 실행 권한 부여
 
@@ -23,7 +24,8 @@ categories: EKS eksctl
 
    
 
-2. (기존에 Kubernetes 설치 시 3.으로) kubectl 설치 - https://aws-eks-web-application.workshop.aws/ko/30-setting/500-eksctl.html 참고
+#### 2. (기존에 Kubernetes 설치 시 3.으로) kubectl 설치
+   * https://aws-eks-web-application.workshop.aws/ko/30-setting/500-eksctl.html 참고
 
    ```shell
    sudo curl -o /usr/local/bin/kubectl  \
@@ -48,7 +50,8 @@ categories: EKS eksctl
 
    
 
-3. eksctl 설치 - https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/eksctl.html 참고
+#### 3. eksctl 설치
+   * https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/eksctl.html 참고
 
    ```shell
    curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
@@ -75,7 +78,8 @@ categories: EKS eksctl
 
    
 
-4. AWS IAM 인증 설치 - https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/install-aws-iam-authenticator.html 참고
+#### 4. AWS IAM 인증 설치
+   * https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/install-aws-iam-authenticator.html 참고
 
    (1) 설치 바이너리 파일 다운 (unzip 필요)
 
@@ -110,7 +114,7 @@ categories: EKS eksctl
 
    (5) aws configure로 IAM 인증 정보 등록
 
-   ​	① 인증정보 생성 및 확인 메뉴
+   ① 인증정보 생성 및 확인 메뉴
 
    ![install-EKS1](./install-EKS1.png)
 
@@ -118,11 +122,11 @@ categories: EKS eksctl
 
    ![install-EKS2](./install-EKS2.png)
 
-   ​	**※ 주의 - 인증정보 중 Secret Access Key는 생성 당시에만 확인 가능하며, 생성완료 시점에만 엑셀 파일로 다운 가능하다.**
+   **※ 주의 - 인증정보 중 Secret Access Key는 생성 당시에만 확인 가능하며, 생성완료 시점에만 엑셀 파일로 다운 가능하다.**
 
-   ​	
+   	
 
-   ​	② ①에서 생성한 인증정보 등록 (입력창이 요소마다 한 단계씩 나타난다.)
+   ② ①에서 생성한 인증정보 등록 (입력창이 요소마다 한 단계씩 나타난다.)
 
    ```shell
    aws configure
@@ -133,7 +137,7 @@ categories: EKS eksctl
    Default output format [json]: json
    ```
 
-   ​	③ aws sts get-caller-identity 로 등록된 정보 확인 -> 등록한 정보가 아래와 같이 json 포맷으로 출력되면 OK
+   ③ aws sts get-caller-identity 로 등록된 정보 확인 -> 등록한 정보가 아래와 같이 json 포맷으로 출력되면 OK
 
    ```shell
    aws sts get-caller-identity
@@ -147,7 +151,8 @@ categories: EKS eksctl
 
    
 
-5. Amazon EKS 클러스터 생성 - https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/create-cluster.html 참고
+#### 5. Amazon EKS 클러스터 생성
+   * https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/create-cluster.html 참고
 
    * < > 사이의 값은 구성하는 상황에 맞게 수정 및 입력!
 
@@ -164,7 +169,7 @@ categories: EKS eksctl
 
    
 
-* 참고 링크
+#### 참고 링크
   * eksctl create cluster 공식 문서 -  https://eksctl.io/
   * eksctl cluster vpc setting 샘플 git - https://github.com/weaveworks/eksctl/blob/main/examples/04-existing-vpc.yaml
   * aws create cluster 공식 문서 - https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html
@@ -172,4 +177,5 @@ categories: EKS eksctl
   * [Kubernetes] AWS EKS Cluster 생성 샘플 - https://velog.io/@winz/Kubernetes-AWS-EKS-Cluster-%EC%83%9D%EC%84%B1#kubectl-%EC%97%90-%EC%83%9D%EC%84%B1%ED%95%9C-eks-%EB%A5%BC-%EC%97%B0%EA%B2%B0
 
 ```toc
+
 ```
