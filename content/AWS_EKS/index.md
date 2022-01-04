@@ -1,7 +1,7 @@
 ---
 emoji: ✅
 title: Elastic Kubernetes Service 설치 가이드
-date: '2022-01-04 00:00:00'
+date: '2021-12-21 00:00:00'
 author: shim8934
 tags: EKS eksctl kubectl
 categories: EKS eksctl
