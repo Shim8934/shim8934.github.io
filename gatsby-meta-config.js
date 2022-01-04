@@ -1,26 +1,26 @@
 module.exports = {
-  title: `zoomkoding.com`,
-  description: `줌코딩의 개발일기`,
+  title: `shim8934.github.io`,
+  description: `Dev_noob의 개발일기`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
-  siteUrl: `https://www.zoomkoding.com`,
+  siteUrl: `https://shim8934.github.io`,
   ogImage: `/og-image.png`, // Path to your in the 'static' folder
   comments: {
     utterances: {
-      repo: ``, // `zoomkoding/zoomkoding-gatsby-blog`,
+      repo: `Shim8934/shim8934.github.io`, // `zoomkoding/zoomkoding-gatsby-blog`,
     },
   },
   ga: '0', // Google Analytics Tracking ID
   author: {
-    name: `정진혁`,
+    name: `심기영`,
     bio: {
       role: `개발자`,
-      description: ['사람에 가치를 두는', '능동적으로 일하는', '이로운 것을 만드는'],
-      thumbnail: 'sample.png', // Path to the image in the 'asset' folder
+      description: ['주도적으로 해결하려는', '발전 욕구가 강한', '돕는 것을 좋아하는'],
+      thumbnail: 'java.png', // Path to the image in the 'asset' folder
     },
     social: {
-      github: ``, // `https://github.com/zoomKoding`,
+	    github: `https://github.com/Shim8934`, // `https://github.com/zoomKoding`,
       linkedIn: ``, // `https://www.linkedin.com/in/jinhyeok-jeong-800871192`,
-      email: ``, // `zoomkoding@gmail.com`,
+      email: `shim8934@gmail.com`, // `zoomkoding@gmail.com`,
     },
   },
 
@@ -43,12 +43,14 @@ module.exports = {
       // ========================================================
       // ========================================================
       {
-        date: '2021.02 ~',
-        activity: '개인 블로그 개발 및 운영',
+        date: '2021.10.27 ~ 2021.12.04',
+        activity: '행운 프로젝트',
         links: {
-          post: '/gatsby-starter-zoomkoding-introduction',
-          github: 'https://github.com/zoomkoding/zoomkoding-gatsby-blog',
-          demo: 'https://www.zoomkoding.com',
+          github: 'https://github.com/Shim8934/AWSSetting',
+          post: '',
+          googlePlay: '',
+          appStore: '',
+          demo: '',
         },
       },
     ],
@@ -70,19 +72,20 @@ module.exports = {
         },
       },
       // ========================================================
-      // ========================================================
       {
-        title: '개발 블로그 테마 개발',
-        description:
-          '개발 블로그를 운영하는 기간이 조금씩 늘어나고 점점 많은 생각과 경험이 블로그에 쌓아가면서 제 이야기를 담고 있는 블로그를 직접 만들어보고 싶게 되었습니다. 그동안 여러 개발 블로그를 보면서 좋았던 부분과 불편했던 부분들을 바탕으로 레퍼런스를 참고하여 직접 블로그 테마를 만들게 되었습니다.',
-        techStack: ['gatsby', 'react'],
-        thumbnailUrl: 'blog.png',
+        title: 'EKS를 활용한 무중단 배포 구현',
+        description: 'Kubernetes를 활용한 CI/CD 경험에 중점을 둔 프로젝트입니다. Jenkins를 사용해 CI를, ArgoCD를 사용해 CD를 분담하였습니다. 더불어 AWS와 Kubernetes의 리소스 구성 경험을 축적할 수 있었습니다.',
+        techStack: ['EKS', 'Kubernetes', 'SpringBoot', 'Java', 'Mysql','Shell Script'],
+        thumbnailUrl: 'EKSProj.png',
         links: {
-          post: '/gatsby-starter-zoomkoding-introduction',
-          github: 'https://github.com/zoomkoding/zoomkoding-gatsby-blog',
-          demo: 'https://www.zoomkoding.com',
+          post: '',
+          github: 'https://github.com/Shim8934/AWSSetting',
+          googlePlay: '',
+          appStore: '',
+          demo: '',
         },
       },
+      // ========================================================
     ],
   },
 };
