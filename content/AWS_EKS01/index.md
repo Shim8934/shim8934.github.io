@@ -4,7 +4,7 @@ title: Elastic Kubernetes Service 설치 가이드
 date: '2021-12-21 00:00:00'
 author: shim8934
 tags: EKS eksctl kubectl
-categories: EKS eksctl
+categories: EKS
 ---
 ### EKS 설치 가이드 및 참고 사이트 링크
 
@@ -22,7 +22,7 @@ categories: EKS eksctl
    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip"
    ```
 
-   
+---
 
 #### 2. (기존에 Kubernetes 설치 시 3.으로) kubectl 설치
    * https://aws-eks-web-application.workshop.aws/ko/30-setting/500-eksctl.html 참고
@@ -48,7 +48,7 @@ categories: EKS eksctl
    sudo yum install -y bash-completion
    ```
 
-   
+---
 
 #### 3. eksctl 설치
    * https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/eksctl.html 참고
@@ -76,7 +76,7 @@ categories: EKS eksctl
    compinit
    ```
 
-   
+---
 
 #### 4. AWS IAM 인증 설치
    * https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/install-aws-iam-authenticator.html 참고
@@ -149,7 +149,7 @@ categories: EKS eksctl
    }
    ```
 
-   
+---
 
 #### 5. Amazon EKS 클러스터 생성
    * https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/create-cluster.html 참고
@@ -167,14 +167,26 @@ categories: EKS eksctl
    eksctl create cluster --name mycluster --region ap-northeast-2 --version 1.20 \\n\t--nodegroup-name mynodegroup --nodes 2 --instance-types t3.medium --managed
    ```
 
-   
+---
 
-#### 참고 링크
-  * eksctl create cluster 공식 문서 -  https://eksctl.io/
-  * eksctl cluster vpc setting 샘플 git - https://github.com/weaveworks/eksctl/blob/main/examples/04-existing-vpc.yaml
-  * aws create cluster 공식 문서 - https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html
-  * AWS 클러스터 워크샵 공식문서 - https://aws-eks-web-application.workshop.aws/ko/10-intro.html
-  * [Kubernetes] AWS EKS Cluster 생성 샘플 - https://velog.io/@winz/Kubernetes-AWS-EKS-Cluster-%EC%83%9D%EC%84%B1#kubectl-%EC%97%90-%EC%83%9D%EC%84%B1%ED%95%9C-eks-%EB%A5%BC-%EC%97%B0%EA%B2%B0
+#### ** 참고 링크
+
+> 1. eksctl create cluster 공식 문서
+>    * https://eksctl.io/
+>
+> 2. eksctl cluster vpc setting 샘플 git
+>    * https://github.com/weaveworks/eksctl/blob/main/examples/04-existing-vpc.yaml
+>
+> 3. aws create cluster 공식 문서
+>    * https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html
+>
+> 4. AWS 클러스터 워크샵 공식문서
+>    * https://aws-eks-web-application.workshop.aws/ko/10-intro.html
+>
+> 5. [Kubernetes] AWS EKS Cluster 생성 샘플
+>    * https://velog.io/@winz/Kubernetes-AWS-EKS-Cluster-%EC%83%9D%EC%84%B1#kubectl-%EC%97%90-%EC%83%9D%EC%84%B1%ED%95%9C-eks-%EB%A5%BC-%EC%97%B0%EA%B2%B0
+
+
 
 ```toc
 
