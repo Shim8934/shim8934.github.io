@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-category-template-js",
-    "path": "/posts/eksctl",
-    "result": {"pageContext":{"currentCategory":"eksctl","categories":["All","EKS","eksctl"],"edges":[{"node":{"id":"351a657c-5f86-5302-85d4-28177f981fdc","excerpt":"EKS 설치 가이드 및 참고 사이트 링크 1. aws CLI Version 2 설치 https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/install-cliv2-linux.html 참고 설치 파일 다운 및 진행 후 실행 권한 부여 2. (기존에 Kubernetes 설치 시 3.으로) kubectl 설치 https://aws-eks-web-application.workshop.aws/ko/30-setting/500-eksctl.html 참고 3. eksctl 설치 https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/eksctl.html 참고 eksctl zsh 명령어 자동 완성 기능 추가 4. AWS IAM 인증 설치 https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/install-aws-iam-authenticator.html 참고 (1) 설…","fields":{"slug":"/AWS_EKS/"},"frontmatter":{"categories":"EKS eksctl","title":"Elastic Kubernetes Service 설치 가이드","date":"January 04, 2022"}},"next":null,"previous":null}]}},
-    "staticQueryHashes": ["1073350324","1956554647","2938748437"]}
