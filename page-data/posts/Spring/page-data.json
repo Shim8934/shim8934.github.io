@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-category-template-js",
-    "path": "/posts/Spring",
-    "result": {"pageContext":{"currentCategory":"Spring","categories":["All","Spring","EKS"],"edges":[{"node":{"id":"be9f2b0e-9d2f-553d-bcfb-5a357eed92b5","excerpt":"1. Why Spring? 1) Java로 Spring FrameWork 없이 개발? FrameWork 없이 개발 시, 직접 구현해야되는 과정 (이외에도 많은 요소가 있겠지만, 쉽게 생각나는 부분만 적었다.) 인스턴스의 생성과 소멸 복잡한 의존 관계 2) Spring은 어떤 Framework인가? Java Programming 과정을 객체 지향에 집중하기 위한 Code Template 집합체(Spring FrameWork)라 정리할 수 있다. 목차 1) 스프링 프레임워크에서 제공하는 모듈 2) 객체 지향과 DI란? 1. Why Spring? 1) Java로 Spring FrameWork 없이 개발? 2) Spring은 어떤 Framework인가? 목차 1) 스프링 프레임워크에서 제공하는 모듈 2) 객체 지향과 DI란?","fields":{"slug":"/Spring/"},"frontmatter":{"categories":"Spring","title":"Spring 정리 - 01","date":"January 05, 2022"}},"next":{"fields":{"slug":"/AWS_EKS03/"}},"previous":null}]}},
-    "staticQueryHashes": ["1073350324","1956554647","2938748437"]}
