@@ -64,157 +64,256 @@
         }
       }
     })
-  </script><title data-react-helmet="true">Bastion용 EC2 구성</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="Bastion용 EC2 구성"/><meta data-react-helmet="true" property="og:site_title" content="Bastion용 EC2 구성"/><meta data-react-helmet="true" name="description" content="Bastion Host 역할용 인스턴스 생성 후, 설정 가이드 1. apt 패키지 업데이트 및 시간대 설정 2. kubernetes 설치에 필요한 패키지 및 기타 패키지 설치 진행 zsh를 사용하지 않을 사람이라면  3. 과정은 스킵 3. oh my zsh 설치 (1) Powerlevel10k 테마 (2) autoupdate 플러그인 (3) zsh-syntax-highlighting 플러그인 (4) 접속 유저의 기본 쉘 변경 4. AWS CLI 설치 5. Kubectl 설치 6. eksctl 설치 ~/.zshrc 파일 안에 다음 내용 저장 아래명령 실행 7. AWS IAM 인증 설치 8. AWS 인증정보 등록 (1) 인증정보 생성 및 확인 메뉴  (2) (1)에서 생성한 인증정보 등록 (3) aws sts get-caller-identity 로 입력 정보 확인 (4) ssh-keygen 으로 연결용 key 생성 (5) vimrc 설정 (yaml 파일 문법용) Bastion Host…"/><meta data-react-helmet="true" property="og:description" content="Bastion Host 역할용 인스턴스 생성 후, 설정 가이드 1. apt 패키지 업데이트 및 시간대 설정 2. kubernetes 설치에 필요한 패키지 및 기타 패키지 설치 진행 zsh를 사용하지 않을 사람이라면  3. 과정은 스킵 3. oh my zsh 설치 (1) Powerlevel10k 테마 (2) autoupdate 플러그인 (3) zsh-syntax-highlighting 플러그인 (4) 접속 유저의 기본 쉘 변경 4. AWS CLI 설치 5. Kubectl 설치 6. eksctl 설치 ~/.zshrc 파일 안에 다음 내용 저장 아래명령 실행 7. AWS IAM 인증 설치 8. AWS 인증정보 등록 (1) 인증정보 생성 및 확인 메뉴  (2) (1)에서 생성한 인증정보 등록 (3) aws sts get-caller-identity 로 입력 정보 확인 (4) ssh-keygen 으로 연결용 key 생성 (5) vimrc 설정 (yaml 파일 문법용) Bastion Host…"/><meta data-react-helmet="true" property="og:author" content="심기영"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-011381fb6a51f00d95bd.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-7b6285e487e98446a3f0.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-3528d048b96f92ca0d99.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/AWS_EKS03/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">shim8934.github.io</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">✅</div><div class="info"><div class="categories"><a class="category" href="/posts/EKS">EKS</a></div></div><h1 class="title">Bastion용 EC2 구성</h1><div class="info"><div class="author">posted by <strong>shim8934</strong>,</div> <!-- -->December 24, 2021</div></header><div class="post-content"><div class="markdown"><h3 id="bastion-host-역할용-인스턴스-생성-후-설정-가이드" style="position:relative;"><a href="#bastion-host-%EC%97%AD%ED%95%A0%EC%9A%A9-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1-%ED%9B%84-%EC%84%A4%EC%A0%95-%EA%B0%80%EC%9D%B4%EB%93%9C" aria-label="bastion host 역할용 인스턴스 생성 후 설정 가이드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bastion Host 역할용 인스턴스 생성 후, 설정 가이드</h3>
-<h4 id="1-apt-패키지-업데이트-및-시간대-설정" style="position:relative;"><a href="#1-apt-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%B0%8F-%EC%8B%9C%EA%B0%84%EB%8C%80-%EC%84%A4%EC%A0%95" aria-label="1 apt 패키지 업데이트 및 시간대 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. apt 패키지 업데이트 및 시간대 설정</h4>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> -i
-<span class="token function">apt-get</span> update
-
--------------------------
-<span class="token punctuation">(</span>Centos, Ubuntu 공통<span class="token punctuation">)</span>
-<span class="token function">sudo</span> timedatectl list-timezonex <span class="token operator">|</span> <span class="token function">grep</span> -i Asia/Seoul
-
-<span class="token function">sudo</span> timedatectl set-timezone Asia/Seoul
-<span class="token function">date</span>
-
--------------------------
-<span class="token punctuation">(</span>ubuntu<span class="token punctuation">)</span>
-dpkg-reconfigure tzdata
--<span class="token operator">></span> Asia
--<span class="token operator">></span> Seoul 차례대로 선택
-
-<span class="token function">date</span></code></pre></div>
-<hr>
-<h4 id="2-kubernetes-설치에-필요한-패키지-및-기타-패키지-설치-진행" style="position:relative;"><a href="#2-kubernetes-%EC%84%A4%EC%B9%98%EC%97%90-%ED%95%84%EC%9A%94%ED%95%9C-%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B0%8F-%EA%B8%B0%ED%83%80-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%84%A4%EC%B9%98-%EC%A7%84%ED%96%89" aria-label="2 kubernetes 설치에 필요한 패키지 및 기타 패키지 설치 진행 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. kubernetes 설치에 필요한 패키지 및 기타 패키지 설치 진행</h4>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> -y apt-transport-https ca-certificates <span class="token function">curl</span> python3-pip</code></pre></div>
-<hr>
-<blockquote>
-<p>zsh를 사용하지 않을 사람이라면  3. 과정은 스킵</p>
-</blockquote>
-<h4 id="3-oh-my-zsh-설치" style="position:relative;"><a href="#3-oh-my-zsh-%EC%84%A4%EC%B9%98" aria-label="3 oh my zsh 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. oh my zsh 설치</h4>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> -y <span class="token function">zsh</span>
-<span class="token function">sh</span> -c <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span class="token variable">)</span></span>"</span></code></pre></div>
-<p>(1) Powerlevel10k 테마</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> clone --depth<span class="token operator">=</span><span class="token number">1</span> https://github.com/romkatv/powerlevel10k.git <span class="token variable">${ZSH_CUSTOM<span class="token operator">:-</span>$HOME<span class="token operator">/</span>.oh-my-zsh<span class="token operator">/</span>custom}</span>/themes/powerlevel10k</code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token punctuation">(</span>~/.zshrc 파일에서 ZSH_THEME 내용 수정<span class="token punctuation">)</span>
-<span class="token assign-left variable">ZSH_THEME</span><span class="token operator">=</span><span class="token string">"powerlevel10k/powerlevel10k"</span></code></pre></div>
-<p>(2) autoupdate 플러그인</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins <span class="token variable">${ZSH_CUSTOM<span class="token operator">:-</span>~<span class="token operator">/</span>.oh-my-zsh<span class="token operator">/</span>custom}</span>/plugins/autoupdate</code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">~/.zshrc -<span class="token operator">></span> <span class="token assign-left variable">plugins</span><span class="token operator">=</span><span class="token punctuation">(</span>~~ autoupdate<span class="token punctuation">)</span>  autoupdate 내용 추가</code></pre></div>
-<p>(3) zsh-syntax-highlighting 플러그인</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="token variable">${ZSH_CUSTOM<span class="token operator">:-</span>~<span class="token operator">/</span>.oh-my-zsh<span class="token operator">/</span>custom}</span>/plugins/zsh-syntax-highlighting</code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">~/.zshrc -<span class="token operator">></span> <span class="token assign-left variable">plugins</span><span class="token operator">=</span><span class="token punctuation">(</span>~~ zsh-syntax-highlighting<span class="token punctuation">)</span>  zsh-syntax-highlighting 내용 추가</code></pre></div>
-<p>(4) 접속 유저의 기본 쉘 변경</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">vim</span> /etc/passwd
-
-ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/bin/bash
--<span class="token operator">></span> ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/bin/zsh</code></pre></div>
-<hr>
-<h4 id="4-aws-cli-설치" style="position:relative;"><a href="#4-aws-cli-%EC%84%A4%EC%B9%98" aria-label="4 aws cli 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. AWS CLI 설치</h4>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> -y <span class="token function">zip</span></code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">curl</span> <span class="token string">"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"</span> -o <span class="token string">"awscliv2.zip"</span></code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">unzip</span> awscliv2.zip</code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> ./aws/install</code></pre></div>
-<hr>
-<h4 id="5-kubectl-설치" style="position:relative;"><a href="#5-kubectl-%EC%84%A4%EC%B9%98" aria-label="5 kubectl 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5. Kubectl 설치</h4>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">curl</span> -o /usr/local/bin/kubectl  <span class="token punctuation">\</span>
-   https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.2/2021-07-05/bin/linux/amd64/kubectl</code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chmod</span> +x /usr/local/bin/kubectl</code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">kubectl version --client<span class="token operator">=</span>true --short<span class="token operator">=</span>true
-
-<span class="token comment"># 출력되는 결과 값</span>
-Client Version: v1.21.2-13+d2965f0db10712</code></pre></div>
-<hr>
-<h4 id="6-eksctl-설치" style="position:relative;"><a href="#6-eksctl-%EC%84%A4%EC%B9%98" aria-label="6 eksctl 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6. eksctl 설치</h4>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">curl</span> --silent --location <span class="token string">"https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_<span class="token variable"><span class="token variable">$(</span><span class="token function">uname</span> -s<span class="token variable">)</span></span>_amd64.tar.gz"</span> <span class="token operator">|</span> <span class="token function">tar</span> xz -C /tmp</code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">mv</span> -v /tmp/eksctl /usr/local/bin</code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">eksctl version</code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">mkdir</span> -p ~/.zsh/completion/
-
-<span class="token function">mkdir</span> -p ~/.bash/completion/</code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">eksctl completion <span class="token function">zsh</span> <span class="token operator">></span> ~/.zsh/completion/_eksctl
-
-eksctl completion <span class="token function">bash</span> <span class="token operator">></span> ~/.bash/completion/_eksctl</code></pre></div>
-<ul>
-<li>~/.zshrc 파일 안에 다음 내용 저장</li>
-</ul>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token assign-left variable">fpath</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token variable">$fpath</span> ~/.zsh/completion<span class="token punctuation">)</span></code></pre></div>
-<ul>
-<li>아래명령 실행</li>
-</ul>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">autoload -U compinit
-compinit</code></pre></div>
-<hr>
-<h4 id="7-aws-iam-인증-설치" style="position:relative;"><a href="#7-aws-iam-%EC%9D%B8%EC%A6%9D-%EC%84%A4%EC%B9%98" aria-label="7 aws iam 인증 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7. AWS IAM 인증 설치</h4>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">curl</span> -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.21.2/2021-07-05/bin/linux/amd64/aws-iam-authenticator</code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">chmod</span> +x ./aws-iam-authenticator</code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">mkdir</span> -p <span class="token environment constant">$HOME</span>/bin <span class="token operator">&amp;&amp;</span> <span class="token function">cp</span> ./aws-iam-authenticator <span class="token environment constant">$HOME</span>/bin/aws-iam-authenticator <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span><span class="token builtin class-name">:</span><span class="token environment constant">$HOME</span>/bin</code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">'export PATH=$PATH:$HOME/bin'</span> <span class="token operator">>></span> ~/.bashrc
-
-<span class="token builtin class-name">echo</span> <span class="token string">'export PATH=$PATH:$HOME/bin'</span> <span class="token operator">>></span> ~/.zshrc</code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">aws-iam-authenticator <span class="token builtin class-name">help</span></code></pre></div>
-<hr>
-<h4 id="8-aws-인증정보-등록" style="position:relative;"><a href="#8-aws-%EC%9D%B8%EC%A6%9D%EC%A0%95%EB%B3%B4-%EB%93%B1%EB%A1%9D" aria-label="8 aws 인증정보 등록 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>8. AWS 인증정보 등록</h4>
-<p>(1) 인증정보 생성 및 확인 메뉴</p>
+  </script><title data-react-helmet="true">JPA 기본 강의 정리 - 01. JPA 사용 이유 &amp; 영속성</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="JPA 기본 강의 정리 - 01. JPA 사용 이유 &amp; 영속성"/><meta data-react-helmet="true" property="og:site_title" content="JPA 기본 강의 정리 - 01. JPA 사용 이유 &amp; 영속성"/><meta data-react-helmet="true" name="description" content="JPA ? JPA의 등장 배경 → Java와  DB(RDBMS) 의 정보 저장 방식의 차이 (1) Java - Java에서 객체는 참조를 사용해 연관 데이터 조회
+(2) RDBMS - 테이블에 외래 키를 사용.  즉, 기존의 JDBC Template, Mybatis 등의 기술이 있었음에도 객체 지향적인 프로그래밍이 아닌 SQL 중심적인 개발이 많은 시간과 노력을 들이게 됐다. 앞서 나온 기술들의 SQL 중심적인 개발 요소를 줄이고자 Java Persistence API(이하 JPA) 가 등장하게 됐다. JPA의 특징 1. 영속성 컨텍스트 엔티티를 영구 저장하는 환경 (컨테이너) 1차 캐시 동일성 보장 트랜잭션을 지원하는 쓰기 지연 변경 감지 지연 로딩 1) 1차 캐시 em.persist() 로 객체가 1차 캐시에 저장되지만, DB에 저장된 것은 아니다. → 이후 트랜잭션을 커밋해야 실제로 DB에 객체 관련 쿼리가 입력되고, 그 때 저장된다. 즉, 저장되기 전까진 객체의 상태와 관…"/><meta data-react-helmet="true" property="og:description" content="JPA ? JPA의 등장 배경 → Java와  DB(RDBMS) 의 정보 저장 방식의 차이 (1) Java - Java에서 객체는 참조를 사용해 연관 데이터 조회
+(2) RDBMS - 테이블에 외래 키를 사용.  즉, 기존의 JDBC Template, Mybatis 등의 기술이 있었음에도 객체 지향적인 프로그래밍이 아닌 SQL 중심적인 개발이 많은 시간과 노력을 들이게 됐다. 앞서 나온 기술들의 SQL 중심적인 개발 요소를 줄이고자 Java Persistence API(이하 JPA) 가 등장하게 됐다. JPA의 특징 1. 영속성 컨텍스트 엔티티를 영구 저장하는 환경 (컨테이너) 1차 캐시 동일성 보장 트랜잭션을 지원하는 쓰기 지연 변경 감지 지연 로딩 1) 1차 캐시 em.persist() 로 객체가 1차 캐시에 저장되지만, DB에 저장된 것은 아니다. → 이후 트랜잭션을 커밋해야 실제로 DB에 객체 관련 쿼리가 입력되고, 그 때 저장된다. 즉, 저장되기 전까진 객체의 상태와 관…"/><meta data-react-helmet="true" property="og:author" content="심기영"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-011381fb6a51f00d95bd.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-7b6285e487e98446a3f0.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-3528d048b96f92ca0d99.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/JPA_Basic01/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">shim8934.github.io</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">😄</div><div class="info"><div class="categories"><a class="category" href="/posts/JPA_Basic">JPA_Basic</a></div></div><h1 class="title">JPA 기본 강의 정리 - 01. JPA 사용 이유 &amp; 영속성</h1><div class="info"><div class="author">posted by <strong>shim8934</strong>,</div> <!-- -->January 06, 2022</div></header><div class="post-content"><div class="markdown"><h2 id="jpa-" style="position:relative;"><a href="#jpa-" aria-label="jpa  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JPA ?</h2>
+<h3 id="jpa의-등장-배경" style="position:relative;"><a href="#jpa%EC%9D%98-%EB%93%B1%EC%9E%A5-%EB%B0%B0%EA%B2%BD" aria-label="jpa의 등장 배경 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JPA의 등장 배경</h3>
+<h4 id="-java와--dbrdbms-의-정보-저장-방식의-차이" style="position:relative;"><a href="#-java%EC%99%80--dbrdbms-%EC%9D%98-%EC%A0%95%EB%B3%B4-%EC%A0%80%EC%9E%A5-%EB%B0%A9%EC%8B%9D%EC%9D%98-%EC%B0%A8%EC%9D%B4" aria-label=" java와  dbrdbms 의 정보 저장 방식의 차이 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>→ Java와  DB(RDBMS) 의 정보 저장 방식의 차이</h4>
+<p>(1) Java - Java에서 객체는 참조를 사용해 연관 데이터 조회
+(2) RDBMS - 테이블에 외래 키를 사용.</p>
 <p><span
       class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 523px; "
     >
       <span
     class="gatsby-resp-image-background-image"
-    style="padding-bottom: 47.22222222222222%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAABtklEQVQoz3WSvWsUQRyG96/QRrAR/QOCndqqWNiItb2FrVaWWgas7BRLsVEsJeEu5wfm7jZ3GDSKATUod7ns7XzufOw+snMHojEDL7Pz9Zv3fWazV2sd1jo9NocjOhtvWO/0eP2uT741Zrj9kfzTZwajD/SHWwzyEf18nPbm423Wu29ZuXCFE6dXuH33Hjtfdsmg4ajWbPbh+UuYTKGpD61XleP8pescO3WWBw8fp7nMGIP3gRhrnDW4yiCFYCoFB90NikdPMN0e1fs+bpDjvn0nNgsTs18TLp67zMnjZ1i9v7ooqLXGOZ8GSswpZlPm8zlKSpRzSO/xMRBCwHuPix4XQsolhOTmrTtcvXaDp89e/HFYVVUaSKVQ2qSDPgTqWCeFEBeKIRVPF8TDCOq6JrPGptvbZrVCFDPk/CC5tVpiVInVAm91YpbwhNaxxzmXFGOkWWLIjPfYpcNits/k5x5GlsiyQLSFl71VAqV02lsdoTZZZn/sEY1NTNTXXYpODz2ZUBqdGLUYyrJM36VQGGOx9v9q3Wb1/ozGLx5FK0VRFDhXpUiJ5T9q8bQH2+g+/v3LtbF/AybEnPzyEoyWAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+    style="padding-bottom: 58.88888888888889%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAECAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHbUbRgH//EABcQAQEBAQAAAAAAAAAAAAAAAAEAESH/2gAIAQEAAQUCuRB1Ngy//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFxAAAwEAAAAAAAAAAAAAAAAAACAhIv/aAAgBAQAGPwKmV//EABkQAAMBAQEAAAAAAAAAAAAAAAABESExUf/aAAgBAQABPyHdoXpDjooJSOiEiP/aAAwDAQACAAMAAAAQU8//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAbEAACAwEBAQAAAAAAAAAAAAABEQAhQWExkf/aAAgBAQABPxAFGloYIWwLABbSr5G9N1uDtbJF7HIThmAJ/9k='); background-size: cover; display: block;"
   ></span>
   <img
         class="gatsby-resp-image-image"
-        alt="IAM01"
-        title="IAM01"
-        src="/static/5d52f34db0f9ec2026b7284885eb3d8d/37523/IAM01.png"
-        srcset="/static/5d52f34db0f9ec2026b7284885eb3d8d/e9ff0/IAM01.png 180w,
-/static/5d52f34db0f9ec2026b7284885eb3d8d/f21e7/IAM01.png 360w,
-/static/5d52f34db0f9ec2026b7284885eb3d8d/37523/IAM01.png 720w,
-/static/5d52f34db0f9ec2026b7284885eb3d8d/302a4/IAM01.png 1080w,
-/static/5d52f34db0f9ec2026b7284885eb3d8d/07a9c/IAM01.png 1440w,
-/static/5d52f34db0f9ec2026b7284885eb3d8d/6c68b/IAM01.png 1888w"
-        sizes="(max-width: 720px) 100vw, 720px"
+        alt="difference"
+        title="difference"
+        src="/static/ecda7bad467cffa3df3c78aafb8c3ce1/8df40/difference.jpg"
+        srcset="/static/ecda7bad467cffa3df3c78aafb8c3ce1/4ec73/difference.jpg 180w,
+/static/ecda7bad467cffa3df3c78aafb8c3ce1/158ba/difference.jpg 360w,
+/static/ecda7bad467cffa3df3c78aafb8c3ce1/8df40/difference.jpg 523w"
+        sizes="(max-width: 523px) 100vw, 523px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
         decoding="async"
       />
     </span></p>
-<p>(2) (1)에서 생성한 인증정보 등록</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">aws configure
+<ul>
+<li>즉, 기존의 JDBC Template, Mybatis 등의 기술이 있었음에도 객체 지향적인 프로그래밍이 아닌 SQL 중심적인 개발이 많은 시간과 노력을 들이게 됐다.</li>
+<li>앞서 나온 기술들의 SQL 중심적인 개발 요소를 줄이고자 Java Persistence API(이하 JPA) 가 등장하게 됐다.</li>
+</ul>
+<hr>
+<h2 id="jpa의-특징" style="position:relative;"><a href="#jpa%EC%9D%98-%ED%8A%B9%EC%A7%95" aria-label="jpa의 특징 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JPA의 특징</h2>
+<h3 id="1-영속성-컨텍스트" style="position:relative;"><a href="#1-%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8" aria-label="1 영속성 컨텍스트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 영속성 컨텍스트</h3>
+<ul>
+<li>엔티티를 영구 저장하는 환경 (컨테이너)</li>
+</ul>
+<ol>
+<li>1차 캐시</li>
+<li>동일성 보장</li>
+<li>트랜잭션을 지원하는 쓰기 지연</li>
+<li>변경 감지</li>
+<li>지연 로딩</li>
+</ol>
+<hr>
+<h4 id="1-1차-캐시" style="position:relative;"><a href="#1-1%EC%B0%A8-%EC%BA%90%EC%8B%9C" aria-label="1 1차 캐시 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1) 1차 캐시</h4>
+<ul>
+<li>
+<p>em.persist() 로 객체가 1차 캐시에 저장되지만, DB에 저장된 것은 아니다.</p>
+<p>→ 이후 트랜잭션을 커밋해야 실제로 DB에 객체 관련 쿼리가 입력되고, 그 때 저장된다.</p>
+</li>
+<li>
+<p>즉, 저장되기 전까진 객체의 상태와 관련된 변경사항이 있을 경우, 변경사항에 따른 쿼리를 JPA에서 자동적으로 설정해 준다. (CRUD 관련)</p>
+</li>
+</ul>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token class-name">Member</span> member <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Member</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+member<span class="token punctuation">.</span><span class="token function">setId</span><span class="token punctuation">(</span><span class="token string">"member1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+member<span class="token punctuation">.</span><span class="token function">setUsername</span><span class="token punctuation">(</span><span class="token string">"회원1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-AWS Access Key ID <span class="token punctuation">[</span>****************GIPZ<span class="token punctuation">]</span>: Access Key ID 입력
-AWS Secret Access Key <span class="token punctuation">[</span>****************DJFK<span class="token punctuation">]</span>: Secret Access Key 입력
-Default region name <span class="token punctuation">[</span>ap-northeast-2<span class="token punctuation">]</span>: ap-northeast-2
-Default output <span class="token function">format</span> <span class="token punctuation">[</span>json<span class="token punctuation">]</span>: json</code></pre></div>
-<p>(3) aws sts get-caller-identity 로 입력 정보 확인</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">aws sts get-caller-identity
+<span class="token comment">// 1차 캐시에 저장</span>
+em<span class="token punctuation">.</span><span class="token function">persist</span><span class="token punctuation">(</span>member<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token punctuation">{</span>
-    <span class="token string">"UserId"</span><span class="token builtin class-name">:</span> <span class="token string">"~~~~~"</span>,
-    <span class="token string">"Account"</span><span class="token builtin class-name">:</span> <span class="token string">"~~~~~"</span>,
-    <span class="token string">"Arn"</span><span class="token builtin class-name">:</span> <span class="token string">"arn:aws:iam::~~~~~:~~~~~/~~~~~"</span>
-<span class="token punctuation">}</span></code></pre></div>
-<p>(4) ssh-keygen 으로 연결용 key 생성</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">ssh-keygen</code></pre></div>
-<p>(5) vimrc 설정 (yaml 파일 문법용)</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token punctuation">(</span>~/.vimrc 파일에 다음 내용 입력 후 저장<span class="token punctuation">)</span>
-syntax on
-autocmd FileType yaml setlocal <span class="token assign-left variable">ts</span><span class="token operator">=</span><span class="token number">2</span> <span class="token assign-left variable">sts</span><span class="token operator">=</span><span class="token number">2</span> <span class="token assign-left variable">sw</span><span class="token operator">=</span><span class="token number">2</span> expandtab autoindent</code></pre></div>
+<span class="token comment">// 1차 캐시에서 조회</span>
+<span class="token class-name">Member</span> findMember <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token class-name">Memeber</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token string">"member1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 683px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 49.44444444444444%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAIBAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHdR6xiA//EABcQAQADAAAAAAAAAAAAAAAAABABETH/2gAIAQEAAQUCtnD/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAWEAADAAAAAAAAAAAAAAAAAAAAIDH/2gAIAQEABj8CIv8A/8QAGBAAAgMAAAAAAAAAAAAAAAAAAAERIEH/2gAIAQEAAT8haEaqr//aAAwDAQACAAMAAAAQEw//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAbEAEAAgMBAQAAAAAAAAAAAAABACExQVERkf/aAAgBAQABPxBhenpFOR9uMAUAvU9esFcs/9k='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="temporarycache01"
+        title="temporarycache01"
+        src="/static/1e024b7fe3f8564fd1cbf99fcec344bd/3f6a4/temporarycache01.jpg"
+        srcset="/static/1e024b7fe3f8564fd1cbf99fcec344bd/4ec73/temporarycache01.jpg 180w,
+/static/1e024b7fe3f8564fd1cbf99fcec344bd/158ba/temporarycache01.jpg 360w,
+/static/1e024b7fe3f8564fd1cbf99fcec344bd/3f6a4/temporarycache01.jpg 683w"
+        sizes="(max-width: 683px) 100vw, 683px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<hr>
+<h4 id="2-동일성-보장" style="position:relative;"><a href="#2-%EB%8F%99%EC%9D%BC%EC%84%B1-%EB%B3%B4%EC%9E%A5" aria-label="2 동일성 보장 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2) 동일성 보장</h4>
+<ul>
+<li>
+<p>1차 캐시에 저장된 객체는 반복 가능한 읽기 상태를 애플리케이션 차원에서 제공한다.</p>
+<p>→ 1차 캐시에 저장된 객체에 한해, DB로 조회쿼리가 반복적으로 날아가지 않는다.</p>
+</li>
+</ul>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"=== BEFORE ==="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Member</span> a <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token class-name">Member</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span><span class="token string">"member1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Member</span> b <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token class-name">Member</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span><span class="token string">"member1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"a == b ? -> "</span><span class="token operator">+</span> <span class="token punctuation">(</span>a <span class="token operator">==</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"=== AFTER ==="</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 148px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 46.621621621621614%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHmXFsgP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEAAQUCX//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CX//EABwQAAIBBQEAAAAAAAAAAAAAAAABERBBYXGBof/aAAgBAQABPyFa8HN1HB4EOn//2gAMAwEAAgADAAAAEKcf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAHhAAAgIABwAAAAAAAAAAAAAAAREAIRAxQVFhgcH/2gAIAQEAAT8QEsJq5yzQCUBsxulPEz9Yf//Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="repetable-read.jpg"
+        title="repetable-read.jpg"
+        src="/static/3fdc0793879a05ec5284bb248a38a255/a80bd/repetable-read.jpg"
+        srcset="/static/3fdc0793879a05ec5284bb248a38a255/a80bd/repetable-read.jpg 148w"
+        sizes="(max-width: 148px) 100vw, 148px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<hr>
+<h4 id="3-트랜잭션을-지원하는-쓰기-지연" style="position:relative;"><a href="#3-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%EC%9D%84-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EC%93%B0%EA%B8%B0-%EC%A7%80%EC%97%B0" aria-label="3 트랜잭션을 지원하는 쓰기 지연 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3) 트랜잭션을 지원하는 쓰기 지연</h4>
+<p>(1) 트랜잭션을 커밋할 때까지 INSERT SQL을 모았다가 트랜잭션 Commit 시, 쌓인 Insert 쿼리를 모아서 보냄.</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token class-name">EntityManager</span> em <span class="token operator">=</span> emf<span class="token punctuation">.</span><span class="token function">createEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">EntityTransaction</span> transaction <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">getTransaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+transaction<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 트랜잭션 시작</span>
+
+em<span class="token punctuation">.</span><span class="token function">persist</span><span class="token punctuation">(</span>memberA<span class="token punctuation">)</span><span class="token punctuation">;</span>
+em<span class="token punctuation">.</span><span class="token function">persist</span><span class="token punctuation">(</span>memberB<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ↑ 위까지는 쿼리문이 작성되지 않는다. (1차캐시 영역)</span>
+
+<span class="token comment">// ↓ commit 순간 DB에 쿼리문이 작성된다.</span>
+transaction<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 트랜잭션 커밋</span></code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 649px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 70%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAdsVDKD/xAAYEAACAwAAAAAAAAAAAAAAAAAAEQEQMf/aAAgBAQABBQLRDJv/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAZEAEBAQEBAQAAAAAAAAAAAAABABEhUXH/2gAIAQEAAT8hfUAel8w3Y7YX/9oADAMBAAIAAwAAABCwD//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABsQAQACAgMAAAAAAAAAAAAAAAEAESFBYXHw/9oACAEBAAE/ECHg7CBEGt1Au0tdpkCern//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="transaction-commit"
+        title="transaction-commit"
+        src="/static/1a77628c22333d92e075b6e8eab6ee87/18f6b/transaction-commit.jpg"
+        srcset="/static/1a77628c22333d92e075b6e8eab6ee87/4ec73/transaction-commit.jpg 180w,
+/static/1a77628c22333d92e075b6e8eab6ee87/158ba/transaction-commit.jpg 360w,
+/static/1a77628c22333d92e075b6e8eab6ee87/18f6b/transaction-commit.jpg 649w"
+        sizes="(max-width: 649px) 100vw, 649px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<hr>
+<h4 id="4-변경-감지" style="position:relative;"><a href="#4-%EB%B3%80%EA%B2%BD-%EA%B0%90%EC%A7%80" aria-label="4 변경 감지 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4) 변경 감지</h4>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token class-name">EntityManager</span> em <span class="token operator">=</span> emf<span class="token punctuation">.</span><span class="token function">createEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">EntityTransaction</span> transaction <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">getTransaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+transaction<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 트랜잭션 시작</span>
+
+<span class="token comment">// 엔티티 조회</span>
+<span class="token class-name">Member</span> memberA <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token class-name">Member</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token string">"memberA"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 엔티티 데이터 수정</span>
+memberA<span class="token punctuation">.</span><span class="token function">setUsername</span><span class="token punctuation">(</span><span class="token string">"JPA"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+memberA<span class="token punctuation">.</span><span class="token function">setAge</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+transaction<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 트랜잭션 커밋</span></code></pre></div>
+<ul>
+<li>
+<p>위 예시 코드처럼 데이터 수정이 있을 시, 기존 JDBC에서는 Java 코드에서도 update() 관련 코드를 작동해야 했다.</p>
+<p>​	→ JPA에선 엔티티의 1차 캐시에 조회됐을 당시와 비교해 변경이 감지될 시, 자동으로 관련 Update 문을 작성해 DB에 보낸다.</p>
+</li>
+<li>
+<p>예외적으로 설정하는 경우가 아니라면, 변경 관련 쿼리 역시 위의 트랜잭션을 지원하는 쓰기 지연과 동일한 타이밍에 작동한다. (commit 시).</p>
+</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 679px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 61.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAECAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHacGWjD//EABgQAAIDAAAAAAAAAAAAAAAAAAAQAhEx/9oACAEBAAEFAlajp//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CX//EABoQAQEAAgMAAAAAAAAAAAAAAAEAESFRYZH/2gAIAQEAAT8hXmNdxlLtl6sX/9oADAMBAAIAAwAAABBgz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABoQAQADAQEBAAAAAAAAAAAAAAEAESExQVH/2gAIAQEAAT8Q0p1TH0IB8YIsMj0UdnDRrZT4T//Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="DirtyChecking"
+        title="DirtyChecking"
+        src="/static/4a6db749aeb762aa36f9e523e9421d40/30e56/DirtyChecking.jpg"
+        srcset="/static/4a6db749aeb762aa36f9e523e9421d40/4ec73/DirtyChecking.jpg 180w,
+/static/4a6db749aeb762aa36f9e523e9421d40/158ba/DirtyChecking.jpg 360w,
+/static/4a6db749aeb762aa36f9e523e9421d40/30e56/DirtyChecking.jpg 679w"
+        sizes="(max-width: 679px) 100vw, 679px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<hr>
+<h3 id="2-영속성-컨텍스트의-플러시" style="position:relative;"><a href="#2-%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%ED%94%8C%EB%9F%AC%EC%8B%9C" aria-label="2 영속성 컨텍스트의 플러시 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. 영속성 컨텍스트의 플러시</h3>
+<ul>
+<li>영속석 컨텍스트의 변경내용을 DB에 반영하는 것을 의미.</li>
+</ul>
+<h4 id="1-플러시-발생-경우" style="position:relative;"><a href="#1-%ED%94%8C%EB%9F%AC%EC%8B%9C-%EB%B0%9C%EC%83%9D-%EA%B2%BD%EC%9A%B0" aria-label="1 플러시 발생 경우 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1) 플러시 발생 경우</h4>
+<ol>
+<li>변경 감지 (Dirty Checking) 로 저장소의 쿼리를 DB에 전송한 경우.</li>
+</ol>
+<h4 id="2--영속성-컨텍스트를-플러시하는-방법" style="position:relative;"><a href="#2--%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%EB%A5%BC-%ED%94%8C%EB%9F%AC%EC%8B%9C%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95" aria-label="2  영속성 컨텍스트를 플러시하는 방법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2)  영속성 컨텍스트를 플러시하는 방법.</h4>
+<ol>
+<li>em.flush() - 직접 호출.</li>
+<li>트랜잭션 커밋 - 플러시 자동 호출.</li>
+<li>JPQL 쿼리 실행 - 플러시 자동 호출.</li>
+</ol>
+<hr>
 <div class="table-of-contents">
 <ul>
 <li>
-<p><a href="#bastion-host-%EC%97%AD%ED%95%A0%EC%9A%A9-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EC%83%9D%EC%84%B1-%ED%9B%84-%EC%84%A4%EC%A0%95-%EA%B0%80%EC%9D%B4%EB%93%9C">Bastion Host 역할용 인스턴스 생성 후, 설정 가이드</a></p>
+<p><a href="#jpa-">JPA ?</a></p>
 <ul>
-<li><a href="#1-apt-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%EB%B0%8F-%EC%8B%9C%EA%B0%84%EB%8C%80-%EC%84%A4%EC%A0%95">1. apt 패키지 업데이트 및 시간대 설정</a></li>
-<li><a href="#2-kubernetes-%EC%84%A4%EC%B9%98%EC%97%90-%ED%95%84%EC%9A%94%ED%95%9C-%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B0%8F-%EA%B8%B0%ED%83%80-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%84%A4%EC%B9%98-%EC%A7%84%ED%96%89">2. kubernetes 설치에 필요한 패키지 및 기타 패키지 설치 진행</a></li>
-<li><a href="#3-oh-my-zsh-%EC%84%A4%EC%B9%98">3. oh my zsh 설치</a></li>
-<li><a href="#4-aws-cli-%EC%84%A4%EC%B9%98">4. AWS CLI 설치</a></li>
-<li><a href="#5-kubectl-%EC%84%A4%EC%B9%98">5. Kubectl 설치</a></li>
-<li><a href="#6-eksctl-%EC%84%A4%EC%B9%98">6. eksctl 설치</a></li>
-<li><a href="#7-aws-iam-%EC%9D%B8%EC%A6%9D-%EC%84%A4%EC%B9%98">7. AWS IAM 인증 설치</a></li>
-<li><a href="#8-aws-%EC%9D%B8%EC%A6%9D%EC%A0%95%EB%B3%B4-%EB%93%B1%EB%A1%9D">8. AWS 인증정보 등록</a></li>
+<li>
+<p><a href="#jpa%EC%9D%98-%EB%93%B1%EC%9E%A5-%EB%B0%B0%EA%B2%BD">JPA의 등장 배경</a></p>
+<ul>
+<li><a href="#-java%EC%99%80--dbrdbms-%EC%9D%98-%EC%A0%95%EB%B3%B4-%EC%A0%80%EC%9E%A5-%EB%B0%A9%EC%8B%9D%EC%9D%98-%EC%B0%A8%EC%9D%B4">→ Java와  DB(RDBMS) 의 정보 저장 방식의 차이</a></li>
 </ul>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/AWS_EKS02/"><div class="direction">이전 글</div><div class="title">EKS용 네트워크 구성 가이드</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/JPA_Basic01/"><div class="direction">다음 글</div><div class="title">JPA 기본 강의 정리 - 01. JPA 사용 이유 &amp; 영속성</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Shim8934">심기영</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/AWS_EKS03/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-7b6285e487e98446a3f0.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-3528d048b96f92ca0d99.js" async=""></script><script src="/app-7b6285e487e98446a3f0.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-011381fb6a51f00d95bd.js" async=""></script></body></html>
+</li>
+<li>
+<p><a href="#jpa%EC%9D%98-%ED%8A%B9%EC%A7%95">JPA의 특징</a></p>
+<ul>
+<li>
+<p><a href="#1-%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8">1. 영속성 컨텍스트</a></p>
+<ul>
+<li><a href="#1-1%EC%B0%A8-%EC%BA%90%EC%8B%9C">1) 1차 캐시</a></li>
+<li><a href="#2-%EB%8F%99%EC%9D%BC%EC%84%B1-%EB%B3%B4%EC%9E%A5">2) 동일성 보장</a></li>
+<li><a href="#3-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%EC%9D%84-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EC%93%B0%EA%B8%B0-%EC%A7%80%EC%97%B0">3) 트랜잭션을 지원하는 쓰기 지연</a></li>
+<li><a href="#4-%EB%B3%80%EA%B2%BD-%EA%B0%90%EC%A7%80">4) 변경 감지</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#2-%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%ED%94%8C%EB%9F%AC%EC%8B%9C">2. 영속성 컨텍스트의 플러시</a></p>
+<ul>
+<li><a href="#1-%ED%94%8C%EB%9F%AC%EC%8B%9C-%EB%B0%9C%EC%83%9D-%EA%B2%BD%EC%9A%B0">1) 플러시 발생 경우</a></li>
+<li><a href="#2--%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%EB%A5%BC-%ED%94%8C%EB%9F%AC%EC%8B%9C%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95">2)  영속성 컨텍스트를 플러시하는 방법.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/AWS_EKS03/"><div class="direction">이전 글</div><div class="title">Bastion용 EC2 구성</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/JPA_Basic02/"><div class="direction">다음 글</div><div class="title">JPA 기본 강의 정리 - 02. 엔티티 기본 매핑</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Shim8934">심기영</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/JPA_Basic01/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-7b6285e487e98446a3f0.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-3528d048b96f92ca0d99.js" async=""></script><script src="/app-7b6285e487e98446a3f0.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-011381fb6a51f00d95bd.js" async=""></script></body></html>

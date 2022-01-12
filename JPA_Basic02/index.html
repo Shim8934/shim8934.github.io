@@ -64,256 +64,340 @@
         }
       }
     })
-  </script><title data-react-helmet="true">JPA 기본 강의 정리 - 01. JPA 사용 이유 &amp; 영속성</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="JPA 기본 강의 정리 - 01. JPA 사용 이유 &amp; 영속성"/><meta data-react-helmet="true" property="og:site_title" content="JPA 기본 강의 정리 - 01. JPA 사용 이유 &amp; 영속성"/><meta data-react-helmet="true" name="description" content="JPA ? 1. JPA의 등장 배경 1) Java와  DB(RDBMS) 의 정보 저장 방식의 차이 (1) Java - Java에서 객체는 참조를 사용해 연관 데이터 조회
-(2) RDBMS - 테이블에 외래 키를 사용.  즉, 기존의 JDBC Template, Mybatis 등의 기술이 있었음에도 객체 지향적인 프로그래밍이 아닌 SQL 중심적인 개발이 많은 시간과 노력을 들이게 됐다. 앞서 나온 기술들의 SQL 중심적인 개발 요소를 줄이고자 Java Persistence API(이하 JPA) 가 등장하게 됐다. JPA의 특징 1. 영속성 컨텍스트 엔티티를 영구 저장하는 환경 (컨테이너) 1차 캐시 동일성 보장 트랜잭션을 지원하는 쓰기 지연 변경 감지 지연 로딩 1) 1차 캐시 em.persist() 로 객체가 1차 캐시에 저장되지만, DB에 저장된 것은 아니다. → 이후 트랜잭션을 커밋해야 실제로 DB에 객체 관련 쿼리가 입력되고, 그 때 저장된다. 즉, 저장되기 전까진 객체의 상…"/><meta data-react-helmet="true" property="og:description" content="JPA ? 1. JPA의 등장 배경 1) Java와  DB(RDBMS) 의 정보 저장 방식의 차이 (1) Java - Java에서 객체는 참조를 사용해 연관 데이터 조회
-(2) RDBMS - 테이블에 외래 키를 사용.  즉, 기존의 JDBC Template, Mybatis 등의 기술이 있었음에도 객체 지향적인 프로그래밍이 아닌 SQL 중심적인 개발이 많은 시간과 노력을 들이게 됐다. 앞서 나온 기술들의 SQL 중심적인 개발 요소를 줄이고자 Java Persistence API(이하 JPA) 가 등장하게 됐다. JPA의 특징 1. 영속성 컨텍스트 엔티티를 영구 저장하는 환경 (컨테이너) 1차 캐시 동일성 보장 트랜잭션을 지원하는 쓰기 지연 변경 감지 지연 로딩 1) 1차 캐시 em.persist() 로 객체가 1차 캐시에 저장되지만, DB에 저장된 것은 아니다. → 이후 트랜잭션을 커밋해야 실제로 DB에 객체 관련 쿼리가 입력되고, 그 때 저장된다. 즉, 저장되기 전까진 객체의 상…"/><meta data-react-helmet="true" property="og:author" content="심기영"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-011381fb6a51f00d95bd.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-7b6285e487e98446a3f0.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-3528d048b96f92ca0d99.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/Spring/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">shim8934.github.io</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">😄</div><div class="info"><div class="categories"><a class="category" href="/posts/JPA_Basic">JPA_Basic</a></div></div><h1 class="title">JPA 기본 강의 정리 - 01. JPA 사용 이유 &amp; 영속성</h1><div class="info"><div class="author">posted by <strong>shim8934</strong>,</div> <!-- -->January 06, 2022</div></header><div class="post-content"><div class="markdown"><h2 id="jpa-" style="position:relative;"><a href="#jpa-" aria-label="jpa  permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JPA ?</h2>
-<h3 id="1-jpa의-등장-배경" style="position:relative;"><a href="#1-jpa%EC%9D%98-%EB%93%B1%EC%9E%A5-%EB%B0%B0%EA%B2%BD" aria-label="1 jpa의 등장 배경 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. JPA의 등장 배경</h3>
-<h4 id="1-java와--dbrdbms-의-정보-저장-방식의-차이" style="position:relative;"><a href="#1-java%EC%99%80--dbrdbms-%EC%9D%98-%EC%A0%95%EB%B3%B4-%EC%A0%80%EC%9E%A5-%EB%B0%A9%EC%8B%9D%EC%9D%98-%EC%B0%A8%EC%9D%B4" aria-label="1 java와  dbrdbms 의 정보 저장 방식의 차이 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1) Java와  DB(RDBMS) 의 정보 저장 방식의 차이</h4>
-<p>(1) Java - Java에서 객체는 참조를 사용해 연관 데이터 조회
-(2) RDBMS - 테이블에 외래 키를 사용.</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 523px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 58.88888888888889%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAECAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHbUbRgH//EABcQAQEBAQAAAAAAAAAAAAAAAAEAESH/2gAIAQEAAQUCuRB1Ngy//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFxAAAwEAAAAAAAAAAAAAAAAAACAhIv/aAAgBAQAGPwKmV//EABkQAAMBAQEAAAAAAAAAAAAAAAABESExUf/aAAgBAQABPyHdoXpDjooJSOiEiP/aAAwDAQACAAMAAAAQU8//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAbEAACAwEBAQAAAAAAAAAAAAABEQAhQWExkf/aAAgBAQABPxAFGloYIWwLABbSr5G9N1uDtbJF7HIThmAJ/9k='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="difference"
-        title="difference"
-        src="/static/ecda7bad467cffa3df3c78aafb8c3ce1/8df40/difference.jpg"
-        srcset="/static/ecda7bad467cffa3df3c78aafb8c3ce1/4ec73/difference.jpg 180w,
-/static/ecda7bad467cffa3df3c78aafb8c3ce1/158ba/difference.jpg 360w,
-/static/ecda7bad467cffa3df3c78aafb8c3ce1/8df40/difference.jpg 523w"
-        sizes="(max-width: 523px) 100vw, 523px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<ul>
-<li>즉, 기존의 JDBC Template, Mybatis 등의 기술이 있었음에도 객체 지향적인 프로그래밍이 아닌 SQL 중심적인 개발이 많은 시간과 노력을 들이게 됐다.</li>
-<li>앞서 나온 기술들의 SQL 중심적인 개발 요소를 줄이고자 Java Persistence API(이하 JPA) 가 등장하게 됐다.</li>
-</ul>
-<hr>
-<h2 id="jpa의-특징" style="position:relative;"><a href="#jpa%EC%9D%98-%ED%8A%B9%EC%A7%95" aria-label="jpa의 특징 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JPA의 특징</h2>
-<h3 id="1-영속성-컨텍스트" style="position:relative;"><a href="#1-%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8" aria-label="1 영속성 컨텍스트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 영속성 컨텍스트</h3>
-<ul>
-<li>엔티티를 영구 저장하는 환경 (컨테이너)</li>
-</ul>
+  </script><title data-react-helmet="true">JPA 기본 강의 정리 - 02. 엔티티 기본 매핑</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="JPA 기본 강의 정리 - 02. 엔티티 기본 매핑"/><meta data-react-helmet="true" property="og:site_title" content="JPA 기본 강의 정리 - 02. 엔티티 기본 매핑"/><meta data-react-helmet="true" name="description" content="엔티티 매핑 - 기본 객체와 테이블 매핑 : @Entity, @Table 필드와 컬럼 매핑 : @Column 기본 키 매핑 : @Id 연관관계 매핑 : @ManyToOne, @JoinColumn 1. @Entity JPA를 사용해서 테이블과 매핑할 클래스에 사용 필수. !주의 2. @Table Entity와 매핑할 테이블 지정 시 사용. 3. Entity의 속성 (테이블 컬럼)  어노테이션 정리 어노테이션 설명 @Column 컬럼 매핑 @Temporal 날짜 타입 매핑 @Enumerated enum 타입 매핑 @Lob BLOB, CLOB 매핑 @Transient 특정 필드를 컬럼에 매핑하지 않음(매핑 무시) 1) @Column 속성 설명 기본값 name 필드와 매핑할 테이블의 컬럼 이름 객체의 필드 이름 insertable,updatable 등록, 변경 가능 여부 TRUE nullable(DDL) null 값의 허용 여부를 설정. false로 설정하면 DDL 생성 시에 not nu…"/><meta data-react-helmet="true" property="og:description" content="엔티티 매핑 - 기본 객체와 테이블 매핑 : @Entity, @Table 필드와 컬럼 매핑 : @Column 기본 키 매핑 : @Id 연관관계 매핑 : @ManyToOne, @JoinColumn 1. @Entity JPA를 사용해서 테이블과 매핑할 클래스에 사용 필수. !주의 2. @Table Entity와 매핑할 테이블 지정 시 사용. 3. Entity의 속성 (테이블 컬럼)  어노테이션 정리 어노테이션 설명 @Column 컬럼 매핑 @Temporal 날짜 타입 매핑 @Enumerated enum 타입 매핑 @Lob BLOB, CLOB 매핑 @Transient 특정 필드를 컬럼에 매핑하지 않음(매핑 무시) 1) @Column 속성 설명 기본값 name 필드와 매핑할 테이블의 컬럼 이름 객체의 필드 이름 insertable,updatable 등록, 변경 가능 여부 TRUE nullable(DDL) null 값의 허용 여부를 설정. false로 설정하면 DDL 생성 시에 not nu…"/><meta data-react-helmet="true" property="og:author" content="심기영"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-011381fb6a51f00d95bd.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-7b6285e487e98446a3f0.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-3528d048b96f92ca0d99.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/JPA_Basic02/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">shim8934.github.io</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">😄</div><div class="info"><div class="categories"><a class="category" href="/posts/JPA_Basic">JPA_Basic</a></div></div><h1 class="title">JPA 기본 강의 정리 - 02. 엔티티 기본 매핑</h1><div class="info"><div class="author">posted by <strong>shim8934</strong>,</div> <!-- -->January 07, 2022</div></header><div class="post-content"><div class="markdown"><h2 id="엔티티-매핑---기본" style="position:relative;"><a href="#%EC%97%94%ED%8B%B0%ED%8B%B0-%EB%A7%A4%ED%95%91---%EA%B8%B0%EB%B3%B8" aria-label="엔티티 매핑   기본 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>엔티티 매핑 - 기본</h2>
 <ol>
-<li>1차 캐시</li>
-<li>동일성 보장</li>
-<li>트랜잭션을 지원하는 쓰기 지연</li>
-<li>변경 감지</li>
-<li>지연 로딩</li>
+<li>객체와 테이블 매핑 : @Entity, @Table</li>
+<li>필드와 컬럼 매핑 : @Column</li>
+<li>기본 키 매핑 : @Id</li>
+<li>연관관계 매핑 : @ManyToOne, @JoinColumn</li>
 </ol>
 <hr>
-<h4 id="1-1차-캐시" style="position:relative;"><a href="#1-1%EC%B0%A8-%EC%BA%90%EC%8B%9C" aria-label="1 1차 캐시 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1) 1차 캐시</h4>
+<h3 id="1-entity" style="position:relative;"><a href="#1-entity" aria-label="1 entity permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. @Entity</h3>
 <ul>
-<li>
-<p>em.persist() 로 객체가 1차 캐시에 저장되지만, DB에 저장된 것은 아니다.</p>
-<p>→ 이후 트랜잭션을 커밋해야 실제로 DB에 객체 관련 쿼리가 입력되고, 그 때 저장된다.</p>
-</li>
-<li>
-<p>즉, 저장되기 전까진 객체의 상태와 관련된 변경사항이 있을 경우, 변경사항에 따른 쿼리를 JPA에서 자동적으로 설정해 준다. (CRUD 관련)</p>
-</li>
+<li>JPA를 사용해서 테이블과 매핑할 클래스에 사용 필수.</li>
 </ul>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token class-name">Member</span> member <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Member</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-member<span class="token punctuation">.</span><span class="token function">setId</span><span class="token punctuation">(</span><span class="token string">"member1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-member<span class="token punctuation">.</span><span class="token function">setUsername</span><span class="token punctuation">(</span><span class="token string">"회원1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// 1차 캐시에 저장</span>
-em<span class="token punctuation">.</span><span class="token function">persist</span><span class="token punctuation">(</span>member<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// 1차 캐시에서 조회</span>
-<span class="token class-name">Member</span> findMember <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token class-name">Memeber</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token string">"member1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 683px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 49.44444444444444%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAIBAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHdR6xiA//EABcQAQADAAAAAAAAAAAAAAAAABABETH/2gAIAQEAAQUCtnD/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAWEAADAAAAAAAAAAAAAAAAAAAAIDH/2gAIAQEABj8CIv8A/8QAGBAAAgMAAAAAAAAAAAAAAAAAAAERIEH/2gAIAQEAAT8haEaqr//aAAwDAQACAAMAAAAQEw//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAbEAEAAgMBAQAAAAAAAAAAAAABACExQVERkf/aAAgBAQABPxBhenpFOR9uMAUAvU9esFcs/9k='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="temporarycache01"
-        title="temporarycache01"
-        src="/static/1e024b7fe3f8564fd1cbf99fcec344bd/3f6a4/temporarycache01.jpg"
-        srcset="/static/1e024b7fe3f8564fd1cbf99fcec344bd/4ec73/temporarycache01.jpg 180w,
-/static/1e024b7fe3f8564fd1cbf99fcec344bd/158ba/temporarycache01.jpg 360w,
-/static/1e024b7fe3f8564fd1cbf99fcec344bd/3f6a4/temporarycache01.jpg 683w"
-        sizes="(max-width: 683px) 100vw, 683px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
+<p><strong>!주의</strong></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">1) 기본 생성자 필수!
+2) final 클래스, enum, interface, inner 클래스 사용 X
+3) 저장할 필드에 final 사용 X</code></pre></div>
 <hr>
-<h4 id="2-동일성-보장" style="position:relative;"><a href="#2-%EB%8F%99%EC%9D%BC%EC%84%B1-%EB%B3%B4%EC%9E%A5" aria-label="2 동일성 보장 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2) 동일성 보장</h4>
+<h3 id="2-table" style="position:relative;"><a href="#2-table" aria-label="2 table permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. @Table</h3>
 <ul>
-<li>
-<p>1차 캐시에 저장된 객체는 반복 가능한 읽기 상태를 애플리케이션 차원에서 제공한다.</p>
-<p>→ 1차 캐시에 저장된 객체에 한해, DB로 조회쿼리가 반복적으로 날아가지 않는다.</p>
-</li>
+<li>Entity와 매핑할 테이블 지정 시 사용.</li>
 </ul>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"=== BEFORE ==="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">Member</span> a <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token class-name">Member</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span><span class="token string">"member1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">Member</span> b <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token class-name">Member</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span><span class="token string">"member1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"a == b ? -> "</span><span class="token operator">+</span> <span class="token punctuation">(</span>a <span class="token operator">==</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"=== AFTER ==="</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 148px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 46.621621621621614%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHmXFsgP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEAAQUCX//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CX//EABwQAAIBBQEAAAAAAAAAAAAAAAABERBBYXGBof/aAAgBAQABPyFa8HN1HB4EOn//2gAMAwEAAgADAAAAEKcf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAHhAAAgIABwAAAAAAAAAAAAAAAREAIRAxQVFhgcH/2gAIAQEAAT8QEsJq5yzQCUBsxulPEz9Yf//Z'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="repetable-read.jpg"
-        title="repetable-read.jpg"
-        src="/static/3fdc0793879a05ec5284bb248a38a255/a80bd/repetable-read.jpg"
-        srcset="/static/3fdc0793879a05ec5284bb248a38a255/a80bd/repetable-read.jpg 148w"
-        sizes="(max-width: 148px) 100vw, 148px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token comment">// Member 객체의 매핑 테이블 이름이 MBR 테이블인 경우</span>
+<span class="token annotation punctuation">@Entity</span>
+<span class="token annotation punctuation">@Table</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"MBR"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Member</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre></div>
 <hr>
-<h4 id="3-트랜잭션을-지원하는-쓰기-지연" style="position:relative;"><a href="#3-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%EC%9D%84-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EC%93%B0%EA%B8%B0-%EC%A7%80%EC%97%B0" aria-label="3 트랜잭션을 지원하는 쓰기 지연 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3) 트랜잭션을 지원하는 쓰기 지연</h4>
-<p>(1) 트랜잭션을 커밋할 때까지 INSERT SQL을 모았다가 트랜잭션 Commit 시, 쌓인 Insert 쿼리를 모아서 보냄.</p>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token class-name">EntityManager</span> em <span class="token operator">=</span> emf<span class="token punctuation">.</span><span class="token function">createEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">EntityTransaction</span> transaction <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">getTransaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-transaction<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 트랜잭션 시작</span>
-
-em<span class="token punctuation">.</span><span class="token function">persist</span><span class="token punctuation">(</span>memberA<span class="token punctuation">)</span><span class="token punctuation">;</span>
-em<span class="token punctuation">.</span><span class="token function">persist</span><span class="token punctuation">(</span>memberB<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// ↑ 위까지는 쿼리문이 작성되지 않는다. (1차캐시 영역)</span>
-
-<span class="token comment">// ↓ commit 순간 DB에 쿼리문이 작성된다.</span>
-transaction<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 트랜잭션 커밋</span></code></pre></div>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 649px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 70%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAOABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAdsVDKD/xAAYEAACAwAAAAAAAAAAAAAAAAAAEQEQMf/aAAgBAQABBQLRDJv/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAY/Al//xAAZEAEBAQEBAQAAAAAAAAAAAAABABEhUXH/2gAIAQEAAT8hfUAel8w3Y7YX/9oADAMBAAIAAwAAABCwD//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABsQAQACAgMAAAAAAAAAAAAAAAEAESFBYXHw/9oACAEBAAE/ECHg7CBEGt1Au0tdpkCern//2Q=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="transaction-commit"
-        title="transaction-commit"
-        src="/static/1a77628c22333d92e075b6e8eab6ee87/18f6b/transaction-commit.jpg"
-        srcset="/static/1a77628c22333d92e075b6e8eab6ee87/4ec73/transaction-commit.jpg 180w,
-/static/1a77628c22333d92e075b6e8eab6ee87/158ba/transaction-commit.jpg 360w,
-/static/1a77628c22333d92e075b6e8eab6ee87/18f6b/transaction-commit.jpg 649w"
-        sizes="(max-width: 649px) 100vw, 649px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
+<h3 id="3-entity의-속성-테이블-컬럼--어노테이션-정리" style="position:relative;"><a href="#3-entity%EC%9D%98-%EC%86%8D%EC%84%B1-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%BB%AC%EB%9F%BC--%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98-%EC%A0%95%EB%A6%AC" aria-label="3 entity의 속성 테이블 컬럼  어노테이션 정리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. Entity의 속성 (테이블 컬럼)  어노테이션 정리</h3>
+<table>
+<thead>
+<tr>
+<th align="left">어노테이션</th>
+<th align="left">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">@Column</td>
+<td align="left">컬럼 매핑</td>
+</tr>
+<tr>
+<td align="left">@Temporal</td>
+<td align="left">날짜 타입 매핑</td>
+</tr>
+<tr>
+<td align="left">@Enumerated</td>
+<td align="left">enum 타입 매핑</td>
+</tr>
+<tr>
+<td align="left">@Lob</td>
+<td align="left">BLOB, CLOB 매핑</td>
+</tr>
+<tr>
+<td align="left">@Transient</td>
+<td align="left">특정 필드를 컬럼에 매핑하지 않음(매핑 무시)</td>
+</tr>
+</tbody>
+</table>
 <hr>
-<h4 id="4-변경-감지" style="position:relative;"><a href="#4-%EB%B3%80%EA%B2%BD-%EA%B0%90%EC%A7%80" aria-label="4 변경 감지 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4) 변경 감지</h4>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token class-name">EntityManager</span> em <span class="token operator">=</span> emf<span class="token punctuation">.</span><span class="token function">createEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name">EntityTransaction</span> transaction <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">getTransaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-transaction<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 트랜잭션 시작</span>
-
-<span class="token comment">// 엔티티 조회</span>
-<span class="token class-name">Member</span> memberA <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token class-name">Member</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token string">"memberA"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token comment">// 엔티티 데이터 수정</span>
-memberA<span class="token punctuation">.</span><span class="token function">setUsername</span><span class="token punctuation">(</span><span class="token string">"JPA"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-memberA<span class="token punctuation">.</span><span class="token function">setAge</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-transaction<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 트랜잭션 커밋</span></code></pre></div>
+<h4 id="1-column" style="position:relative;"><a href="#1-column" aria-label="1 column permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1) @Column</h4>
+<table>
+<thead>
+<tr>
+<th>속성</th>
+<th>설명</th>
+<th>기본값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>필드와 매핑할 테이블의 컬럼 이름</td>
+<td>객체의 필드 이름</td>
+</tr>
+<tr>
+<td>insertable,<br />updatable</td>
+<td>등록, 변경 가능 여부</td>
+<td>TRUE</td>
+</tr>
+<tr>
+<td>nullable(DDL)</td>
+<td>null 값의 허용 여부를 설정. false로 설정하면 DDL 생성 시에 not null 제약조건이 붙는다.</td>
+<td></td>
+</tr>
+<tr>
+<td>unique(DDL)</td>
+<td>@Table의 uniqueConstraints와 같지만 한 컬럼에 간단히 유니크 제약조건을 걸 때 사용.</td>
+<td></td>
+</tr>
+<tr>
+<td>columnDefinition(DDL)</td>
+<td>데이터베이스 컬럼 정보를 직접 줄 수 있다.<br />ex) varchar(100) default ‘EMPTY’</td>
+<td>필드의 자바 타입과 방언 정보를 사용해 지정</td>
+</tr>
+<tr>
+<td>length(DDL)</td>
+<td>문자 길이 제약조건, String 타입에만 사용.</td>
+<td>255</td>
+</tr>
+<tr>
+<td>precision,<br />scale(DDL)</td>
+<td>BigDecimal 타입에서 사용.(BigInteger도 가능)<br /> pricision은 소수점을 포함한 전체 자릿수를, scale은 소수의 자릿수다.<br /> 참고로 double, float 타입에는 적용되지 않는다. 아주 큰 숫자나 정밀한 소수를 다루어야 할 때만 사용.</td>
+<td>precision = 19, scale = 2</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="2-enumerated" style="position:relative;"><a href="#2-enumerated" aria-label="2 enumerated permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2) @Enumerated</h4>
 <ul>
-<li>
-<p>위 예시 코드처럼 데이터 수정이 있을 시, 기존 JDBC에서는 Java 코드에서도 update() 관련 코드를 작동해야 했다.</p>
-<p>​	→ JPA에선 엔티티의 1차 캐시에 조회됐을 당시와 비교해 변경이 감지될 시, 자동으로 관련 Update 문을 작성해 DB에 보낸다.</p>
-</li>
-<li>
-<p>예외적으로 설정하는 경우가 아니라면, 변경 관련 쿼리 역시 위의 트랜잭션을 지원하는 쓰기 지연과 동일한 타이밍에 작동한다. (commit 시).</p>
-</li>
+<li>자바 enum 타입을 매핑할 때 사용</li>
 </ul>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 679px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 61.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAECAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHacGWjD//EABgQAAIDAAAAAAAAAAAAAAAAAAAQAhEx/9oACAEBAAEFAlajp//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CX//EABoQAQEAAgMAAAAAAAAAAAAAAAEAESFRYZH/2gAIAQEAAT8hXmNdxlLtl6sX/9oADAMBAAIAAwAAABBgz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABoQAQADAQEBAAAAAAAAAAAAAAEAESExQVH/2gAIAQEAAT8Q0p1TH0IB8YIsMj0UdnDRrZT4T//Z'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="DirtyChecking"
-        title="DirtyChecking"
-        src="/static/4a6db749aeb762aa36f9e523e9421d40/30e56/DirtyChecking.jpg"
-        srcset="/static/4a6db749aeb762aa36f9e523e9421d40/4ec73/DirtyChecking.jpg 180w,
-/static/4a6db749aeb762aa36f9e523e9421d40/158ba/DirtyChecking.jpg 360w,
-/static/4a6db749aeb762aa36f9e523e9421d40/30e56/DirtyChecking.jpg 679w"
-        sizes="(max-width: 679px) 100vw, 679px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
+<p><strong>! 주의 ! : ORDINAL value는 사용하지 말 것.!</strong></p>
+<table>
+<thead>
+<tr>
+<th>속성</th>
+<th>설명</th>
+<th>기본값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>1) EnumType.ORDINAL : enum 순서를 데이터베이스에 저장<br />2) EnumType.STRING : enum 이름을 데이터베이스에 저장</td>
+<td>EnumType.ORDINAL</td>
+</tr>
+</tbody>
+</table>
 <hr>
-<h3 id="2-영속성-컨텍스트의-플러시" style="position:relative;"><a href="#2-%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%ED%94%8C%EB%9F%AC%EC%8B%9C" aria-label="2 영속성 컨텍스트의 플러시 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. 영속성 컨텍스트의 플러시</h3>
+<h4 id="3-temporal" style="position:relative;"><a href="#3-temporal" aria-label="3 temporal permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3) @Temporal</h4>
 <ul>
-<li>영속석 컨텍스트의 변경내용을 DB에 반영하는 것을 의미.</li>
+<li>날짜 타입(java.util.Date, java.util.Calendar)을 매핑할 때 사용</li>
 </ul>
-<h4 id="1-플러시-발생-경우" style="position:relative;"><a href="#1-%ED%94%8C%EB%9F%AC%EC%8B%9C-%EB%B0%9C%EC%83%9D-%EA%B2%BD%EC%9A%B0" aria-label="1 플러시 발생 경우 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1) 플러시 발생 경우</h4>
+<table>
+<thead>
+<tr>
+<th>속성</th>
+<th>설명</th>
+<th>Annotation을 안 쓰고 자바 타입만 쓸 시<br />매핑되는 자바 타입!</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>1) TemporalType.DATE : 날짜, 데이터베이스 date 타입과 매핑(예: 2022-01-11)<br />2) TemporalType.TIME : 시간, 데이터베이스 time 타입과 매핑(예: 12:16:10)<br />3) TemporalType.TIMESTAMP : 날짜와 시간, 데이터베이스 timestamp 타입과 매핑(예: 2022-01-11 12:16:10)</td>
+<td>1) LocalDate or Date<br />2) LocalDate or Date<br />3) LocalDateTime</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="4-lob" style="position:relative;"><a href="#4-lob" aria-label="4 lob permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4) @Lob</h4>
+<ul>
+<li>데이터베이스 BLOB, CLOB 타입과 매핑 (String이면 CLOB, 나머지는 BLOB)
 <ol>
-<li>변경 감지 (Dirty Checking) 로 저장소의 쿼리를 DB에 전송한 경우.</li>
+<li>CLOB - String, char[], java.sql.CLOB</li>
+<li>BLOB - byte[], java.sql.BLOB</li>
 </ol>
-<h4 id="2--영속성-컨텍스트를-플러시하는-방법" style="position:relative;"><a href="#2--%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%EB%A5%BC-%ED%94%8C%EB%9F%AC%EC%8B%9C%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95" aria-label="2  영속성 컨텍스트를 플러시하는 방법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2)  영속성 컨텍스트를 플러시하는 방법.</h4>
-<ol>
-<li>em.flush() - 직접 호출.</li>
-<li>트랜잭션 커밋 - 플러시 자동 호출.</li>
-<li>JPQL 쿼리 실행 - 플러시 자동 호출.</li>
-</ol>
+</li>
+</ul>
+<hr>
+<h4 id="5-transient" style="position:relative;"><a href="#5-transient" aria-label="5 transient permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5) @Transient</h4>
+<ul>
+<li>DB에 저장되는 정보가 아닌 임시로 쓸 변수일 경우</li>
+</ul>
+<hr>
+<h3 id="4-기본-키-매핑" style="position:relative;"><a href="#4-%EA%B8%B0%EB%B3%B8-%ED%82%A4-%EB%A7%A4%ED%95%91" aria-label="4 기본 키 매핑 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. 기본 키 매핑</h3>
+<h4 id="1-id" style="position:relative;"><a href="#1-id" aria-label="1 id permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1) @Id</h4>
+<ul>
+<li>PK로 쓰이는 컬럼에 <strong>직접 할당</strong> 시 사용.</li>
+</ul>
+<hr>
+<h4 id="2-generatedvalue" style="position:relative;"><a href="#2-generatedvalue" aria-label="2 generatedvalue permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2) @GeneratedValue</h4>
+<ul>
+<li>DB에서 <strong>자동적으로 PK를 할당하게</strong> 하는 전략.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>속성</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IDENTITY</td>
+<td>데이터베이스에 위임, MYSQL</td>
+</tr>
+<tr>
+<td>SEQUENCE</td>
+<td>데이터베이스 시퀸스 오브젝트 사용, ORACLE<br /> * @SequenceGenerator 필요</td>
+</tr>
+<tr>
+<td>TABLE</td>
+<td>키 생성용 테이블 사용, 모든 DB에서 사용<br /> * @TableGenerator 필요</td>
+</tr>
+<tr>
+<td>AUTO</td>
+<td>방언에 따라 자동 지정, 기본값</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<ul>
+<li>GeneratedValue 전략별 예시</li>
+</ul>
+<h5 id="1-identity" style="position:relative;"><a href="#1-identity" aria-label="1 identity permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(1) IDENTITY</h5>
+<ul>
+<li>주로 MySQL, PostgreSQL, SQL Server, DB2에서 사용하며, 기본 키 생성을 DB에 위임.</li>
+<li>영속성 컨텍스트에 종속 시점(em.persist())에 즉시 INSERT SQL을 실행하고, 해당 키를 DB에서 조회하는 특징이 있다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Entity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Member</span> <span class="token punctuation">{</span>
+	 <span class="token annotation punctuation">@Id</span>
+	 <span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>strategy <span class="token operator">=</span> <span class="token class-name">GenerationType</span><span class="token punctuation">.</span>IDENTITY<span class="token punctuation">)</span>
+	 <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span></code></pre></div>
+<hr>
+<h5 id="2-sequence" style="position:relative;"><a href="#2-sequence" aria-label="2 sequence permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(2) SEQUENCE</h5>
+<ul>
+<li>오라클, PostgreSQL, DB2, H2 DB에서 사용하며, 유일한 값을 순서대로 생성하는 특별한 DB 오브젝트.</li>
+</ul>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Entity</span>
+<span class="token annotation punctuation">@SequenceGenerator</span><span class="token punctuation">(</span>
+	 name <span class="token operator">=</span> “MEMBER_SEQ_GENERATOR"<span class="token punctuation">,</span>
+	 sequenceName <span class="token operator">=</span> “MEMBER_SEQ"<span class="token punctuation">,</span> <span class="token comment">//매핑할 데이터베이스 시퀀스 이름</span>
+	 initialValue <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> allocationSize <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Member</span> <span class="token punctuation">{</span>
+	 <span class="token annotation punctuation">@Id</span>
+	 <span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>strategy <span class="token operator">=</span> <span class="token class-name">GenerationType</span><span class="token punctuation">.</span>SEQUENCE<span class="token punctuation">,</span>
+	 	generator <span class="token operator">=</span> <span class="token string">"MEMBER_SEQ_GENERATOR"</span><span class="token punctuation">)</span>
+	 <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span> </code></pre></div>
+<table>
+<thead>
+<tr>
+<th>속성</th>
+<th>설명</th>
+<th>기본값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>식별자 생성기 이름.</td>
+<td>필수</td>
+</tr>
+<tr>
+<td>sequenceName</td>
+<td>데이터베이스에 등록되어 있는 시퀀스 이름.</td>
+<td>hibrenate_sequence</td>
+</tr>
+<tr>
+<td>initialValue</td>
+<td>DDL 생성 시에만 사용.<br />시퀀스 DDL을 생성할 때 처음 1 시작하는 수를 지정한다.</td>
+<td>1</td>
+</tr>
+<tr>
+<td>allocationSize</td>
+<td>시퀀스 한 번 호출에 증가하는 수(성능 최적화에 사용됨)<br /> *** 데이터베이스 시퀀스 값이 하나씩 증가하도록 설정되어 있으면 이 값을 반드시 1로 설정해야 함.**</td>
+<td><strong>50</strong></td>
+</tr>
+<tr>
+<td>catalog, schema</td>
+<td>데이터베이스 catalog, schema 이름</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h5 id="3-table" style="position:relative;"><a href="#3-table" aria-label="3 table permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(3) TABLE</h5>
+<ul>
+<li>키 생성 전용 테이블을 하나 만들어 DB 시퀀스를 흉내내는 전략이며, 모든 DB에 적용 가능.</li>
+</ul>
+<div class="gatsby-highlight" data-language="sql"><pre class="language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> MY_SEQUENCES <span class="token punctuation">(</span>
+	 sequence_name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
+	 next_val <span class="token keyword">bigint</span><span class="token punctuation">,</span>
+	 <span class="token keyword">primary</span> <span class="token keyword">key</span> <span class="token punctuation">(</span> sequence_name <span class="token punctuation">)</span>
+<span class="token punctuation">)</span></code></pre></div>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Entity</span>
+<span class="token annotation punctuation">@TableGenerator</span><span class="token punctuation">(</span>
+	 name <span class="token operator">=</span> <span class="token string">"MEMBER_SEQ_GENERATOR"</span><span class="token punctuation">,</span>
+	 table <span class="token operator">=</span> <span class="token string">"MY_SEQUENCES"</span><span class="token punctuation">,</span>
+	 pkColumnValue <span class="token operator">=</span> “MEMBER_SEQ"<span class="token punctuation">,</span> allocationSize <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Member</span> <span class="token punctuation">{</span>
+	 <span class="token annotation punctuation">@Id</span>
+	 <span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>strategy <span class="token operator">=</span> <span class="token class-name">GenerationType</span><span class="token punctuation">.</span>TABLE<span class="token punctuation">,</span>
+		 generator <span class="token operator">=</span> <span class="token string">"MEMBER_SEQ_GENERATOR"</span><span class="token punctuation">)</span>
+	 <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span> </code></pre></div>
+<ul>
+<li>여러 웹서버에서 구동 시, 발생하는 동기화 문제를 해결하기 좋은 전략이지만, 별도의 테이블을 하나 더 설정해 사용함으로 인해 <strong>성능 이슈가 발생할 수 있다</strong>.</li>
+</ul>
+<hr>
+<h5 id="4-auto" style="position:relative;"><a href="#4-auto" aria-label="4 auto permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(4) AUTO</h5>
+<ul>
+<li>방언에 따라 자동 지정 (GeneratedValue 의 기본값.)</li>
+</ul>
 <hr>
 <div class="table-of-contents">
 <ul>
 <li>
-<p><a href="#jpa-">JPA ?</a></p>
+<p><a href="#%EC%97%94%ED%8B%B0%ED%8B%B0-%EB%A7%A4%ED%95%91---%EA%B8%B0%EB%B3%B8">엔티티 매핑 - 기본</a></p>
 <ul>
 <li>
-<p><a href="#1-jpa%EC%9D%98-%EB%93%B1%EC%9E%A5-%EB%B0%B0%EA%B2%BD">1. JPA의 등장 배경</a></p>
-<ul>
-<li><a href="#1-java%EC%99%80--dbrdbms-%EC%9D%98-%EC%A0%95%EB%B3%B4-%EC%A0%80%EC%9E%A5-%EB%B0%A9%EC%8B%9D%EC%9D%98-%EC%B0%A8%EC%9D%B4">1) Java와  DB(RDBMS) 의 정보 저장 방식의 차이</a></li>
-</ul>
-</li>
-</ul>
+<p><a href="#1-entity">1. @Entity</a></p>
 </li>
 <li>
-<p><a href="#jpa%EC%9D%98-%ED%8A%B9%EC%A7%95">JPA의 특징</a></p>
-<ul>
+<p><a href="#2-table">2. @Table</a></p>
+</li>
 <li>
-<p><a href="#1-%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8">1. 영속성 컨텍스트</a></p>
+<p><a href="#3-entity%EC%9D%98-%EC%86%8D%EC%84%B1-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%BB%AC%EB%9F%BC--%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98-%EC%A0%95%EB%A6%AC">3. Entity의 속성 (테이블 컬럼)  어노테이션 정리</a></p>
 <ul>
-<li><a href="#1-1%EC%B0%A8-%EC%BA%90%EC%8B%9C">1) 1차 캐시</a></li>
-<li><a href="#2-%EB%8F%99%EC%9D%BC%EC%84%B1-%EB%B3%B4%EC%9E%A5">2) 동일성 보장</a></li>
-<li><a href="#3-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%EC%9D%84-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EC%93%B0%EA%B8%B0-%EC%A7%80%EC%97%B0">3) 트랜잭션을 지원하는 쓰기 지연</a></li>
-<li><a href="#4-%EB%B3%80%EA%B2%BD-%EA%B0%90%EC%A7%80">4) 변경 감지</a></li>
+<li><a href="#1-column">1) @Column</a></li>
+<li><a href="#2-enumerated">2) @Enumerated</a></li>
+<li><a href="#3-temporal">3) @Temporal</a></li>
+<li><a href="#4-lob">4) @Lob</a></li>
+<li><a href="#5-transient">5) @Transient</a></li>
 </ul>
 </li>
 <li>
-<p><a href="#2-%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%EC%9D%98-%ED%94%8C%EB%9F%AC%EC%8B%9C">2. 영속성 컨텍스트의 플러시</a></p>
+<p><a href="#4-%EA%B8%B0%EB%B3%B8-%ED%82%A4-%EB%A7%A4%ED%95%91">4. 기본 키 매핑</a></p>
 <ul>
-<li><a href="#1-%ED%94%8C%EB%9F%AC%EC%8B%9C-%EB%B0%9C%EC%83%9D-%EA%B2%BD%EC%9A%B0">1) 플러시 발생 경우</a></li>
-<li><a href="#2--%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8%EB%A5%BC-%ED%94%8C%EB%9F%AC%EC%8B%9C%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95">2)  영속성 컨텍스트를 플러시하는 방법.</a></li>
+<li>
+<p><a href="#1-id">1) @Id</a></p>
+</li>
+<li>
+<p><a href="#2-generatedvalue">2) @GeneratedValue</a></p>
+<ul>
+<li><a href="#1-identity">(1) IDENTITY</a></li>
+<li><a href="#2-sequence">(2) SEQUENCE</a></li>
+<li><a href="#3-table">(3) TABLE</a></li>
+<li><a href="#4-auto">(4) AUTO</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/AWS_EKS03/"><div class="direction">이전 글</div><div class="title">Bastion용 EC2 구성</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Shim8934">심기영</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/Spring/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-7b6285e487e98446a3f0.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-3528d048b96f92ca0d99.js" async=""></script><script src="/app-7b6285e487e98446a3f0.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-011381fb6a51f00d95bd.js" async=""></script></body></html>
+</li>
+</ul>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/JPA_Basic01/"><div class="direction">이전 글</div><div class="title">JPA 기본 강의 정리 - 01. JPA 사용 이유 &amp; 영속성</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Shim8934">심기영</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/JPA_Basic02/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-7b6285e487e98446a3f0.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-3528d048b96f92ca0d99.js" async=""></script><script src="/app-7b6285e487e98446a3f0.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-011381fb6a51f00d95bd.js" async=""></script></body></html>
