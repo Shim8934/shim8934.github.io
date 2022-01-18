@@ -3,7 +3,7 @@ emoji: 😄
 title: JPA 기본 강의 정리 - 05. 상속 관계 매핑
 date: '2022-01-10 06:00:00'
 author: shim8934
-tags: JPA Java
+tags: JPA Java Inheratince MappedSuperClass
 categories: JPA_Basic
 ---
 ## 상속 관계 매핑

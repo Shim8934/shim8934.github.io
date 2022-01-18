@@ -3,7 +3,7 @@ emoji: 😄
 title: JPA 기본 강의 정리 - 08. 값 타입
 date: '2022-01-15 06:00:00'
 author: shim8934
-tags: JPA Java Type Variable
+tags: JPA Java Type Variable Embedded Embeddable AttributeOverride AttributeOverrides
 categories: JPA_Basic
 ---
 ## 값 타입

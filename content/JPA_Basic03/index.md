@@ -1,12 +1,12 @@
 ---
 emoji: 😄
-title: JPA 기본 강의 정리 - 03. 다양한 연관관계 매핑 기초
+title: JPA 기본 강의 정리 - 03. 다양한 연관 관계 매핑 기초
 date: '2022-01-08 06:00:00'
 author: shim8934
-tags: JPA Java
+tags: JPA Java OneToMany ManyToOne mappedBy
 categories: JPA_Basic
 ---
-## 다양한 연관관계 매핑 기초
+## 다양한 연관 관계 매핑 기초
 
 > 들어가기 전에
 >
@@ -18,7 +18,7 @@ categories: JPA_Basic
 
 ---
 
-### 1. 객체와 테이블 연관관계의 차이
+### 1. 객체와 테이블 연관 관계의 차이
 
 * 다음과 같은 Member, Team 객체가 있고, DB(테이블)에 맞춘 모델링을 한 것이라 가정하자.
 

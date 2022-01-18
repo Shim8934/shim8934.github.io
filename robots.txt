@@ -1,0 +1,3 @@
+ User-agent: *
+ Allow: /
+ Sitemap: https://shim8934.github.io/sitemap.xml

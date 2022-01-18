@@ -3,7 +3,7 @@ emoji: 😄
 title: JPA 기본 강의 정리 - 02. 엔티티 기본 매핑
 date: '2022-01-07 06:00:00'
 author: shim8934
-tags: JPA Java
+tags: JPA Java Entity Annotation Key Mapping
 categories: JPA_Basic
 ---
 ## 엔티티 매핑 - 기본

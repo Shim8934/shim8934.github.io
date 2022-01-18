@@ -3,7 +3,7 @@ emoji: 😄
 title: JPA 기본 강의 정리 - 01. JPA 사용 이유 & 영속성
 date: '2022-01-06 06:00:00'
 author: shim8934
-tags: JPA Java
+tags: JPA Java Context Entity
 categories: JPA_Basic
 ---
 ## JPA ?
@@ -99,7 +99,7 @@ transaction.commit(); // 트랜잭션 커밋
 
 ---
 
-#### 4) 변경 감지
+#### 4) 변경 감지 (Dirty Checking)
 
 ```java
 EntityManager em = emf.createEntityManager();

@@ -3,7 +3,7 @@ emoji: 😄
 title: JPA 기본 강의 정리 - 09. JPQL 정리_01
 date: '2022-01-16 06:00:00'
 author: shim8934
-tags: JPA Java JPQL
+tags: JPA Java JPQL Criteria QueryDSL Native SQL TypedQuery
 categories: JPA_Basic
 ---
 ## JPQL
