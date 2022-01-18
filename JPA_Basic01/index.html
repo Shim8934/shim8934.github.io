@@ -221,7 +221,7 @@ transaction<span class="token punctuation">.</span><span class="token function">
       />
     </span></p>
 <hr>
-<h4 id="4-변경-감지" style="position:relative;"><a href="#4-%EB%B3%80%EA%B2%BD-%EA%B0%90%EC%A7%80" aria-label="4 변경 감지 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4) 변경 감지</h4>
+<h4 id="4-변경-감지-dirty-checking" style="position:relative;"><a href="#4-%EB%B3%80%EA%B2%BD-%EA%B0%90%EC%A7%80-dirty-checking" aria-label="4 변경 감지 dirty checking permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4) 변경 감지 (Dirty Checking)</h4>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token class-name">EntityManager</span> em <span class="token operator">=</span> emf<span class="token punctuation">.</span><span class="token function">createEntityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name">EntityTransaction</span> transaction <span class="token operator">=</span> em<span class="token punctuation">.</span><span class="token function">getTransaction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 transaction<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 트랜잭션 시작</span>
@@ -303,7 +303,7 @@ transaction<span class="token punctuation">.</span><span class="token function">
 <li><a href="#1-1%EC%B0%A8-%EC%BA%90%EC%8B%9C">1) 1차 캐시</a></li>
 <li><a href="#2-%EB%8F%99%EC%9D%BC%EC%84%B1-%EB%B3%B4%EC%9E%A5">2) 동일성 보장</a></li>
 <li><a href="#3-%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98%EC%9D%84-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EC%93%B0%EA%B8%B0-%EC%A7%80%EC%97%B0">3) 트랜잭션을 지원하는 쓰기 지연</a></li>
-<li><a href="#4-%EB%B3%80%EA%B2%BD-%EA%B0%90%EC%A7%80">4) 변경 감지</a></li>
+<li><a href="#4-%EB%B3%80%EA%B2%BD-%EA%B0%90%EC%A7%80-dirty-checking">4) 변경 감지 (Dirty Checking)</a></li>
 </ul>
 </li>
 <li>
