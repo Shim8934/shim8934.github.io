@@ -26,6 +26,7 @@ function PageHeader({ siteTitle }) {
       `}
       render={(data) => (
         <header className="page-header-wrapper">
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565331757890462" crossOrigin="anonymous"></script>
           <div className="page-header">
             <div className="front-section">
               <Link className="link" to="/">
