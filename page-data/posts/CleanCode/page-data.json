@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-category-template-js",
+    "path": "/posts/CleanCode",
+    "result": {"pageContext":{"currentCategory":"CleanCode","categories":["All","CleanCode","JPA_Basic","EKS"],"edges":[{"node":{"id":"b0d513fb-64a9-5ca9-9589-78466c317c83","excerpt":"TIL 01. 깨끗한 코드 오늘 TIL 3줄 요약 좋은 코드는 좋은 소설처럼 읽기 좋다. 깨끗한 코드는 한 가지에 집중, 충실한 코드다. 연습이 중요하다. TIL (Today I Learned) 날짜 2022.04.23\r\n 오늘 읽은 범위 1장. 깨끗한 코드\r\n 책에서 기억하고 싶은 내용을 써보세요. 깨끗한 코드는 한 가지에 ‘집중’한다. 깨끗한 코드란 다른 사람이 고치기 쉽다. 코드를 읽는 시간 대 코드를 짜는 시간 비율이 10 대 1을 넘는다. 이 책은 좋은 코드를 짜기 위한 다양한 경험적 교훈과 체계와 절차와 기법, 그리고 예제를 무수히 많이 보여주지만, 결론적으로 읽는 독자의 연습에 달렸다. 오늘 읽은 소감은? 떠오르는 생각을 가볍게 적어보세요 급하고, 서둘러 끝내려면, 쉽게 짜려면, 읽기 쉽게 만들면 된다. 좋은 코드를 위해선 연습이 필요하다. TIL 01. 깨끗한 코드 오늘 TIL 3줄 요약 TIL (Today I Learned) 날짜 오늘 읽은 범위 책에서 기억하고 싶…","fields":{"slug":"/Clean_Code_Nomad/"},"frontmatter":{"categories":"CleanCode","title":"Clean Code - TIL 01. 깨끗한 코드","date":"April 24, 2022"}},"next":{"fields":{"slug":"/JPA_Basic10/"}},"previous":null}]}},
+    "staticQueryHashes": ["1073350324","1956554647","2938748437"]}
