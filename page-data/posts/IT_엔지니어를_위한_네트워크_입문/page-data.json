@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-category-template-js",
+    "path": "/posts/IT_엔지니어를_위한_네트워크_입문",
+    "result": {"pageContext":{"currentCategory":"IT_엔지니어를_위한_네트워크_입문","categories":["All","IT_엔지니어를_위한_네트워크_입문","CleanCode","JPA_Basic","EKS"],"edges":[{"node":{"id":"2bdf3d80-219f-512e-a51e-8399c20be8a1","excerpt":"TIL 01. 네트워크 시작하기 1. 네트워크 구성도 살펴보기 홈 네트워크와 데이터 센터 네트워크의 구성과 차이로 내용이 시작된다. 이 중 데이터 센터 네트워크와 관련된 내용엔 익숙지 않은 내용들이 있다. 스파인-리프 구조 리프 스위치 10G Base-T 등등의 내용들이 있는데 나중에 읽을 케이블과 커넥터(2-3장), 네트워크 디자인(13장)에서 각기 상세하게 다루게 된다. 2. 프로토콜 네트워크에서 통신할 때의 규약을 통상적으로 프로토콜이라 일컫는다. 기존의 프로토콜 계층 정의는 OSI 7 계층의 정의로 불려졌지만, 과거에 비해 좋아진 기술력으로 인해 4 계층으로 줄어든 TCP/IP 계층이라고 하기도 한다. 광의의 TCP/IP와 협의의 TCP/IP라는 용어로도 나눌 수 있다. 광의의 TCP/IP - 어떤 계층을 쓰든 간에 통신을 하는 행위 자체를 의미. (하단의 프로토콜 스택과 같은 맥락이라 보면 될 것 같다.) 협의의 TCP/IP - L4(전송) 계층에 따른 통신 규약을 통칭.…","fields":{"slug":"/IT엔지니어를_위한_네트워크_입문_01/"},"frontmatter":{"categories":"IT_엔지니어를_위한_네트워크_입문","title":"IT 엔지니어를 위한 네트워크 입문 - TIL 01. 네트워크 시작하기","date":"May 20, 2022"}},"next":{"fields":{"slug":"/Clean_Code_Nomad_10/"}},"previous":null}]}},
+    "staticQueryHashes": ["1073350324","1956554647","2938748437"]}
