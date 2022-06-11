@@ -64,98 +64,173 @@
         }
       }
     })
-  </script><title data-react-helmet="true">Clean Code - TIL 08. 경계 &amp; TIL 09. 단위 테스트</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="Clean Code - TIL 08. 경계 &amp; TIL 09. 단위 테스트"/><meta data-react-helmet="true" property="og:site_title" content="Clean Code - TIL 08. 경계 &amp; TIL 09. 단위 테스트"/><meta data-react-helmet="true" name="description" content="TIL 08. 경계 경계 TIL 2줄 요약 외부 코드(외부 라이브러리 API)를 사용할 땐, 짐 뉴커크가 얘기한 학습 테스트의 방식으로 초점을 맞추자. (147p) 경계에 위치하는 코드는 깔끔히 분리한다. (외부 라이브러리에 의존하지 않게 우리 코드를 작성하라.) (152p) TIL (Today I Learned) 날짜 2022.05.07
- 오늘 읽은 범위 8장. 경계
- 책에서 기억하고 싶은 내용을 써보세요. 학습 테스트는 공짜 이상이다.(149p ~ 150p)
-학습 테스트를 이용한 학습이 필요하든 그렇지 않든, 실제 코드와 동일한 방식으로 인터페이스를 사용하는 테스트 케이스가 필요하다. 이런 경계 테스트가 있다면 패키지의 새 버전으로 이전하기 쉬워진다. 그렇지 않다면 낡은 버전을 필요 이상으로 오랫동안 사용하려는 유혹에 빠지기 쉽다.
-낡은 버전을 필요 이상으로 사용하려는 유혹에 빠지지 않기 위한 방법으로 학습 테스트를 가급적이면 Production 코드와 유사하게 짜는 것…"/><meta data-react-helmet="true" property="og:description" content="TIL 08. 경계 경계 TIL 2줄 요약 외부 코드(외부 라이브러리 API)를 사용할 땐, 짐 뉴커크가 얘기한 학습 테스트의 방식으로 초점을 맞추자. (147p) 경계에 위치하는 코드는 깔끔히 분리한다. (외부 라이브러리에 의존하지 않게 우리 코드를 작성하라.) (152p) TIL (Today I Learned) 날짜 2022.05.07
- 오늘 읽은 범위 8장. 경계
- 책에서 기억하고 싶은 내용을 써보세요. 학습 테스트는 공짜 이상이다.(149p ~ 150p)
-학습 테스트를 이용한 학습이 필요하든 그렇지 않든, 실제 코드와 동일한 방식으로 인터페이스를 사용하는 테스트 케이스가 필요하다. 이런 경계 테스트가 있다면 패키지의 새 버전으로 이전하기 쉬워진다. 그렇지 않다면 낡은 버전을 필요 이상으로 오랫동안 사용하려는 유혹에 빠지기 쉽다.
-낡은 버전을 필요 이상으로 사용하려는 유혹에 빠지지 않기 위한 방법으로 학습 테스트를 가급적이면 Production 코드와 유사하게 짜는 것…"/><meta data-react-helmet="true" property="og:author" content="심기영"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-0dbf47222db3936e0d98.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-9121d1ade616ed7c4ab1.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-0604aeb3cd8f0def35f4.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/Clean_Code_Nomad_08&amp;09/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565331757890462" crossorigin="anonymous"></script><div class="page-header"><div class="front-section"><a class="link" href="/">shim8934.github.io</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">😄</div><div class="info"><div class="categories"><a class="category" href="/posts/CleanCode">CleanCode</a></div></div><h1 class="title">Clean Code - TIL 08. 경계 &amp; TIL 09. 단위 테스트</h1><div class="info"><div class="author">posted by <strong>shim8934</strong>,</div> <!-- -->May 07, 2022</div></header><div class="post-content"><div class="markdown"><h3 id="til-08-경계" style="position:relative;"><a href="#til-08-%EA%B2%BD%EA%B3%84" aria-label="til 08 경계 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TIL 08. 경계</h3>
-<h4 id="경계-til-2줄-요약" style="position:relative;"><a href="#%EA%B2%BD%EA%B3%84-til-2%EC%A4%84-%EC%9A%94%EC%95%BD" aria-label="경계 til 2줄 요약 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>경계 TIL 2줄 요약</strong></h4>
+  </script><title data-react-helmet="true">IT 엔지니어를 위한 네트워크 입문 - TIL 04. 스위치 2계층 장비</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="IT 엔지니어를 위한 네트워크 입문 - TIL 04. 스위치 2계층 장비"/><meta data-react-helmet="true" property="og:site_title" content="IT 엔지니어를 위한 네트워크 입문 - TIL 04. 스위치 2계층 장비"/><meta data-react-helmet="true" name="description" content="TIL 04. 스위치: 2계층 장비 스위치?  -  네트워크에서 통신을 중재하는 장비. 1) 스위치 장비 동작 - 스위치의 핵심 역할 누가 어느 위치에 있는지 파악하고, 실제 통신이 시작되면 자신이 알고 있는 위치로 패킷을 정확히 전송하는 역할. 단말의 주소인 MAC 주소와 단말이 위치하는 인터페이스 정보(포트 정보)를 매핑한 MAC 주소 테이블을 갖고 있어서 가능하다. (1) 플러딩 만약 테이블에 없는 도착지 주소를 가진 패킷이 스위치로 들어오면 스위치는 전체 포트로 패킷을 전송한다. (플러딩) 플러딩은 스위치의 정상적인 동작이지만 이런 동작이 많아지면 스위치가 제 역할을 못 하게 된다. 이런 동작을 응용해 네트워크를 공격하는 기법이 있다. 스위치에게 엉뚱한 MAC 주소를 습득시킨다. 스위치의 MAC 테이블을 꽉 차게 해 스위치의 플러딩 동작을 유도한다. ARP 포이즈닝(Poisoning) 기법을 이용해 모니터링해야 할 IP의 MAC 주소가 공격자 자신인 것처럼 속여 원하는 통신…"/><meta data-react-helmet="true" property="og:description" content="TIL 04. 스위치: 2계층 장비 스위치?  -  네트워크에서 통신을 중재하는 장비. 1) 스위치 장비 동작 - 스위치의 핵심 역할 누가 어느 위치에 있는지 파악하고, 실제 통신이 시작되면 자신이 알고 있는 위치로 패킷을 정확히 전송하는 역할. 단말의 주소인 MAC 주소와 단말이 위치하는 인터페이스 정보(포트 정보)를 매핑한 MAC 주소 테이블을 갖고 있어서 가능하다. (1) 플러딩 만약 테이블에 없는 도착지 주소를 가진 패킷이 스위치로 들어오면 스위치는 전체 포트로 패킷을 전송한다. (플러딩) 플러딩은 스위치의 정상적인 동작이지만 이런 동작이 많아지면 스위치가 제 역할을 못 하게 된다. 이런 동작을 응용해 네트워크를 공격하는 기법이 있다. 스위치에게 엉뚱한 MAC 주소를 습득시킨다. 스위치의 MAC 테이블을 꽉 차게 해 스위치의 플러딩 동작을 유도한다. ARP 포이즈닝(Poisoning) 기법을 이용해 모니터링해야 할 IP의 MAC 주소가 공격자 자신인 것처럼 속여 원하는 통신…"/><meta data-react-helmet="true" property="og:author" content="심기영"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-0dbf47222db3936e0d98.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-9121d1ade616ed7c4ab1.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-0604aeb3cd8f0def35f4.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/IT엔지니어를_위한_네트워크_입문_04/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565331757890462" crossorigin="anonymous"></script><div class="page-header"><div class="front-section"><a class="link" href="/">shim8934.github.io</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">😄</div><div class="info"><div class="categories"><a class="category" href="/posts/IT_엔지니어를_위한_네트워크_입문">IT_엔지니어를_위한_네트워크_입문</a></div></div><h1 class="title">IT 엔지니어를 위한 네트워크 입문 - TIL 04. 스위치 2계층 장비</h1><div class="info"><div class="author">posted by <strong>shim8934</strong>,</div> <!-- -->June 10, 2022</div></header><div class="post-content"><div class="markdown"><h2 id="til-04-스위치-2계층-장비" style="position:relative;"><a href="#til-04-%EC%8A%A4%EC%9C%84%EC%B9%98-2%EA%B3%84%EC%B8%B5-%EC%9E%A5%EB%B9%84" aria-label="til 04 스위치 2계층 장비 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TIL 04. 스위치: 2계층 장비</h2>
+<blockquote>
+<p>스위치?  -  네트워크에서 통신을 중재하는 장비.</p>
+</blockquote>
+<br>
+<h3 id="1-스위치-장비-동작" style="position:relative;"><a href="#1-%EC%8A%A4%EC%9C%84%EC%B9%98-%EC%9E%A5%EB%B9%84-%EB%8F%99%EC%9E%91" aria-label="1 스위치 장비 동작 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1) 스위치 장비 동작</h3>
+<h4 id="--스위치의-핵심-역할" style="position:relative;"><a href="#--%EC%8A%A4%EC%9C%84%EC%B9%98%EC%9D%98-%ED%95%B5%EC%8B%AC-%EC%97%AD%ED%95%A0" aria-label="  스위치의 핵심 역할 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>- 스위치의 핵심 역할</h4>
 <ul>
-<li>외부 코드(외부 라이브러리 API)를 사용할 땐, <strong>짐 뉴커크가 얘기한 학습 테스트의 방식</strong>으로 초점을 맞추자. (147p)</li>
-<li>경계에 위치하는 코드는 깔끔히 분리한다. (외부 라이브러리에 의존하지 않게 우리 코드를 작성하라.) (152p)</li>
+<li>누가 어느 위치에 있는지 파악하고, 실제 통신이 시작되면 <strong>자신이 알고 있는 위치로 패킷을 정확히 전송</strong>하는 역할.</li>
+<li>단말의 주소인 MAC 주소와 단말이 위치하는 인터페이스 정보(포트 정보)를 매핑한 <strong>MAC 주소 테이블을</strong> 갖고 있어서 가능하다.</li>
 </ul>
-<br/>
-<h4 id="til-today-i-learned-날짜" style="position:relative;"><a href="#til-today-i-learned-%EB%82%A0%EC%A7%9C" aria-label="til today i learned 날짜 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>TIL (Today I Learned) 날짜</strong></h4>
-<p>2022.05.07
-<br/><br/></p>
-<h4 id="오늘-읽은-범위" style="position:relative;"><a href="#%EC%98%A4%EB%8A%98-%EC%9D%BD%EC%9D%80-%EB%B2%94%EC%9C%84" aria-label="오늘 읽은 범위 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>오늘 읽은 범위</strong></h4>
-<p>8장. 경계
-<br/></p>
-<h4 id="책에서-기억하고-싶은-내용을-써보세요" style="position:relative;"><a href="#%EC%B1%85%EC%97%90%EC%84%9C-%EA%B8%B0%EC%96%B5%ED%95%98%EA%B3%A0-%EC%8B%B6%EC%9D%80-%EB%82%B4%EC%9A%A9%EC%9D%84-%EC%8D%A8%EB%B3%B4%EC%84%B8%EC%9A%94" aria-label="책에서 기억하고 싶은 내용을 써보세요 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>책에서 기억하고 싶은 내용을 써보세요.</h4>
+<br>
+<h4 id="1-플러딩" style="position:relative;"><a href="#1-%ED%94%8C%EB%9F%AC%EB%94%A9" aria-label="1 플러딩 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(1) 플러딩</h4>
 <ul>
-<li>학습 테스트는 공짜 이상이다.(149p ~ 150p)
-학습 테스트를 이용한 학습이 필요하든 그렇지 않든, 실제 코드와 동일한 방식으로 인터페이스를 사용하는 테스트 케이스가 필요하다. 이런 경계 테스트가 있다면 패키지의 새 버전으로 이전하기 쉬워진다. 그렇지 않다면 낡은 버전을 필요 이상으로 오랫동안 사용하려는 유혹에 빠지기 쉽다.
-낡은 버전을 필요 이상으로 사용하려는 유혹에 빠지지 않기 위한 방법으로 학습 테스트를 가급적이면 Production 코드와 유사하게 짜는 것이 중요하다 생각하게 하는 내용이었다.</li>
+<li>만약 테이블에 없는 도착지 주소를 가진 패킷이 스위치로 들어오면 스위치는 전체 포트로 패킷을 전송한다. (플러딩)</li>
 </ul>
-<br/>
-<h4 id="오늘-읽은-소감은-떠오르는-생각을-가볍게-적어보세요" style="position:relative;"><a href="#%EC%98%A4%EB%8A%98-%EC%9D%BD%EC%9D%80-%EC%86%8C%EA%B0%90%EC%9D%80-%EB%96%A0%EC%98%A4%EB%A5%B4%EB%8A%94-%EC%83%9D%EA%B0%81%EC%9D%84-%EA%B0%80%EB%B3%8D%EA%B2%8C-%EC%A0%81%EC%96%B4%EB%B3%B4%EC%84%B8%EC%9A%94" aria-label="오늘 읽은 소감은 떠오르는 생각을 가볍게 적어보세요 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>오늘 읽은 소감은? 떠오르는 생각을 가볍게 적어보세요</strong></h4>
-<ul>
-<li>앞으로 더 어려운 내용이 있을 수도 있지만, 개인적으로 1장부터 8장까지의 내용 중 이번 8장의 내용이 가장 받아들이기 힘든 내용이라 생각한다. 내 코드를 설계하기 위해 협업하는 다른 팀의 코드의 예상 작성 구도를 생각해야 된다는 내용이라 이해했다. (전체적인 설계뿐만이 아니긴 하지만 말이다.) 내가 설계하려는 프로젝트도 정답일 지 모르겠는 상황에 다른 팀의 API 결과물까지 예상할 수 있으려면 적어도 관련된 도메인 지식, 경험이 풍족할 때 우러나오지 않을까라는 생각을 하게 만든 내용이었다.</li>
-</ul>
-<p><br/><br/></p>
-<p><strong>궁금한 점?</strong></p>
-<ul>
-<li>Adapter 패턴..에 대해 더 알아야 한다..</li>
-</ul>
-<hr>
-<h3 id="til-09-단위--테스트" style="position:relative;"><a href="#til-09-%EB%8B%A8%EC%9C%84--%ED%85%8C%EC%8A%A4%ED%8A%B8" aria-label="til 09 단위  테스트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TIL 09. 단위  테스트</h3>
-<h4 id="단위-테스트-til-3줄-요약" style="position:relative;"><a href="#%EB%8B%A8%EC%9C%84-%ED%85%8C%EC%8A%A4%ED%8A%B8-til-3%EC%A4%84-%EC%9A%94%EC%95%BD" aria-label="단위 테스트 til 3줄 요약 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>단위 테스트 TIL 3줄 요약</strong></h4>
-<ul>
-<li>테스트 코드는 사고와 설계와 주의가 필요하기에, 실제 코드 못지 않게 깨끗하게 짜야한다.(157p)</li>
-<li>테스트 함수 하나 = 개념 하나만 테스트를 가급적 지켜라. (167p)</li>
-<li>F.I.R.S.T를 기억하고 적용하려 노력하라. (167p)</li>
-</ul>
-<br/>
-<h4 id="til-today-i-learned-날짜-1" style="position:relative;"><a href="#til-today-i-learned-%EB%82%A0%EC%A7%9C-1" aria-label="til today i learned 날짜 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>TIL (Today I Learned) 날짜</strong></h4>
-<p>2022.05.07
-<br/><br/></p>
-<h4 id="오늘-읽은-범위-1" style="position:relative;"><a href="#%EC%98%A4%EB%8A%98-%EC%9D%BD%EC%9D%80-%EB%B2%94%EC%9C%84-1" aria-label="오늘 읽은 범위 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>오늘 읽은 범위</strong></h4>
-<p>9장. 단위 테스트
-<br/></p>
-<h4 id="책에서-기억하고-싶은-내용을-써보세요-1" style="position:relative;"><a href="#%EC%B1%85%EC%97%90%EC%84%9C-%EA%B8%B0%EC%96%B5%ED%95%98%EA%B3%A0-%EC%8B%B6%EC%9D%80-%EB%82%B4%EC%9A%A9%EC%9D%84-%EC%8D%A8%EB%B3%B4%EC%84%B8%EC%9A%94-1" aria-label="책에서 기억하고 싶은 내용을 써보세요 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>책에서 기억하고 싶은 내용을 써보세요.</h4>
-<ul>
-<li>F.I.R.S.T (167p)
+<blockquote>
+<p>플러딩은 스위치의 정상적인 동작이지만 이런 동작이 많아지면 스위치가 제 역할을 못 하게 된다. 이런 동작을 응용해 네트워크를 공격하는 기법이 있다.</p>
 <ol>
-<li>Fast (빠르게) - 테스트는 빨리 돌아야 한다.</li>
-<li>Independent (독립적으로) - 각 테스트는 서로 의존하면 안 된다. 의존된 테스트에서 하나라도 실패하면, 나머지도 실패하며 실패 원인을 진단하기 어려워진다. 또한 후반 테스트가 찾아내야 할 결함이 숨겨질 확률이 높다.</li>
-<li>Repeatable (반복적으로) - 테스트는 어떤 환경에서도 반복 가능해야 한다. 일상 생활뿐만 아니라 네트워크 연결이 없는 환경에서도 테스트를 진행할 수 있어야 한다.</li>
-<li>Self-Validation (자가검증) - 테스트의 결과 값은 True / False 두 가지 중 하나다. 테스트에 긴 로그 파일이 있는 것은 바람직하지 못하다.</li>
-<li>Timely (적시에) - 단위 테스트는 테스트하려는 실제 코드를 구현하기 직전에 구현한다. 순서가 뒤바뀔 경우, 실제 코드를 테스트 하기 위한 단위 테스트 코드 작성이 어려울 수도 있고, 이미 작성된 실제 코드가 단위 테스트를 진행하기에 불가능한 설계일 수도 있다.</li>
+<li>스위치에게 엉뚱한 MAC 주소를 습득시킨다.</li>
+<li>스위치의 MAC 테이블을 꽉 차게 해 스위치의 플러딩 동작을 유도한다.</li>
+<li>ARP 포이즈닝(Poisoning) 기법을 이용해 모니터링해야 할 IP의 MAC 주소가 공격자 자신인 것처럼 속여 원하는 통신을 받는다.</li>
 </ol>
+<p>아무 이유없이 스위치가 패킷을 플러딩한다면(주변 다른 통신을 모니터링할 수 있다면) 스위치가 비정상이거나 주변에서 공격이 수행되고 있다는 점을 알아차려야 한다.</p>
+</blockquote>
+<br>
+<h4 id="2-어드레스-러닝" style="position:relative;"><a href="#2-%EC%96%B4%EB%93%9C%EB%A0%88%EC%8A%A4-%EB%9F%AC%EB%8B%9D" aria-label="2 어드레스 러닝 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(2) 어드레스 러닝</h4>
+<ul>
+<li>스위치가 패킷을 원하는 포트로 정상적으로 포워딩하기 위해선, MAC 주소 테이블을 만들고 유지해야 하는데, 이 일련의 과정을 어드레스 러닝이라 한다.</li>
+<li>어드레스 러닝 작업은 패킷의 출발지 MAC 주소 정보를 이용한다.</li>
+</ul>
+<br>
+<h4 id="3-포워딩--필터링" style="position:relative;"><a href="#3-%ED%8F%AC%EC%9B%8C%EB%94%A9--%ED%95%84%ED%84%B0%EB%A7%81" aria-label="3 포워딩  필터링 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(3) 포워딩 / 필터링</h4>
+<ul>
+<li>패킷이 스위치에 들어온 경우, 자신이 가진 MAC 테이블과 패킷의 도착지 MAC 주소를 확인해 매치되는 정보가 있으면 매치되는 포트로 패킷을 포워딩한다. 이떄 다른 포트로는 해당 패킷을 보내지 않으므로 이 동작을 필터링이라 한다.</li>
+<li>스위치는 일반적인 유니캐스트(1:1)에 대해서만 포워딩과 필터링 작업을 수행한다.</li>
+</ul>
+<blockquote>
+<p>LAN에서의 ARP</p>
+<ul>
+<li>패킷을 만들기 전에 통신해야 하는 단말의 MAC 주소를 알아내기 위해 ARP 브로드캐스트가 먼저 수행되어야 한다. 따라서 유니캐스트보다 ARP 브로드캐스트가 먼저 네트워크에 전달된다.</li>
+<li>위의 ARP를 이용해 MAC 주소 습득 과정에서 이미 스위치는 통신하는 출발지와 목적지의 MAC 주소를 습득할 수 있다.</li>
+<li>위의 과정을 통해 만들어진 MAC 주소 테이블 정보는 일정 시간동안 지워지지 않는데 이 시간을 에이징 타임(Aging Time) 이라고 하며, 일반적으로 에이징 타임이 단말의 ARP 에이징 타임보다 길어 네트워크를 플러딩 없이 효율적으로 운영할 수 있다.</li>
+</ul>
+</blockquote>
+<br>
+<hr>
+<h3 id="2-vlan-가상-스위치라-생각하자" style="position:relative;"><a href="#2-vlan-%EA%B0%80%EC%83%81-%EC%8A%A4%EC%9C%84%EC%B9%98%EB%9D%BC-%EC%83%9D%EA%B0%81%ED%95%98%EC%9E%90" aria-label="2 vlan 가상 스위치라 생각하자 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2) VLAN (가상 스위치라 생각하자)</h3>
+<blockquote>
+<ul>
+<li>VLAN?  -  하나의 물리 스위치에서 물리적 배치와 상관없이 논리적으로 분할, 구성하는 가상화 기술.</li>
+</ul>
+</blockquote>
+<ul>
+<li>스위치에서는 오래 전부터 VLAN이라는 가상화 기술을 사용해 왔다. 하나의 물리 스위치에서 물리적 배치와 상관없이 논리적으로 분할, 구성하는 기술이다.</li>
+<li>다른 VLAN이라는 의미는 다른 네트워크라는 의미다. 즉, 다른 VLAN끼리의 통신을 위해선 L3 계층 장비가 필요하다.(ex: 라우터)</li>
+<li>물리적으로 다른 층에 있는 단말끼리도 네트워크로 묶을 수 있다는 특징이 있다.</li>
+</ul>
+<br>
+<h4 id="1-vlan의-종류" style="position:relative;"><a href="#1-vlan%EC%9D%98-%EC%A2%85%EB%A5%98" aria-label="1 vlan의 종류 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(1) VLAN의 종류</h4>
+<ol>
+<li>포트 기반의 VLAN
+<ul>
+<li>VLAN 개념이 처음 도입됐을 시점엔 스위치 장비가 고가의 장비였고, 여러 허브를 묶는 역할을 담당했기에 스위치를 분할해 여러 네트워크에 사용하는 것이 주 사용 목적이었다. 즉, 포트 기반 = 스위치를 논리적으로 분할해 사용</li>
+</ul>
+</li>
+</ol>
+<br>
+<ol start="2">
+<li>MAC 주소 기반의 VLAN (Dynamic VLAN)
+<ul>
+<li>시간이 지남에 따라, 네트워크 사용자들의 자리 이동이 많아지며 MAC 기반 VLAN이 개발됐다. 스위치의 고정 포트에 할당하는 것이 아니라 <strong>스위치에 연결되는 단말의 MAC 주소를 기반</strong>으로 VLAN을 할당하는 기술이다. 다이나믹 VLAN이라고도 부른다.</li>
+</ul>
+</li>
+</ol>
+<br>
+<h4 id="2-vlan-모드-trunk--access-동작-방식" style="position:relative;"><a href="#2-vlan-%EB%AA%A8%EB%93%9C-trunk--access-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D" aria-label="2 vlan 모드 trunk  access 동작 방식 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(2) VLAN 모드 (Trunk / Access) 동작 방식</h4>
+<ul>
+<li>
+<p>트렁크 (Trunk)</p>
+<ul>
+<li>
+<p>여러 개의 VLAN이 구성된 경우, VLAN끼리의 통신을 위해선 VLAN 개수만큼의 포트가 필요하다. 즉, 3개의 VLAN이 구성된 경우, 각 VLAN에서 3개의 포트를 사용해야 한다. 소규모라면 괜찮겠지만, 중·대형의 네트워크에서 이 방식으로는 많은 <strong>포트 낭비가 발생</strong>한다.</p>
+</li>
+<li>
+<p>위 문제를 해결하고자 나온 기능이 <strong>트렁크 포트</strong> 기능이며, <strong>한 포트에서 각 VLAN 간의 연결을 전담</strong>하게 된다.</p>
 </li>
 </ul>
-<br/>
-<h4 id="오늘-읽은-소감은-떠오르는-생각을-가볍게-적어보세요-1" style="position:relative;"><a href="#%EC%98%A4%EB%8A%98-%EC%9D%BD%EC%9D%80-%EC%86%8C%EA%B0%90%EC%9D%80-%EB%96%A0%EC%98%A4%EB%A5%B4%EB%8A%94-%EC%83%9D%EA%B0%81%EC%9D%84-%EA%B0%80%EB%B3%8D%EA%B2%8C-%EC%A0%81%EC%96%B4%EB%B3%B4%EC%84%B8%EC%9A%94-1" aria-label="오늘 읽은 소감은 떠오르는 생각을 가볍게 적어보세요 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>오늘 읽은 소감은? 떠오르는 생각을 가볍게 적어보세요</strong></h4>
-<ul>
-<li>솔직하게 테스트 코드 작성을 제대로 해 본 적이 없다. 그저 테스트 코드를 어떤 식으로 짜는 것이다라는 걸 알기 위한 강의에서 따라치고, 쉬운 테스트 코드 작성만을 해 봤기 때문이다. 가장 기억하고 싶은 내용 FIRST 원칙에 맞춰 나만의 사이드 프로젝트에서라도 작성을 시작하면 도움되지 않을까… 싶다.</li>
+</li>
 </ul>
-<br/>
+<br>
+<hr>
+<h3 id="3-stp" style="position:relative;"><a href="#3-stp" aria-label="3 stp permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3) STP</h3>
+<blockquote>
+<p>SpoF 란?</p>
+<ul>
+<li>Single Point of Failure (단일 장애점)이란 의미로 하나의 시스템이나 구성 요소에서 고장이 발생했을 때 <strong>전체 시스템의 작동이 멈추는 요소</strong>를 의미.</li>
+<li>SpoF를 막고자 일반적으로 네트워크도 이중화, 다중화된 네트워크를 구성하며, 이를 위해 2대 이상의 스위치로 디자인하는 경우가 있다.</li>
+</ul>
+</blockquote>
+<h4 id="-스위치와-spof" style="position:relative;"><a href="#-%EC%8A%A4%EC%9C%84%EC%B9%98%EC%99%80-spof" aria-label=" 스위치와 spof permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>!! 스위치와 SpoF</h4>
+<ul>
+<li>SpoF를 피하고자 2대 이상의 스위치로 구성할 경우, 네트워크가 마비되는 상황이 발생할 수 있다. 흔히 이런 상황을 네트워크 루프(Loop)라고 일컫는다. 이를 예방하려면 별도의 메커니즘이 필요한데, 루프와 루프를 예방하기 위한 프로토콜에 대해서 배워보자.</li>
+</ul>
+<h4 id="1-루프란" style="position:relative;"><a href="#1-%EB%A3%A8%ED%94%84%EB%9E%80" aria-label="1 루프란 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(1) 루프란?</h4>
+<ul>
+<li>네트워크에 연결된 모양이 고리처럼 되돌아오는 형태로 구성된 상황을 의미하며, 네트워크가 마비되고 통신이 안 되는 상황이 발생한다. 큼직하게 3가지 이유가 있지만, 대부분 <strong>브로드캐스트 스톰</strong>으로 인한 문제인 경우가 많다.</li>
+</ul>
+<br>
+<ol>
+<li>
+<p>브로드캐스트 스톰</p>
+<ul>
+<li>루프 구조인 네트워크에 연결된 단말에서 브로드캐스트를 발생시키면 스위치는 이 패킷을 발생시킨 포트를 제외한 모든 포트로 플러딩한다. 이 플러딩된 패킷이 다른 스위치로도 보내지고, 이 패킷을 받은 다른 스위치는 앞선 스위치처럼 플러딩한다. 이런 방식으로 브로드캐스트 패킷이 지속적으로 돌아가는 상황을 지칭한다.</li>
+<li>L3 계층에선 TTL(Time to Live)이라는 패킷 수명이 존재하지만, 2계층 헤더에는 이런 제한 시간이 존재하지 않아 패킷 하나가 모든 네트워크 대역폭을 차지할 수 있다. 이게 누적되면 네트워크에 연결된 모든 단말이 브로드캐스트를 처리하기 위한 시스템 리소스를 사용하면서 네트워크가 마비 증상을 보이게된다.</li>
+</ul>
+<br>
+</li>
+<li>
+<p>스위치 MAC 러닝 중복 문제</p>
+<ul>
+<li>브로드캐스트 말고도 유니캐스트로 문제가 발생한다. 스위치는 출발지 MAC 주소를 학습하는데 <u>(1)직접 전달되는 패킷</u>과 <u>(2)스위치를 돌아 들어간 패킷</u> 간의 포트가 달라 MAC 주소를 정상적으로 학습할 수 없다. (1) 패킷과 (2) 패킷의 학습이 지속된다는 건 MAC 테이블이 반복 갱신되어 정상적으로 동작하지 않는다는 의미다. 이 현상을 **MAC 어드레스 플래핑(MAC Address Flapping)**이라 한다.</li>
+<li>어드레스 플래핑 같은 현상의 근본인 루프 현상이 발생하지 않도록 네트워크에 조치를 해야하는데 이를 위한 방법으로 하나의 포트만 사용하지 못하도록 셧다운을 할 수 있다. 하지만, SpoF를 예방하기 위해 스위치를 2개 이상 디자인했는데 다시 수동으로 강제로 사용하지 못하게 하는 방법은 바람직하지 않다.</li>
+<li>위의 이유로 루프를 자동 감지해 포트를 차단하고 장애 때문에 우회로가 없을 때 차단된 포트를 스위치 스스로 다시 풀어주는 **스패팅 트리 프로토콜(STP)**이 개발됐다.</li>
+</ul>
+<br>
+</li>
+<li>
+<p>STP 란?</p>
+<ul>
+<li>2에서 설명한 대로 루프가 생기지 않도록 예방하는 메커니즘이다. 스위치 연결 상황을 파악하기 위해 BPDU (Bridge Protocol Data Unit)이라는 프로토콜을 통해 스위치 간에 정보를 전달하고, 이를 기반으로 전체 네트워크 트리를 만들어 루프 구간을 확인한다.</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>이에 관한 설명은 추후 수정하도록 하겠다.</li>
+</ul>
 <hr>
 <div class="table-of-contents">
 <ul>
 <li>
-<p><a href="#til-08-%EA%B2%BD%EA%B3%84">TIL 08. 경계</a></p>
+<p><a href="#til-04-%EC%8A%A4%EC%9C%84%EC%B9%98-2%EA%B3%84%EC%B8%B5-%EC%9E%A5%EB%B9%84">TIL 04. 스위치: 2계층 장비</a></p>
 <ul>
-<li><a href="#%EA%B2%BD%EA%B3%84-til-2%EC%A4%84-%EC%9A%94%EC%95%BD"><strong>경계 TIL 2줄 요약</strong></a></li>
-<li><a href="#til-today-i-learned-%EB%82%A0%EC%A7%9C"><strong>TIL (Today I Learned) 날짜</strong></a></li>
-<li><a href="#%EC%98%A4%EB%8A%98-%EC%9D%BD%EC%9D%80-%EB%B2%94%EC%9C%84"><strong>오늘 읽은 범위</strong></a></li>
-<li><a href="#%EC%B1%85%EC%97%90%EC%84%9C-%EA%B8%B0%EC%96%B5%ED%95%98%EA%B3%A0-%EC%8B%B6%EC%9D%80-%EB%82%B4%EC%9A%A9%EC%9D%84-%EC%8D%A8%EB%B3%B4%EC%84%B8%EC%9A%94">책에서 기억하고 싶은 내용을 써보세요.</a></li>
-<li><a href="#%EC%98%A4%EB%8A%98-%EC%9D%BD%EC%9D%80-%EC%86%8C%EA%B0%90%EC%9D%80-%EB%96%A0%EC%98%A4%EB%A5%B4%EB%8A%94-%EC%83%9D%EA%B0%81%EC%9D%84-%EA%B0%80%EB%B3%8D%EA%B2%8C-%EC%A0%81%EC%96%B4%EB%B3%B4%EC%84%B8%EC%9A%94"><strong>오늘 읽은 소감은? 떠오르는 생각을 가볍게 적어보세요</strong></a></li>
+<li>
+<p><a href="#1-%EC%8A%A4%EC%9C%84%EC%B9%98-%EC%9E%A5%EB%B9%84-%EB%8F%99%EC%9E%91">1) 스위치 장비 동작</a></p>
+<ul>
+<li><a href="#--%EC%8A%A4%EC%9C%84%EC%B9%98%EC%9D%98-%ED%95%B5%EC%8B%AC-%EC%97%AD%ED%95%A0">- 스위치의 핵심 역할</a></li>
+<li><a href="#1-%ED%94%8C%EB%9F%AC%EB%94%A9">(1) 플러딩</a></li>
+<li><a href="#2-%EC%96%B4%EB%93%9C%EB%A0%88%EC%8A%A4-%EB%9F%AC%EB%8B%9D">(2) 어드레스 러닝</a></li>
+<li><a href="#3-%ED%8F%AC%EC%9B%8C%EB%94%A9--%ED%95%84%ED%84%B0%EB%A7%81">(3) 포워딩 / 필터링</a></li>
 </ul>
 </li>
 <li>
-<p><a href="#til-09-%EB%8B%A8%EC%9C%84--%ED%85%8C%EC%8A%A4%ED%8A%B8">TIL 09. 단위  테스트</a></p>
+<p><a href="#2-vlan-%EA%B0%80%EC%83%81-%EC%8A%A4%EC%9C%84%EC%B9%98%EB%9D%BC-%EC%83%9D%EA%B0%81%ED%95%98%EC%9E%90">2) VLAN (가상 스위치라 생각하자)</a></p>
 <ul>
-<li><a href="#%EB%8B%A8%EC%9C%84-%ED%85%8C%EC%8A%A4%ED%8A%B8-til-3%EC%A4%84-%EC%9A%94%EC%95%BD"><strong>단위 테스트 TIL 3줄 요약</strong></a></li>
-<li><a href="#til-today-i-learned-%EB%82%A0%EC%A7%9C-1"><strong>TIL (Today I Learned) 날짜</strong></a></li>
-<li><a href="#%EC%98%A4%EB%8A%98-%EC%9D%BD%EC%9D%80-%EB%B2%94%EC%9C%84-1"><strong>오늘 읽은 범위</strong></a></li>
-<li><a href="#%EC%B1%85%EC%97%90%EC%84%9C-%EA%B8%B0%EC%96%B5%ED%95%98%EA%B3%A0-%EC%8B%B6%EC%9D%80-%EB%82%B4%EC%9A%A9%EC%9D%84-%EC%8D%A8%EB%B3%B4%EC%84%B8%EC%9A%94-1">책에서 기억하고 싶은 내용을 써보세요.</a></li>
-<li><a href="#%EC%98%A4%EB%8A%98-%EC%9D%BD%EC%9D%80-%EC%86%8C%EA%B0%90%EC%9D%80-%EB%96%A0%EC%98%A4%EB%A5%B4%EB%8A%94-%EC%83%9D%EA%B0%81%EC%9D%84-%EA%B0%80%EB%B3%8D%EA%B2%8C-%EC%A0%81%EC%96%B4%EB%B3%B4%EC%84%B8%EC%9A%94-1"><strong>오늘 읽은 소감은? 떠오르는 생각을 가볍게 적어보세요</strong></a></li>
+<li><a href="#1-vlan%EC%9D%98-%EC%A2%85%EB%A5%98">(1) VLAN의 종류</a></li>
+<li><a href="#2-vlan-%EB%AA%A8%EB%93%9C-trunk--access-%EB%8F%99%EC%9E%91-%EB%B0%A9%EC%8B%9D">(2) VLAN 모드 (Trunk / Access) 동작 방식</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#3-stp">3) STP</a></p>
+<ul>
+<li><a href="#-%EC%8A%A4%EC%9C%84%EC%B9%98%EC%99%80-spof">!! 스위치와 SpoF</a></li>
+<li><a href="#1-%EB%A3%A8%ED%94%84%EB%9E%80">(1) 루프란?</a></li>
 </ul>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/Clean_Code_Nomad_07/"><div class="direction">이전 글</div><div class="title">Clean Code - TIL 07. 오류 처리</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/Clean_Code_Nomad_10/"><div class="direction">다음 글</div><div class="title">Clean Code - TIL 10. 클래스</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Shim8934">심기영</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/Clean_Code_Nomad_08&09/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-9121d1ade616ed7c4ab1.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-0604aeb3cd8f0def35f4.js" async=""></script><script src="/app-9121d1ade616ed7c4ab1.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-0dbf47222db3936e0d98.js" async=""></script></body></html>
+</li>
+</ul>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/IT엔지니어를_위한_네트워크_입문_03(1)/"><div class="direction">이전 글</div><div class="title">IT 엔지니어를 위한 네트워크 입문 - TIL 03. 네트워크 통신하기 - (1) 통신방식</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Shim8934">심기영</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/IT엔지니어를_위한_네트워크_입문_04/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-9121d1ade616ed7c4ab1.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-0604aeb3cd8f0def35f4.js" async=""></script><script src="/app-9121d1ade616ed7c4ab1.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-0dbf47222db3936e0d98.js" async=""></script></body></html>
