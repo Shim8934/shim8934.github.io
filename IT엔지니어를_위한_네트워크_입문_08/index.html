@@ -1,0 +1,810 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.0944e40fce78014e0590.css" data-identity="gatsby-global-css">@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:100;src:local("Montserrat Thin "),local("Montserrat-Thin"),url(/static/montserrat-latin-100-8d7d79679b70dbe27172b6460e7a7910.woff2) format("woff2"),url(/static/montserrat-latin-100-ec38980a9e0119a379e2a9b3dbb1901a.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:100;src:local("Montserrat Thin italic"),local("Montserrat-Thinitalic"),url(/static/montserrat-latin-100italic-e279051046ba1286706adc886cf1c96b.woff2) format("woff2"),url(/static/montserrat-latin-100italic-3b325a3173c8207435cd1b76e19bf501.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:200;src:local("Montserrat Extra Light "),local("Montserrat-Extra Light"),url(/static/montserrat-latin-200-9d266fbbfa6cab7009bd56003b1eeb67.woff2) format("woff2"),url(/static/montserrat-latin-200-2d8ba08717110d27122e54c34b8a5798.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:200;src:local("Montserrat Extra Light italic"),local("Montserrat-Extra Lightitalic"),url(/static/montserrat-latin-200italic-6e5b3756583bb2263eb062eae992735e.woff2) format("woff2"),url(/static/montserrat-latin-200italic-a0d6f343e4b536c582926255367a57da.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:300;src:local("Montserrat Light "),local("Montserrat-Light"),url(/static/montserrat-latin-300-00b3e893aab5a8fd632d6342eb72551a.woff2) format("woff2"),url(/static/montserrat-latin-300-ea303695ceab35f17e7d062f30e0173b.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:300;src:local("Montserrat Light italic"),local("Montserrat-Lightitalic"),url(/static/montserrat-latin-300italic-56f34ea368f6aedf89583d444bbcb227.woff2) format("woff2"),url(/static/montserrat-latin-300italic-54b0bf2c8c4c12ffafd803be2466a790.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:400;src:local("Montserrat Regular "),local("Montserrat-Regular"),url(/static/montserrat-latin-400-b71748ae4f80ec8c014def4c5fa8688b.woff2) format("woff2"),url(/static/montserrat-latin-400-0659a9f4e90db5cf51b50d005bff1e41.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:400;src:local("Montserrat Regular italic"),local("Montserrat-Regularitalic"),url(/static/montserrat-latin-400italic-6eed6b4cbb809c6efc7aa7ddad6dbe3e.woff2) format("woff2"),url(/static/montserrat-latin-400italic-7583622cfde30ae49086d18447ab28e7.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:500;src:local("Montserrat Medium "),local("Montserrat-Medium"),url(/static/montserrat-latin-500-091b209546e16313fd4f4fc36090c757.woff2) format("woff2"),url(/static/montserrat-latin-500-edd311588712a96bbf435fad264fff62.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:500;src:local("Montserrat Medium italic"),local("Montserrat-Mediumitalic"),url(/static/montserrat-latin-500italic-c90ced68b46050061d1a41842d6dfb43.woff2) format("woff2"),url(/static/montserrat-latin-500italic-5146cbfe02b1deea5dffea27a5f2f998.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:600;src:local("Montserrat SemiBold "),local("Montserrat-SemiBold"),url(/static/montserrat-latin-600-0480d2f8a71f38db8633b84d8722e0c2.woff2) format("woff2"),url(/static/montserrat-latin-600-b77863a375260a05dd13f86a1cee598f.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:600;src:local("Montserrat SemiBold italic"),local("Montserrat-SemiBolditalic"),url(/static/montserrat-latin-600italic-cf46ffb11f3a60d7df0567f8851a1d00.woff2) format("woff2"),url(/static/montserrat-latin-600italic-c4fcfeeb057724724097167e57bd7801.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:700;src:local("Montserrat Bold "),local("Montserrat-Bold"),url(/static/montserrat-latin-700-7dbcc8a5ea2289d83f657c25b4be6193.woff2) format("woff2"),url(/static/montserrat-latin-700-99271a835e1cae8c76ef8bba99a8cc4e.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:700;src:local("Montserrat Bold italic"),local("Montserrat-Bolditalic"),url(/static/montserrat-latin-700italic-c41ad6bdb4bd504a843d546d0a47958d.woff2) format("woff2"),url(/static/montserrat-latin-700italic-6779372f04095051c62ed36bc1dcc142.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:800;src:local("Montserrat ExtraBold "),local("Montserrat-ExtraBold"),url(/static/montserrat-latin-800-db9a3e0ba7eaea32e5f55328ace6cf23.woff2) format("woff2"),url(/static/montserrat-latin-800-4e3c615967a2360f5db87d2f0fd2456f.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:800;src:local("Montserrat ExtraBold italic"),local("Montserrat-ExtraBolditalic"),url(/static/montserrat-latin-800italic-bf45bfa14805969eda318973947bc42b.woff2) format("woff2"),url(/static/montserrat-latin-800italic-fe82abb0bcede51bf724254878e0c374.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:900;src:local("Montserrat Black "),local("Montserrat-Black"),url(/static/montserrat-latin-900-e66c7edc609e24bacbb705175669d814.woff2) format("woff2"),url(/static/montserrat-latin-900-8211f418baeb8ec880b80ba3c682f957.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:900;src:local("Montserrat Black italic"),local("Montserrat-Blackitalic"),url(/static/montserrat-latin-900italic-4454c775e48152c1a72510ceed3603e2.woff2) format("woff2"),url(/static/montserrat-latin-900italic-efcaa0f6a82ee0640b83a0916e6e8d68.woff) format("woff")}.search-input-wrapper{align-items:center;display:none;margin-top:3px;width:180px}@media(min-width:768px){.search-input-wrapper{display:flex}}.search-icon{color:var(--primary-text-color);margin-right:2px}.search-input{height:100%;width:100%}.search-input .MuiAutocomplete-inputRoot{padding-right:0!important}.search-input .MuiInputBase-input{color:var(--primary-text-color)!important;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:16px;font-weight:500;padding-bottom:2px!important}.search-input .MuiInput-underline:before{border-bottom-width:1px}.search-input .MuiInput-underline:after,.search-input .MuiInput-underline:before{border-bottom-color:var(--primary-text-color)}.page-header-wrapper{display:flex;height:60px;justify-content:center;width:100%}.page-header-wrapper .page-header{align-items:center;display:flex;justify-content:space-between;max-width:720px;width:100%}.page-header-wrapper .page-header .link{color:var(--primary-text-color);font-size:17px;font-weight:700}@media(min-width:768px){.page-header-wrapper .page-header .link{font-size:20px;font-weight:700}}.page-header-wrapper .page-header .trailing-section{align-items:center;display:flex}.page-header-wrapper .page-header .trailing-section .link{margin-right:10px}@media(min-width:768px){.page-header-wrapper .page-header .trailing-section .link{margin-right:20px}}.page-footer-wrapper{align-items:center;display:flex;height:62px;justify-content:center;margin-top:auto;width:100%}.page-footer-wrapper .page-footer{max-width:720px;text-align:center;width:100%}.page-footer-wrapper .page-footer .link{color:var(--primary-text-color);font-size:20px;font-weight:700;margin-right:20px}.page-footer-wrapper .page-footer a{color:#3a95ff}.dark-mode-button-wrapper{align-items:center;bottom:20px;display:flex;justify-content:center;position:fixed;right:20px}.dark-mode-button{-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);background-color:#363f47!important;border-radius:50px;box-shadow:0 5px 25px rgba(0,0,0,.12);cursor:pointer;height:50px;width:50px;z-index:3}.dark-mode-icon{color:#fff}a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{border:0;font-size:100%;font:inherit;margin:0;padding:0;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:"";content:none}table{border-collapse:collapse;border-spacing:0}a{outline:none;text-decoration:none}html{--background-color:#fff;--primary-text-color:#000;--secondary-text-color:#9e9e9e;--content-text-color:#37352f;--button-background-color:#f3f3f4;--button-text-color:#363f47;--tab-text-color:#6e6d7a;--tab-hover-text-color:#0d0c22;--tab-selected-background-color:rgba(13,12,34,.05);--bio-link-icon-color:rgba(0,0,0,.54);--about-link-icon-color:#a8a8a8;--chip-background-color:#f3f3f4;--link-text-color:rgba(55,53,47,.7);--post-card-border-color:rgba(0,0,0,.12);--markdown-table-even-cell-background-color:#f6f8fa;--markdown-table-border-color:#dfe2e5;--markdown-blockquote-border-color:#dfe2e5;--markdown-border-color:#e1e4e8}html[data-theme=dark]{--background-color:#232326;--primary-text-color:#e6e6e6;--secondary-text-color:#768390;--content-text-color:#e6e6e6;--button-background-color:#444c56;--button-text-color:#363f47;--tab-text-color:#768390;--tab-hover-text-color:#acbac7;--tab-selected-background-color:#373e47;--chip-background-color:#323a42;--bio-link-icon-color:#e6e6e6;--about-link-icon-color:#a8a8a8;--link-text-color:#90b0ec;--post-card-border-color:#363f47;--markdown-table-even-cell-background-color:#2d333b;--markdown-table-border-color:#444c56;--markdown-blockquote-border-color:#4f5864;--markdown-border-color:#e1e4e8}*{-webkit-appearance:none;appearance:none;box-sizing:border-box}html{font-size:14px;height:100%;overflow-y:scroll;width:100%}body{background-color:var(--background-color)!important}a{color:var(--link-text-color)}.page-wrapper{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:var(--primary-text-color);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;justify-content:center;min-height:100vh;padding-left:15px;padding-right:15px;word-break:keep-all}.page-wrapper,.page-wrapper .page-content{align-items:center;display:flex;flex-direction:column;width:100%}.page-wrapper .page-content{max-width:720px}.icon{color:var(--about-link-icon-color);font-size:20px}.social-links .icon{color:var(--bio-link-icon-color);font-size:30px}@-webkit-keyframes blinking-cursor{0%{opacity:0}50%{opacity:1}to{opacity:0}}@keyframes blinking-cursor{0%{opacity:0}50%{opacity:1}to{opacity:0}}.bio{color:var(--primary-text-color);display:flex;flex-direction:column;justify-content:space-between;margin-bottom:120px;margin-top:120px;width:100%}@media(min-width:768px){.bio{align-items:center;flex-direction:row}}.bio .introduction{display:flex;flex-direction:column;word-break:keep-all}.bio .introduction .react-rotating-text-cursor{-webkit-animation:blinking-cursor .8s cubic-bezier(.68,.01,.01,.99) 0s infinite;animation:blinking-cursor .8s cubic-bezier(.68,.01,.01,.99) 0s infinite}.bio .introduction strong{display:inline-block;font-weight:600}.bio .introduction.korean{font-size:32px;font-weight:100;line-height:1.2}.bio .introduction.korean .title .react-rotating-text-cursor{font-size:35px;line-height:35px}@media(min-width:768px){.bio .introduction.korean{font-size:40px}.bio .introduction.korean .title .react-rotating-text-cursor{font-size:45px;line-height:45px}}.bio .introduction.english{font-family:montserrat;font-size:25px;line-height:1.2}@media(min-width:768px){.bio .introduction.english{font-size:45px}}.bio .introduction.english .name{font-size:35px;font-weight:600}.bio .introduction.english .job{font-size:35px}.bio .introduction.english .description{font-size:20px;font-weight:200;margin-top:8px}.bio .introduction.english .social-links{display:flex;margin-top:20px}.bio .thumbnail{display:none;width:250px}@media(min-width:768px){.bio .thumbnail{display:block}}.section-header-wrapper{display:flex;justify-content:center;margin-bottom:32px;width:100%}.section-header-wrapper .section-header{border-bottom:4px solid var(--primary-text-color);color:var(--primary-text-color);font-size:30px;font-weight:700;padding-bottom:5px}.timestamp-section{align-items:center;display:flex;flex-direction:column;justify-content:center;margin-bottom:50px;width:100%;word-break:keep-all}.timestamp-section .body{padding:0 10px;width:100%}.timestamp-section .body .timestamp{border-left:2px solid #bdbdbd;display:flex;font-size:18px;font-weight:400;justify-items:center;margin-left:5px;padding:10px 0;width:100%}.timestamp-section .body .timestamp:first-child{padding-top:7px}.timestamp-section .body .timestamp:last-child{padding-bottom:7px}.timestamp-section .body .timestamp:before{align-self:center;background-color:var(--background-color);border:2px solid #828282;border-radius:10px;content:"";height:10px;left:-1px;position:relative;-webkit-transform:translatex(-50%);transform:translatex(-50%);width:10px}.timestamp-section .body .timestamp .date{align-self:center;color:#828282;margin-left:5px;margin-right:5px;min-width:115px;width:115px}@media(min-width:768px){.timestamp-section .body .timestamp .date{min-width:200px;width:200px}}.timestamp-section .body .timestamp .activity{line-height:23px;width:100%}.project-section{align-items:center;justify-content:center}.project-section,.project-section .project{display:flex;flex-direction:column;width:100%}.project-section .project{margin-bottom:30px;padding:15px}.project-section .project .head{font-size:20px;font-weight:700;line-height:30px;margin-bottom:10px}.project-section .project .body{display:flex;flex-direction:column;width:100%}.project-section .project .body .thumbnail{margin-bottom:10px;width:100%}.project-section .project .body .tech-stack{display:flex;margin-bottom:10px}.project-section .project .body .tech-stack .tech{background-color:var(--chip-background-color);border-radius:10px;font-size:15px;font-weight:500;margin-right:5px;padding:5px 7px}.project-section .project .body .description{font-size:16px;font-weight:400;line-height:1.4}@media(min-width:768px){.project-section .project .body{flex-direction:column}.project-section .project .body .content{margin-top:0}}.post-header{border-bottom:1px solid var(--post-card-border-color);display:flex;flex-direction:column;justify-content:center;margin-bottom:40px;margin-top:20px;padding-bottom:10px;width:100%;word-break:keep-all}.post-header .emoji{font-size:78px;margin-bottom:20px}.post-header .categories{margin-bottom:5px}.post-header .categories .category{color:var(--primary-text-color);font-weight:600;margin-right:4px}.post-header .categories .category:hover{text-decoration:underline}.post-header .title{color:var(--primary-text-color);font-size:32px;font-weight:600;line-height:1.3;margin-bottom:6px}.post-header .info{color:var(--secondary-text-color);display:flex;flex-wrap:wrap;font-size:16px;font-weight:500;line-height:1.5;width:100%}.post-header .info .author{margin-right:4px}.post-header .info strong{color:var(--primary-text-color);font-weight:600}.post-navigator{-webkit-column-gap:1.4%;column-gap:1.4%;display:grid;grid-template-columns:49.3% 49.3%;width:100%}.post-navigator .post-card{border:1px solid var(--post-card-border-color);border-radius:6px;color:var(--primary-text-color);cursor:pointer;display:flex;flex-direction:column;padding:15px;transition:-webkit-transform .2s;transition:transform .2s;transition:transform .2s,-webkit-transform .2s;width:100%}.post-navigator .post-card:hover .title{text-decoration:underline}.post-navigator .post-card.prev{margin-right:auto}.post-navigator .post-card.next{margin-left:auto}.post-navigator .post-card .direction{color:gray;font-size:14px;font-weight:500;margin-bottom:5px}.post-navigator .post-card .title{font-size:16px;font-weight:600;line-height:1.4;margin-bottom:7px}.markdown .octicon{fill:currentColor;display:inline-block;vertical-align:text-bottom}.markdown .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown .anchor:focus{outline:none}.markdown h1 .octicon-link,.markdown h2 .octicon-link,.markdown h3 .octicon-link,.markdown h4 .octicon-link,.markdown h5 .octicon-link,.markdown h6 .octicon-link{color:#1b1f23;vertical-align:middle;visibility:hidden}.markdown h1:hover .anchor,.markdown h2:hover .anchor,.markdown h3:hover .anchor,.markdown h4:hover .anchor,.markdown h5:hover .anchor,.markdown h6:hover .anchor{text-decoration:none}.markdown h1:hover .anchor .octicon-link,.markdown h2:hover .anchor .octicon-link,.markdown h3:hover .anchor .octicon-link,.markdown h4:hover .anchor .octicon-link,.markdown h5:hover .anchor .octicon-link,.markdown h6:hover .anchor .octicon-link{visibility:visible}.markdown h1:hover .anchor .octicon-link:before,.markdown h2:hover .anchor .octicon-link:before,.markdown h3:hover .anchor .octicon-link:before,.markdown h4:hover .anchor .octicon-link:before,.markdown h5:hover .anchor .octicon-link:before,.markdown h6:hover .anchor .octicon-link:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' aria-hidden='true' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z'/%3E%3C/svg%3E");content:" ";display:inline-block;height:16px;width:16px}.markdown{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-wrap:break-word;color:var(--content-text-color);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:16px;font-weight:500;line-height:1.5}.markdown details{display:block}.markdown summary{display:list-item}.markdown a{background-color:initial}.markdown a:active,.markdown a:hover{outline-width:0}.markdown strong{font-weight:inherit;font-weight:bolder}.markdown h1{margin:.67em 0}.markdown img{border-style:none}.markdown code,.markdown kbd,.markdown pre{font-family:monospace,monospace;font-size:1em}.markdown hr{box-sizing:initial;overflow:visible}.markdown input{font:inherit;margin:0;overflow:visible}.markdown [type=checkbox]{box-sizing:border-box;padding:0}.markdown *{box-sizing:border-box}.markdown input{font-family:inherit;font-size:inherit;line-height:inherit}.markdown a{border-bottom:.05em solid;border-bottom-color:var(--link-text-color);border-left-color:var(--link-text-color);border-right-color:var(--link-text-color);border-top-color:var(--link-text-color);color:var(--link-text-color);text-decoration:none}.markdown a.anchor{border-bottom:none}.markdown strong{font-weight:700}.markdown hr{background:transparent;border-bottom:1px solid var(--markdown-blockquote-border-color);height:0;margin:15px 0;overflow:hidden}.markdown hr:after,.markdown hr:before{content:"";display:table}.markdown hr:after{clear:both}.markdown table{border-collapse:collapse;border-spacing:0}.markdown td,.markdown th{padding:0}.markdown details summary{cursor:pointer}.markdown h1,.markdown h2,.markdown h3,.markdown h4,.markdown h5,.markdown h6{margin-bottom:0;margin-top:0}.markdown h1{font-size:32px}.markdown h1,.markdown h2{font-weight:600}.markdown h2{font-size:24px}.markdown h3{font-size:20px}.markdown h3,.markdown h4{font-weight:600}.markdown h4{font-size:16px}.markdown h5{font-size:14px}.markdown h5,.markdown h6{font-weight:600}.markdown h6{font-size:12px}.markdown p{margin-bottom:10px;margin-top:0}.markdown blockquote{margin:0}.markdown ol,.markdown ul{margin-bottom:0;margin-top:0;padding-left:0}.markdown ol ol,.markdown ul ol{list-style-type:lower-roman}.markdown ol ol ol,.markdown ol ul ol,.markdown ul ol ol,.markdown ul ul ol{list-style-type:lower-alpha}.markdown dd{margin-left:0}.markdown code,.markdown pre{font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px}.markdown code.language-text{border-radius:3px;font-size:85%;padding:.2em .4em}.markdown :not(pre)>code.language-text{background:hsla(44,6%,50%,.15);color:#eb5757;overflow-wrap:break-word}.markdown pre{margin-bottom:0;margin-top:0}.markdown input::-webkit-inner-spin-button,.markdown input::-webkit-outer-spin-button{-webkit-appearance:none;appearance:none;margin:0}.markdown :checked+.radio-label{border-color:#0366d6;position:relative;z-index:1}.markdown .border{border:1px solid var(--markdown-border-color)!important}.markdown .border-0{border:0!important}.markdown .border-bottom{border-bottom:1px solid var(--markdown-border-color)!important}.markdown .rounded-1{border-radius:3px!important}.markdown .bg-white{background-color:transparent!important}.markdown .bg-gray-light{background-color:#fafbfc!important}.markdown .text-gray-light{color:#6a737d!important}.markdown .pl-3,.markdown .px-3{padding-left:16px!important}.markdown .px-3{padding-right:16px!important}.markdown .f6{font-size:12px!important}.markdown .lh-condensed{line-height:1.25!important}.markdown .text-bold{font-weight:600!important}.markdown .pl-c{color:#6a737d}.markdown .pl-c1,.markdown .pl-s .pl-v{color:#005cc5}.markdown .pl-e,.markdown .pl-en{color:#6f42c1}.markdown .pl-s .pl-s1,.markdown .pl-smi{color:#24292e}.markdown .pl-ent{color:#22863a}.markdown .pl-k{color:#d73a49}.markdown .pl-pds,.markdown .pl-s,.markdown .pl-s .pl-pse .pl-s1,.markdown .pl-sr,.markdown .pl-sr .pl-cce,.markdown .pl-sr .pl-sra,.markdown .pl-sr .pl-sre{color:#032f62}.markdown .pl-smw,.markdown .pl-v{color:#e36209}.markdown .pl-bu{color:#b31d28}.markdown .pl-ii{background-color:#b31d28;color:#fafbfc}.markdown .pl-c2{background-color:#d73a49;color:#fafbfc}.markdown .pl-c2:before{content:"^M"}.markdown .pl-sr .pl-cce{color:#22863a;font-weight:700}.markdown .pl-ml{color:#735c0f}.markdown .pl-mh,.markdown .pl-mh .pl-en,.markdown .pl-ms{color:#005cc5;font-weight:700}.markdown .pl-mi{color:#24292e;font-style:italic}.markdown .pl-mb{color:#24292e;font-weight:700}.markdown .pl-md{background-color:#ffeef0;color:#b31d28}.markdown .pl-mi1{background-color:#f0fff4;color:#22863a}.markdown .pl-mc{background-color:#ffebda;color:#e36209}.markdown .pl-mi2{background-color:#005cc5;color:#f6f8fa}.markdown .pl-mdr{color:#6f42c1;font-weight:700}.markdown .pl-ba{color:#586069}.markdown .pl-sg{color:#959da5}.markdown .pl-corl{color:#032f62;text-decoration:underline}.markdown .mb-0{margin-bottom:0!important}.markdown .my-2{margin-bottom:8px!important;margin-top:8px!important}.markdown .pl-0{padding-left:0!important}.markdown .py-0{padding-bottom:0!important;padding-top:0!important}.markdown .pl-1{padding-left:4px!important}.markdown .pl-2{padding-left:8px!important}.markdown .py-2{padding-bottom:8px!important;padding-top:8px!important}.markdown .pl-3{padding-left:16px!important}.markdown .pl-4{padding-left:24px!important}.markdown .pl-5{padding-left:32px!important}.markdown .pl-6{padding-left:40px!important}.markdown .pl-7{padding-left:48px!important}.markdown .pl-8{padding-left:64px!important}.markdown .pl-9{padding-left:80px!important}.markdown .pl-10{padding-left:96px!important}.markdown .pl-11{padding-left:112px!important}.markdown .pl-12{padding-left:128px!important}.markdown hr{border-bottom-color:#eee}.markdown kbd{background-color:#fafbfc;border:1px solid #d1d5da;border-radius:3px;box-shadow:inset 0 -1px 0 #d1d5da;color:#444d56;display:inline-block;font:11px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown:after,.markdown:before{content:"";display:table}.markdown:after{clear:both}.markdown>:first-child{margin-top:0!important}.markdown>:last-child{margin-bottom:0!important}.markdown a:not([href]){color:inherit;text-decoration:none}.markdown blockquote,.markdown details,.markdown dl,.markdown ol,.markdown p,.markdown pre,.markdown table,.markdown ul{margin-bottom:16px;margin-top:0}.markdown hr{background-color:var(--markdown-border-color);border:0;height:.25em;margin:24px 0;padding:0}.markdown blockquote{border-left:.25em solid var(--markdown-blockquote-border-color);color:#6a737d;padding:0 1em}.markdown blockquote>:first-child{margin-top:0}.markdown blockquote>:last-child{margin-bottom:0}.markdown h1,.markdown h2,.markdown h3,.markdown h4,.markdown h5,.markdown h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown h1{font-size:2em}.markdown h2{font-size:1.5em}.markdown h3{font-size:1.25em}.markdown h4{font-size:1em}.markdown h5{font-size:.875em}.markdown h6{color:#6a737d;font-size:.85em}.markdown ol,.markdown ul{padding-left:2em}.markdown ol ol,.markdown ol ul,.markdown ul ol,.markdown ul ul{margin-bottom:0;margin-top:0}.markdown ol{list-style-type:decimal}.markdown ul{list-style-type:disc}.markdown li{word-wrap:break-all;display:list-item;text-align:-webkit-match-parent}.markdown li>p{margin-top:16px}.markdown li+li{margin-top:.25em}.markdown dl{padding:0}.markdown dl dt{font-size:1em;font-style:italic;font-weight:600;margin-top:16px;padding:0}.markdown dl dd{margin-bottom:16px;padding:0 16px}.markdown table{display:block;overflow:auto;width:100%}.markdown table th{font-weight:600}.markdown table td,.markdown table th{border:1px solid var(--markdown-table-border-color);padding:6px 13px}.markdown table tr{border-top:1px solid var(--markdown-table-border-color)}.markdown table tr:nth-child(2n){background-color:var(--markdown-table-even-cell-background-color)}.markdown img{background-color:transparent;box-sizing:initial;display:block;margin:0 auto;max-width:100%}.markdown img[align=right]{padding-left:20px}.markdown img[align=left]{padding-right:20px}.markdown code{background-color:rgba(27,31,35,.05);border-radius:3px;font-size:85%;margin:0;padding:.2em .4em}.markdown pre{word-wrap:normal}.markdown pre>code{background:transparent;border:0;font-size:100%;margin:0;padding:0;white-space:pre;word-break:normal}.markdown .highlight{margin-bottom:16px}.markdown .highlight pre{margin-bottom:0;word-break:normal}.markdown .highlight pre,.markdown pre{background-color:#f6f8fa;border-radius:3px;font-size:85%;line-height:1.45;overflow:auto;padding:16px}.markdown pre code{word-wrap:normal;background-color:initial;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown .commit-tease-sha{color:#444d56;display:inline-block;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:90%}.markdown .full-commit .btn-outline:not(:disabled):hover{border-color:#005cc5;color:#005cc5}.markdown .blob-wrapper{overflow-x:auto;overflow-y:hidden}.markdown .blob-wrapper-embedded{max-height:240px;overflow-y:auto}.markdown .blob-num{color:rgba(27,31,35,.3);cursor:pointer;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px;line-height:20px;min-width:50px;padding-left:10px;padding-right:10px;text-align:right;-webkit-user-select:none;-ms-user-select:none;user-select:none;vertical-align:top;white-space:nowrap;width:1%}.markdown .blob-num:hover{color:rgba(27,31,35,.6)}.markdown .blob-num:before{content:attr(data-line-number)}.markdown .blob-code{line-height:20px;padding-left:10px;padding-right:10px;position:relative;vertical-align:top}.markdown .blob-code-inner{word-wrap:normal;color:#24292e;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px;overflow:visible;white-space:pre}.markdown .pl-token.active,.markdown .pl-token:hover{background:#ffea7f;cursor:pointer}.markdown .tab-size[data-tab-size="1"]{-o-tab-size:1;tab-size:1}.markdown .tab-size[data-tab-size="2"]{-o-tab-size:2;tab-size:2}.markdown .tab-size[data-tab-size="3"]{-o-tab-size:3;tab-size:3}.markdown .tab-size[data-tab-size="4"]{-o-tab-size:4;tab-size:4}.markdown .tab-size[data-tab-size="5"]{-o-tab-size:5;tab-size:5}.markdown .tab-size[data-tab-size="6"]{-o-tab-size:6;tab-size:6}.markdown .tab-size[data-tab-size="7"]{-o-tab-size:7;tab-size:7}.markdown .tab-size[data-tab-size="8"]{-o-tab-size:8;tab-size:8}.markdown .tab-size[data-tab-size="9"]{-o-tab-size:9;tab-size:9}.markdown .tab-size[data-tab-size="10"]{-o-tab-size:10;tab-size:10}.markdown .tab-size[data-tab-size="11"]{-o-tab-size:11;tab-size:11}.markdown .tab-size[data-tab-size="12"]{-o-tab-size:12;tab-size:12}.markdown .task-list-item{list-style-type:none}.markdown .task-list-item+.task-list-item{margin-top:3px}.markdown .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown .table-of-contents{align-items:flex-start;display:flex;flex-direction:column;justify-content:center;position:fixed;right:0;top:75px;width:340px}@media(max-width:1300px){.markdown .table-of-contents{display:none}}.markdown .table-of-contents ul{cursor:pointer;list-style-type:none}.markdown .table-of-contents ul li a{border-bottom:none;color:var(--secondary-text-color);font-size:14px;height:30px;padding:6px 2px;width:100%}.markdown .table-of-contents ul p{margin:0}.markdown .gatsby-resp-image-wrapper{display:flex!important;justify-content:center!important;max-height:560px!important;width:100%!important}.markdown .gatsby-resp-image-wrapper img{height:auto!important;max-height:560px!important;max-width:100%!important;position:relative!important;width:auto!important}.markdown .gatsby-resp-image-wrapper+em{color:#6a737d;display:block;font-size:15px;font-style:italic;text-align:center}code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;line-height:1.5;-o-tab-size:4;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}.post-content{margin-bottom:20px;width:100%}.category-page-header-wrapper,.post-content{display:flex;flex-direction:column;justify-content:center}.category-page-header-wrapper{align-items:center;margin-bottom:30px;margin-top:30px}.category-page-header-wrapper .category-page-title{border-bottom:3px solid var(--primary-text-color);font-size:40px;font-weight:700;margin-bottom:15px;padding-bottom:7px;text-align:center;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.category-page-header-wrapper .category-page-subtitle{font-size:20px;font-weight:500;padding-bottom:10px;text-align:center}.post-card-wrapper{display:flex;justify-content:center;min-height:150px;width:100%}.post-card-wrapper .post-card{border:1px solid var(--post-card-border-color);border-radius:6px;color:var(--primary-text-color);cursor:pointer;display:flex;flex-direction:column;height:100%;margin-bottom:15px;max-width:720px;padding:15px;transition:-webkit-transform .2s;transition:transform .2s;transition:transform .2s,-webkit-transform .2s;width:100%}.post-card-wrapper .post-card:hover .title{text-decoration:underline}@media(min-width:768px){.post-card-wrapper .post-card{margin-bottom:0}}.post-card-wrapper .post-card .title{font-size:18px;font-weight:600;line-height:1.4;margin-bottom:7px}.post-card-wrapper .post-card .description{-webkit-line-clamp:3;-webkit-box-orient:vertical;color:var(--primary-text-color);display:-webkit-box;font-size:13px;line-height:20px;margin-bottom:10px;overflow:hidden;text-overflow:ellipsis}.post-card-wrapper .post-card .info{color:var(--about-link-icon-color);display:flex;font-size:14px;justify-content:space-between;margin-top:auto}.post-card-wrapper .post-card .info .categories{display:flex}.post-card-wrapper .post-card .info .categories .category{margin-left:4px}.post-card-wrapper .post-card .info .categories .category:hover{text-decoration:underline}.post-card-column-wrapper{display:flex;justify-content:center;width:100%}.post-card-column-wrapper .post-card-column{align-items:center;display:flex;flex-direction:column;width:100%}.post-card-column-wrapper .post-card-column .post-card-wrapper{margin-bottom:10px}.post-card-column-wrapper .post-card-column .more-post-card-button{background-color:var(--button-background-color);font-size:15px;font-weight:500;height:40px}.post-tabs-wrapper{align-self:flex-start;display:flex;flex-direction:column;justify-content:center;top:0;width:100%}.post-tabs-wrapper .post-tabs{display:flex;height:40px;justify-content:center;margin-bottom:12px;max-width:760px;width:100%}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root{color:var(--tab-text-color);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:17px;font-weight:500;height:40px;min-height:auto;min-width:auto;padding:10px 12px;transition:all .2s ease}.post-tabs-wrapper .post-tabs .mui-tabs .Mui-selected,.post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root :hover{color:var(--tab-hover-text-color);transition:all .2s ease}.post-tabs-wrapper .post-tabs .mui-tabs .Mui-selected{background-color:var(--tab-selected-background-color);border-radius:8px;font-weight:600}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTabScrollButton-root{height:40px;width:20px}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTabs-scrollable{height:40px}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTabs-indicator{display:none}</style><meta name="generator" content="Gatsby 3.14.5"/><style data-emotion="css-global o6gwfi">html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;box-sizing:border-box;-webkit-text-size-adjust:100%;}*,*::before,*::after{box-sizing:inherit;}strong,b{font-weight:700;}body{margin:0;color:rgba(0, 0, 0, 0.87);font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;background-color:#fff;}@media print{body{background-color:#fff;}}body::backdrop{background-color:#fff;}</style><style data-emotion="css-global 1prfaxn">@-webkit-keyframes mui-auto-fill{from{display:block;}}@keyframes mui-auto-fill{from{display:block;}}@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css 1l6di18 feqhe6 11tfndm mnn31 vubbuv 1yxmbwk 6flbmm">.css-1l6di18.Mui-focused .MuiAutocomplete-clearIndicator{visibility:visible;}@media (pointer: fine){.css-1l6di18:hover .MuiAutocomplete-clearIndicator{visibility:visible;}}.css-1l6di18 .MuiAutocomplete-tag{margin:3px;max-width:calc(100% - 6px);}.css-1l6di18 .MuiAutocomplete-inputRoot{-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;}.MuiAutocomplete-hasPopupIcon.css-1l6di18 .MuiAutocomplete-inputRoot,.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiAutocomplete-inputRoot{padding-right:30px;}.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiAutocomplete-inputRoot{padding-right:56px;}.css-1l6di18 .MuiAutocomplete-inputRoot .MuiAutocomplete-input{width:0;min-width:30px;}.css-1l6di18 .MuiInput-root{padding-bottom:1px;}.css-1l6di18 .MuiInput-root .MuiInput-input{padding:4px 4px 4px 0px;}.css-1l6di18 .MuiInput-root.MuiInputBase-sizeSmall .MuiInput-input{padding:2px 4px 3px 0;}.css-1l6di18 .MuiOutlinedInput-root{padding:9px;}.MuiAutocomplete-hasPopupIcon.css-1l6di18 .MuiOutlinedInput-root,.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiOutlinedInput-root{padding-right:39px;}.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiOutlinedInput-root{padding-right:65px;}.css-1l6di18 .MuiOutlinedInput-root .MuiAutocomplete-input{padding:7.5px 4px 7.5px 6px;}.css-1l6di18 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment{right:9px;}.css-1l6di18 .MuiOutlinedInput-root.MuiInputBase-sizeSmall{padding:6px;}.css-1l6di18 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input{padding:2.5px 4px 2.5px 6px;}.css-1l6di18 .MuiFilledInput-root{padding-top:19px;padding-left:8px;}.MuiAutocomplete-hasPopupIcon.css-1l6di18 .MuiFilledInput-root,.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiFilledInput-root{padding-right:39px;}.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiFilledInput-root{padding-right:65px;}.css-1l6di18 .MuiFilledInput-root .MuiFilledInput-input{padding:7px 4px;}.css-1l6di18 .MuiFilledInput-root .MuiAutocomplete-endAdornment{right:9px;}.css-1l6di18 .MuiFilledInput-root.MuiInputBase-sizeSmall{padding-bottom:1px;}.css-1l6di18 .MuiFilledInput-root.MuiInputBase-sizeSmall .MuiFilledInput-input{padding:2.5px 4px;}.css-1l6di18 .MuiInputBase-hiddenLabel{padding-top:8px;}.css-1l6di18 .MuiAutocomplete-input{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;text-overflow:ellipsis;opacity:1;}.css-feqhe6{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;position:relative;min-width:0;padding:0;margin:0;border:0;vertical-align:top;width:100%;}.css-11tfndm{font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.4375em;letter-spacing:0.00938em;color:rgba(0, 0, 0, 0.87);box-sizing:border-box;position:relative;cursor:text;display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:100%;position:relative;}.css-11tfndm.Mui-disabled{color:rgba(0, 0, 0, 0.38);cursor:default;}label+.css-11tfndm{margin-top:16px;}.css-11tfndm:after{border-bottom:2px solid #1976d2;left:0;bottom:0;content:"";position:absolute;right:0;-webkit-transform:scaleX(0);-moz-transform:scaleX(0);-ms-transform:scaleX(0);transform:scaleX(0);-webkit-transition:-webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;transition:transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;pointer-events:none;}.css-11tfndm.Mui-focused:after{-webkit-transform:scaleX(1);-moz-transform:scaleX(1);-ms-transform:scaleX(1);transform:scaleX(1);}.css-11tfndm.Mui-error:after{border-bottom-color:#d32f2f;-webkit-transform:scaleX(1);-moz-transform:scaleX(1);-ms-transform:scaleX(1);transform:scaleX(1);}.css-11tfndm:before{border-bottom:1px solid rgba(0, 0, 0, 0.42);left:0;bottom:0;content:"\00a0";position:absolute;right:0;-webkit-transition:border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;pointer-events:none;}.css-11tfndm:hover:not(.Mui-disabled):before{border-bottom:2px solid rgba(0, 0, 0, 0.87);}@media (hover: none){.css-11tfndm:hover:not(.Mui-disabled):before{border-bottom:1px solid rgba(0, 0, 0, 0.42);}}.css-11tfndm.Mui-disabled:before{border-bottom-style:dotted;}.css-mnn31{font:inherit;letter-spacing:inherit;color:currentColor;padding:4px 0 5px;border:0;box-sizing:content-box;background:none;height:1.4375em;margin:0;-webkit-tap-highlight-color:transparent;display:block;min-width:0;width:100%;-webkit-animation-name:mui-auto-fill-cancel;animation-name:mui-auto-fill-cancel;-webkit-animation-duration:10ms;animation-duration:10ms;}.css-mnn31::-webkit-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31::-moz-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31:-ms-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31::-ms-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31:focus{outline:0;}.css-mnn31:invalid{box-shadow:none;}.css-mnn31::-webkit-search-decoration{-webkit-appearance:none;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31::-webkit-input-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31::-moz-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:-ms-input-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31::-ms-input-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus::-webkit-input-placeholder{opacity:0.42;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus::-moz-placeholder{opacity:0.42;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus:-ms-input-placeholder{opacity:0.42;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus::-ms-input-placeholder{opacity:0.42;}.css-mnn31.Mui-disabled{opacity:1;-webkit-text-fill-color:rgba(0, 0, 0, 0.38);}.css-mnn31:-webkit-autofill{-webkit-animation-duration:5000s;animation-duration:5000s;-webkit-animation-name:mui-auto-fill;animation-name:mui-auto-fill;}.css-vubbuv{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;fill:currentColor;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;font-size:1.5rem;}.css-1yxmbwk{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;overflow:visible;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-1yxmbwk::-moz-focus-inner{border-style:none;}.css-1yxmbwk.Mui-disabled{pointer-events:none;cursor:default;}@media print{.css-1yxmbwk{-webkit-print-color-adjust:exact;color-adjust:exact;}}.css-1yxmbwk:hover{background-color:rgba(0, 0, 0, 0.04);}@media (hover: none){.css-1yxmbwk:hover{background-color:transparent;}}.css-1yxmbwk.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}.css-6flbmm{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;fill:currentColor;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;font-size:2.1875rem;}</style><link rel="preconnect" href="https://www.google-analytics.com"/><link rel="dns-prefetch" href="https://www.google-analytics.com"/><script>
+  
+  function gaOptout(){document.cookie=disableStr+'=true; expires=Thu, 31 Dec 2099 23:59:59 UTC;path=/',window[disableStr]=!0}var gaProperty='UA-217298065-1',disableStr='ga-disable-'+gaProperty;document.cookie.indexOf(disableStr+'=true')>-1&&(window[disableStr]=!0);
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-217298065-1', 'auto', {});
+      ga('set', 'anonymizeIp', true);
+      
+      
+      
+      
+      }</script><link rel="icon" href="/favicon-32x32.png?v=ad9e124e5060ab5ddbaf24744e1cfc72" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=ad9e124e5060ab5ddbaf24744e1cfc72"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=ad9e124e5060ab5ddbaf24744e1cfc72"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=ad9e124e5060ab5ddbaf24744e1cfc72"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=ad9e124e5060ab5ddbaf24744e1cfc72"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=ad9e124e5060ab5ddbaf24744e1cfc72"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=ad9e124e5060ab5ddbaf24744e1cfc72"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=ad9e124e5060ab5ddbaf24744e1cfc72"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=ad9e124e5060ab5ddbaf24744e1cfc72"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><title data-react-helmet="true">TIL 08. 서버 네트워크 기본</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="TIL 08. 서버 네트워크 기본"/><meta data-react-helmet="true" property="og:site_title" content="TIL 08. 서버 네트워크 기본"/><meta data-react-helmet="true" name="description" content="TIL 08. 서버 네트워크 기본 이번 장에서는 서버 내부의 설정 중 윈도와 리눅스 서버에서 네트워크를 각각 어떻게 설정하고 현재 네트워크 상태를 어떻게 확인할 수 있는지가 주관점이다. 1. 서버의 네트워크 설정 및 확인 (OS 별로 정리) 1) 리눅스 서버 네트워크 (1) CentOS의 네트워크 설정 CentOS의 네트워크 설정 파일은 다음 경로에 존재한다. 네트워크 인터페이스 별로 설정 가능한 사항이 파일에 기록되어 있으며, 주요 항목은 다음과 같다. 주요 항목 이외에도 설정할 수 있는 다양한 항목들이 존재한다. CentOS뿐만이 아닌 대부분의 Linux 계열 OS에서는 인터페이스 설정 파일을 수정하더라도 변경한 값이 즉시 적용되지 않는다. 변경된 설정값을 적용하려면 다음 두 가지 방법 중 하나를 수행해야 한다. 네트워크 서비스 재시작 특정 인터페이스 재시작(ifup)과 다운(ifdown) * ifconfig (Linux) &amp; ipconfig (Window) Linux에선 if…"/><meta data-react-helmet="true" property="og:description" content="TIL 08. 서버 네트워크 기본 이번 장에서는 서버 내부의 설정 중 윈도와 리눅스 서버에서 네트워크를 각각 어떻게 설정하고 현재 네트워크 상태를 어떻게 확인할 수 있는지가 주관점이다. 1. 서버의 네트워크 설정 및 확인 (OS 별로 정리) 1) 리눅스 서버 네트워크 (1) CentOS의 네트워크 설정 CentOS의 네트워크 설정 파일은 다음 경로에 존재한다. 네트워크 인터페이스 별로 설정 가능한 사항이 파일에 기록되어 있으며, 주요 항목은 다음과 같다. 주요 항목 이외에도 설정할 수 있는 다양한 항목들이 존재한다. CentOS뿐만이 아닌 대부분의 Linux 계열 OS에서는 인터페이스 설정 파일을 수정하더라도 변경한 값이 즉시 적용되지 않는다. 변경된 설정값을 적용하려면 다음 두 가지 방법 중 하나를 수행해야 한다. 네트워크 서비스 재시작 특정 인터페이스 재시작(ifup)과 다운(ifdown) * ifconfig (Linux) &amp; ipconfig (Window) Linux에선 if…"/><meta data-react-helmet="true" property="og:author" content="심기영"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-0dbf47222db3936e0d98.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-9121d1ade616ed7c4ab1.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-0604aeb3cd8f0def35f4.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/IT엔지니어를_위한_네트워크_입문_08/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2565331757890462" crossorigin="anonymous"></script><div class="page-header"><div class="front-section"><a class="link" href="/">shim8934.github.io</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">😄</div><div class="info"><div class="categories"><a class="category" href="/posts/IT_엔지니어를_위한_네트워크_입문">IT_엔지니어를_위한_네트워크_입문</a></div></div><h1 class="title">TIL 08. 서버 네트워크 기본</h1><div class="info"><div class="author">posted by <strong>shim8934</strong>,</div> <!-- -->August 01, 2022</div></header><div class="post-content"><div class="markdown"><h2 id="til-08-서버-네트워크-기본" style="position:relative;"><a href="#til-08-%EC%84%9C%EB%B2%84-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B8%B0%EB%B3%B8" aria-label="til 08 서버 네트워크 기본 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TIL 08. 서버 네트워크 기본</h2>
+<blockquote>
+<p>이번 장에서는 서버 내부의 설정 중 윈도와 리눅스 서버에서 네트워크를 각각 어떻게 설정하고 현재 네트워크 상태를 어떻게 확인할 수 있는지가 주관점이다.</p>
+</blockquote>
+<br/>
+<hr>
+<h3 id="1-서버의-네트워크-설정-및-확인-os-별로-정리" style="position:relative;"><a href="#1-%EC%84%9C%EB%B2%84%EC%9D%98-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95-%EB%B0%8F-%ED%99%95%EC%9D%B8-os-%EB%B3%84%EB%A1%9C-%EC%A0%95%EB%A6%AC" aria-label="1 서버의 네트워크 설정 및 확인 os 별로 정리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 서버의 네트워크 설정 및 확인 (OS 별로 정리)</h3>
+<h4 id="1-리눅스-서버-네트워크" style="position:relative;"><a href="#1-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%84%9C%EB%B2%84-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC" aria-label="1 리눅스 서버 네트워크 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1) 리눅스 서버 네트워크</h4>
+<h5 id="1-centos의-네트워크-설정" style="position:relative;"><a href="#1-centos%EC%9D%98-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95" aria-label="1 centos의 네트워크 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(1) CentOS의 네트워크 설정</h5>
+<ul>
+<li>
+<p>CentOS의 네트워크 설정 파일은 다음 경로에 존재한다.</p>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell">/etc/sysconfig/network-scripts</code></pre></div>
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; ">
+      <span class="gatsby-resp-image-background-image" style="padding-bottom: 95.55555555555554%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAIAAAAf7rriAAAACXBIWXMAAAsTAAALEwEAmpwYAAACbklEQVQ4y22U23KjQAxE/TMJjg3YGIbLMBfNRdIAyf//ztZgx+tkt0oPvLTU032KQ1iWuK4S3KDM7LwE1yvTTnJ2fjQwGZgsXMRwEUPd9b/mMDs/aFN1vQRnEScLvdIWKa/TRvkAAWnd4rplfdt/z1C3w8EiApGQSvkQllWHOGrrKNmY9Y65+/ocFr5NYyVENXSlbMu5PetbOXUHxxyWtVdGh4jrZiJJ6xwlE+JkwRK9rdc3vhRUn2Vbi77qRZ5B1H1/ACLHScxa+RCX1UTUIVokxzyDB6KCy3euTrZ5PLXtnx8HR+zTD/HsvY3oKM3OW6T31BTcnFxbd/tZkecRmOclrtueTYzLZiONxpqIObPddvFl3r/UCdV1HM7qdlZtKbv7/Xtg3L0EpkNwnBzzHlgquCy4+nDXWrx47h5icsRi1rPznpMKQYIzMW+crLNIRWo/QnOCphp2z0MOLC/qcmDs03InxHPSIfTKAJHyYTJgEI+LKZ0oVVv1opz2ntStHLPzw/15nVTf4jj7YJFMxNGAJTzGqsCqoMvDdvvXfBbDU5zS/uZoIjpOEjwwFXg5xms+9S+ee6VJSL0HtgCR52RCFj96xssxXKpR/EprryolXD8HbXPPO2GDNhbJIt0JK1ZdbKqyshq6O5V/befAOPXqG5IQtQ9ADMTSOiA60rXg5qy6ywOSl8uA/IqnRbQ7oY5yz8B8xPpI1ROMH7ZfxPGOp4mUyeH9MnNBdRHrk2n+IzYx/qrKhAhEwElaD8yn2JxC80HXEtqqFVUrfvwMJLhrPyofHLNFDPt9izQacMRx24DZL8lvSfnQSfXU/wH/7gme43h9BAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="CentOS_network-scripts" title="CentOS_network-scripts" src="/static/697d3155421b476fca96275d4bbba9f0/37523/CentOS_network-scripts.png" srcset="/static/697d3155421b476fca96275d4bbba9f0/e9ff0/CentOS_network-scripts.png 180w,
+/static/697d3155421b476fca96275d4bbba9f0/f21e7/CentOS_network-scripts.png 360w,
+/static/697d3155421b476fca96275d4bbba9f0/37523/CentOS_network-scripts.png 720w,
+/static/697d3155421b476fca96275d4bbba9f0/5a190/CentOS_network-scripts.png 800w" sizes="(max-width: 720px) 100vw, 720px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy" decoding="async">
+    </span>
+</li>
+</ul>
+<br/>
+<ul>
+<li>네트워크 인터페이스 별로 설정 가능한 사항이 파일에 기록되어 있으며, 주요 항목은 다음과 같다. 주요 항목 이외에도 설정할 수 있는 다양한 항목들이 존재한다.</li>
+</ul>
+<table style="width:80%;">
+    <tr style="text-align:center;">
+        <td colspan="2">CentOS의 인터페이스 설정 시 주요 항목</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>ONBOOT</td>
+        <td>부팅 시 인터페이스를 활성화시킬 것인지 결정(yes / no)</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>BOOTPROTO</td>
+        <td>부팅 시 사용할 프로토콜 (none, dhcp, static)</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>IPADDR</td>
+        <td>IP 주소</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>NETMASK</td>
+        <td>서브넷 마스크 <br/> 예) 255.255.255.0</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>PREFIX</td>
+        <td>서브넷 마스크(비트 값으로 표기) <br/> 예) 24</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>GATEWAY</td>
+        <td>게이트웨이 주소</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>DNS1</td>
+        <td>주 DNS 정보 입력</td>        
+    </tr>
+    <tr style="text-align:left;">
+        <td>DNS2</td>
+        <td>보조 DNS</td>
+    </tr>
+</table>
+<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 428px; ">
+      <span class="gatsby-resp-image-background-image" style="padding-bottom: 92.77777777777777%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAIAAAAf7rriAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB50lEQVQ4y42T246bMBCGeZ5N0g1nsB0CBozPR7wJe9O+/1NUm6h71ZZII99Yn377m5lEWEukVD5QpYR17bU/V825qn8U1W4lYdtmIYVzJkb7EUfGqTYlvByzch/2t9u63bmxKgQiJdOmvlyPefle7ocnOgR/u+l1nYUgQiI8vp2zY1Yc0vyU74QnKgSqtQqBWyu9b7rrxDkcMBxw1oD/84lwjlur15VqzY2tUQf6AfQDegWWzi1SSe+lc+u2ITyCHqd1e0iz/WdzYzFlNkYbo4mRKmU+YoW6Q1rsCxPODQvVISjvVQgj4/5+m4UYFlpC9Az/l/kvYZiy+Pk5Cym9J1LqdZXOj4wtUuGFIjxeZzIsdCDLe1Gd8vJZjz7f77MQ3FqqDRzwuWryFmYNyBpQoa4A8OtsUQlRAdD31XMEH8KUYkaPjE1cwB4PZGm7/oKnRSmER2ZMN5FHOJuFHBnvCWmv/SkvExujcI4IKazFCy1aeEjzP7/6q+3yuwvJ56+f/n4fGZ+4yBqQ1m0JL69sxRe8bpuNcWQM4bFClwKg9tq/MtgP2z7YGIlU3TQXAFWoyxrwajLVhmrdk6Wb5p4seQvPVfMqLKwbKNXr+tTWE1KhyzErXoLzBmQ1yFtYAPi0ldbt7lQ/4d8p7gmb7WBxBwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"></span>
+  <img class="gatsby-resp-image-image" alt="CentOS_NIC" title="CentOS_NIC" src="/static/286a57cca61207697b0219b024a00a1e/47730/CentOS_NIC.png" srcset="/static/286a57cca61207697b0219b024a00a1e/e9ff0/CentOS_NIC.png 180w,
+/static/286a57cca61207697b0219b024a00a1e/f21e7/CentOS_NIC.png 360w,
+/static/286a57cca61207697b0219b024a00a1e/47730/CentOS_NIC.png 428w" sizes="(max-width: 428px) 100vw, 428px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy" decoding="async">
+    </span>
+<br/>
+<ul>
+<li>
+<p>CentOS뿐만이 아닌 대부분의 Linux 계열 OS에서는 인터페이스 설정 파일을 수정하더라도 변경한 값이 즉시 적용되지 않는다. 변경된 설정값을 적용하려면 다음 두 가지 방법 중 하나를 수행해야 한다.</p>
+<ol>
+<li>
+<p>네트워크 서비스 재시작</p>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell">systemctl restart network.service</code></pre></div>
+<br/>
+</li>
+<li>
+<p>특정 인터페이스 재시작(ifup)과 다운(ifdown)</p>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell"><span class="token function">ifup</span> ifcfg-eht0
+<span class="token function">ifdown</span> ifcfg-eth0</code></pre></div>
+</li>
+</ol>
+</li>
+</ul>
+<br/>
+<h6 id="-ifconfig-linux--ipconfig-window" style="position:relative;"><a href="#-ifconfig-linux--ipconfig-window" aria-label=" ifconfig linux  ipconfig window permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>* ifconfig (Linux) &#x26; ipconfig (Window)</h6>
+<ul>
+<li>Linux에선 ifconfig, Window에서는 <code class="language-text">ipconfig</code>로 각각 네트워크 인터페이스의 설정값과 상태를 확인할 수 있다. 다만 차이점은 Linux의 ifconfig에선 활성화된 인터페이스 정보만 확인할 수 있다는 점이다. Linux에선 위 1-1)에서 다룬 인터페이스 다운으로 비활성화 시켜둔 인터페이스는 <code class="language-text">ifconfig</code>를 통해 드러나지 않는다. Window에선 비활성화된 인터페이스까지 포함해 모든 인터페이스 정보가 보여지게 된다.	<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 43.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABUUlEQVQoz01QWW6EMAzlQjPAQPbVzuIEmPtfp83QVpX8Ycl+64St5+Og603vd+qHT9mlLH1YuDSQ6Hpja+W86nmV8wJq3LiXVDMTz51PsVKs5HO5l1hIWL8KPTOxMKEjlPMEarkf+RgLVNIRmLYLF5MBdJiACCqFXCwmHVH6sEq1cimcD6W6lH0uY1IWLmzKzDt/bGwCaql3qAOc++FzMYDC+V3bTWkDgG2o3W+xkgrArXvufNi2mFzKsZDDrEPctVmFfEn12NgylIMv9Q6l4yBdhXpJvfBP5tsPtnZn5tbPjN/EC5c6QigV6OdqAFch7+unsFJjpdR7KDWUOtIOZf3Y+MKE9OEP6UcjuEn9Er/KdxmDvpJL2QDqAJsyq1SbMirEYa3U+KE2gAYSN26YF2rC1v+VEaULzLhd25mJeRfSx9wPoIa9WxxVc+vZB/yt/AXcrYNnldncuQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="ifdown후의 ifconfig 차이점"
+        title="ifdown후의 ifconfig 차이점"
+        src="/static/3da1c9399eb432fa8c28d6eaf6b3ce4e/37523/CentOS_ifconfig.png"
+        srcset="/static/3da1c9399eb432fa8c28d6eaf6b3ce4e/e9ff0/CentOS_ifconfig.png 180w,
+/static/3da1c9399eb432fa8c28d6eaf6b3ce4e/f21e7/CentOS_ifconfig.png 360w,
+/static/3da1c9399eb432fa8c28d6eaf6b3ce4e/37523/CentOS_ifconfig.png 720w,
+/static/3da1c9399eb432fa8c28d6eaf6b3ce4e/302a4/CentOS_ifconfig.png 1080w,
+/static/3da1c9399eb432fa8c28d6eaf6b3ce4e/07a9c/CentOS_ifconfig.png 1440w,
+/static/3da1c9399eb432fa8c28d6eaf6b3ce4e/cd7c1/CentOS_ifconfig.png 1547w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></li>
+</ul>
+<p>​	위의 예시는 ifcfg-enp0s8 인터페이스를 다운시킨 후, <code class="language-text">ifconfig</code>를 통한 정보 확인 과정이다. 기존에 출력하던 <code class="language-text">ip 주소</code>, <code class="language-text">netmask</code> 등의 정보가 표기되지 않는 것을 확인할 수 있다.</p>
+<br/>
+<h5 id="2-우분투-서버-네트워크" style="position:relative;"><a href="#2-%EC%9A%B0%EB%B6%84%ED%88%AC-%EC%84%9C%EB%B2%84-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC" aria-label="2 우분투 서버 네트워크 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(2) 우분투 서버 네트워크</h5>
+<ul>
+<li>
+<p>우분투 네트워크 설정 파일은 다음 경로에 존재한다.</p>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell">/etc/network/interfaces</code></pre></div>
+</li>
+<li>
+<p>CentOS와의 차이점은 CentOS에서는 네트워크 인터페이스 별로 관련 파일과 디렉터리가 존재하지만, 우분투는 interfaces 설정 파일에 네트워크의 모든 인터페이스 설정이 들어간다는 점이다.</p>
+</li>
+<li>
+<p>각 설정에 필요한 속성 값은 거의 CentOS와 비슷하고 이름만 조금 다르다는 특징이 있다. 네트워크 시작 / 정지 / 재시작을 위한 명령어의 차이가 있다.</p>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell">/etc/init.d/networking start
+/etc/init.d/networking stop
+/etc/init.d/networking reload
+/etc/init.d/networking restart
+/etc/init.d/networking force-reload</code></pre></div>
+</li>
+</ul>
+<br/>
+<h4 id="2-윈도우-서버-네트워크" style="position:relative;"><a href="#2-%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%84%9C%EB%B2%84-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC" aria-label="2 윈도우 서버 네트워크 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2) 윈도우 서버 네트워크</h4>
+<ul>
+<li>
+<p>윈도우에서의 네트워크 설정은 여러 가지 방법으로 할 수 있다.</p>
+<p>1-1) 네트워크 연결 메뉴 사용</p>
+<ol>
+<li><code class="language-text">제어판</code> → <code class="language-text">네트워크 및 인터넷</code> → <code class="language-text">네트워크 연결</code> 또는 아래 이미지와 같이 <code class="language-text">ncpa.cpl</code>을 실행해 바로 <strong>네트워크 연결</strong>로 이동하는 방법도 있다.</li>
+</ol>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 399px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 51.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABf0lEQVQoz5WRy27UMABF/aF8Er/BAv4A0U1FRel0wSCqZqaT8Thx4sbOw574lXH8QElBVEgsODq6OrJ3Nijbc47p4Wnn5vlycZcV9zfLxa9awxjTdR1Q2qQUZ+fSfxJjAFLpE5/1nGhD9vmxxBieToyxZ0oJIW3b1XXVNE1RFGWJEUKEkArjsqrsNIFWqE8H2ZnQlMf9w3eMjrtdtt9lNSGTtUYrrZS1xmglx1ErOVmrlZJy9N4DJWXwLqWIhbvHNu+dC3Gagwtpjn/0afH1yRwiaBk7QsQ7+u7b+c178va6F1PgNgzmn3IbiZh67YDWOqXkvQ8xLq+Qog/Rh7BunP2i82HdF8NL+BABpfT8ip4L1nPWDW3P254LzjkfOB8E/93DskJwIQRgjEkpx3EU59EouYXt9UP54eOXq/vs6kcNyzo/PN1+vT3keU3Idrv9fHOzudts7jaMMYAQopQ+r1DaQEweYZXBMoP4EVa4Wv5lAeNqaVwUBSoKCGFd1z8BUEUvkq/3jkcAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="ncpacpl"
+        title="ncpacpl"
+        src="/static/083758ee7a62f80780de2366edb381f9/a307d/Window_ncpacpl.png"
+        srcset="/static/083758ee7a62f80780de2366edb381f9/e9ff0/Window_ncpacpl.png 180w,
+/static/083758ee7a62f80780de2366edb381f9/f21e7/Window_ncpacpl.png 360w,
+/static/083758ee7a62f80780de2366edb381f9/a307d/Window_ncpacpl.png 399w"
+        sizes="(max-width: 399px) 100vw, 399px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ol start="2">
+<li>
+<p><strong>네트워크 연결</strong> 메뉴에서 특정 네트워크 어댑터를 설정하려면 우클릭해 <strong>속성</strong>에 들어간다.
+그리고 여러 가지 서비스 중 Internet Protocol Version 4(TCP/IPv4) 속성을 선택하면 해당 어댑터에서 사용할 <code class="language-text">IP 주소</code>, <code class="language-text">서브넷</code>, <code class="language-text">게이트웨이</code>, <code class="language-text">DNS 정보</code>를 설정할 수 있다.
+보통의 가정집에서는 자동으로 설정해 사용하는 경우가 대부분이다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 41.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABMElEQVQoz22RjY6DIBCEff8XvLNJE1sUVBBElD9N57LkbHrtkawskJ39Zq3WzUNNuoSZF2hjYBeHzXt4H+BDRAgRMSaklJHzjpQzUkqIMSKmDB9CyemuurYWwyjhnINQDh3vcWcMQvQYR4lp0pi0hlQKou8xWwvvfWmYU8KdS3zVV9xuDYZhQIW3ta4OXddBaw1rLZZlKTuFsbY0PmkoDyGUusfjQR9UlJxBa9s2zPNcCo7jKOd937GuK/gwFnJjDGJKMGYu709B4FOQ7FAxCVJOxURBd1fW4ruu0TRNIT8bnYIUT8uvhGT3tEaiJylrGS6XC+pfUc7FJ+G7INGcdomABImGxsA5L/Ol4Qshyv5nhv8JUkeySQLWLmCDxo216IV4/iCiV0pBSgn3YpkEfwDWO2jtD4k5UQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="속성창"
+        title="속성창"
+        src="/static/0ec4bd41e8dbc7fac356ef70cca6a34f/37523/Window_NetworkSetting.png"
+        srcset="/static/0ec4bd41e8dbc7fac356ef70cca6a34f/e9ff0/Window_NetworkSetting.png 180w,
+/static/0ec4bd41e8dbc7fac356ef70cca6a34f/f21e7/Window_NetworkSetting.png 360w,
+/static/0ec4bd41e8dbc7fac356ef70cca6a34f/37523/Window_NetworkSetting.png 720w,
+/static/0ec4bd41e8dbc7fac356ef70cca6a34f/302a4/Window_NetworkSetting.png 1080w,
+/static/0ec4bd41e8dbc7fac356ef70cca6a34f/07a9c/Window_NetworkSetting.png 1440w,
+/static/0ec4bd41e8dbc7fac356ef70cca6a34f/c88ae/Window_NetworkSetting.png 1541w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+</li>
+</ol>
+<br/>
+<p>1-2) netsh 명령어 사용</p>
+<ol>
+<li>
+<p>Linux에서의 명령어를 사용한 네트워크 설정과 유사하게 <code class="language-text">netsh</code>라는 명령어를 사용할 수 있다.</p>
+<div class="gatsby-highlight" data-language="powershell"><pre class="language-powershell"><code class="language-powershell">netsh interface ipv4 <span class="token function">set</span> address name=<span class="token string">"인터페이스명"</span> static IP 주소 서브넷 게이트웨이</code></pre></div>
+</li>
+</ol>
+<br/>
+<p>리눅스와 달리 윈도우는 설정 완료 후 ‘확인’ 버튼만 클릭하면 변경한 설정이 적용된다. Linux 계열의 OS처럼 별도로 네트워크 서비스나 인터페이스를 재시작하지 않아도 되지만, 간혹 정상적으로 동작하지 않아 재시작해야하는 경우에는 재시작할 어댑터를 <code class="language-text">사용 안 함</code> → <code class="language-text">사용</code> 을 통해 재시작하면 된다.</p>
+<p>​	<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 411px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 61.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsTAAALEwEAmpwYAAABb0lEQVQoz4XQbU+rMBTAcb6938EPYHx335rcxESvxC3ZgPEwCisP7UZLhZ3SuWTiYL2RqfGN45e+/eecHqPrur7vu64/fdJaay7fr+/VfN3O6e6vlUwTQFKHcEKgw+Eh0BFoQzVqp5Qoy8PhTWt97Dp96gvZXt0Et/+yh1T9meA7lz9khyf6/kRakx7N9fExf5tsOmO+cKPIX60wQsi2bSHE9gM0smKcB8lmuqoWm1eLNDbd2UQ5dOdsXmcpBOXBIDTDSTJ5fnZdl1Ja1zV8UU0jOG/bVv/CaJqGc26aZhzH+/1eSvkdb0Eyxi7FZL0mJEcIEUKKomCMvXypqmoknjmWs7B83w8GaZoCQDWo63okhu1WCOF5XpZlQRA4joMxPo8dj30UYhzleV4UhRCCMVaW5ce5AaQc+/PUmrmeE4YIIZTnOaVUKSUH51tenLwMUBQul0uMcTY473w2Mtn2XM9feK4Xx7FSCgDqHy7H/wEd/JokdEvl6gAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="윈도우 네트워크 재시작"
+        title="윈도우 네트워크 재시작"
+        src="/static/7397dbb32243806587c0d2966a783da0/2a432/Window_networkrestart.png"
+        srcset="/static/7397dbb32243806587c0d2966a783da0/e9ff0/Window_networkrestart.png 180w,
+/static/7397dbb32243806587c0d2966a783da0/f21e7/Window_networkrestart.png 360w,
+/static/7397dbb32243806587c0d2966a783da0/2a432/Window_networkrestart.png 411w"
+        sizes="(max-width: 411px) 100vw, 411px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<p>아니면 netst 명령으로도 어댑터를 리셋 가능하다.</p>
+<div class="gatsby-highlight" data-language="powershell"><pre class="language-powershell"><code class="language-powershell">netsh interface <span class="token function">set</span> interface name=<span class="token string">"인터페이스명"</span> admin=disabled   <span class="token comment">#(비활성화)</span>
+netsh interface <span class="token function">set</span> interface name=<span class="token string">"인터페이스명"</span> admin=enabled    <span class="token comment">#(활성화)</span></code></pre></div>
+</li>
+</ul>
+<br/>
+<hr>
+<h3 id="2-서버의-라우팅-테이블" style="position:relative;"><a href="#2-%EC%84%9C%EB%B2%84%EC%9D%98-%EB%9D%BC%EC%9A%B0%ED%8C%85-%ED%85%8C%EC%9D%B4%EB%B8%94" aria-label="2 서버의 라우팅 테이블 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. 서버의 라우팅 테이블</h3>
+<blockquote>
+<p>이번 단원에서는 서버의 라우팅 동작을 이해하기 위한 라우팅 테이블 확인 방법에 초점을 둔다.</p>
+<p>이번에 살펴볼 항목들은 아래와 같다.</p>
+<ol>
+<li>목적지 (Destination)</li>
+<li>서브넷 (Genmask)</li>
+<li>게이트웨이 (Gateway)</li>
+<li>인터페이스 (face)</li>
+<li>우선순위 (Metric)</li>
+</ol>
+</blockquote>
+<h4 id="1-라우팅-테이블-출력-시-출력-항목" style="position:relative;"><a href="#1-%EB%9D%BC%EC%9A%B0%ED%8C%85-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%B6%9C%EB%A0%A5-%EC%8B%9C-%EC%B6%9C%EB%A0%A5-%ED%95%AD%EB%AA%A9" aria-label="1 라우팅 테이블 출력 시 출력 항목 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 라우팅 테이블 출력 시 출력 항목</h4>
+<table>
+    <tr style="text-align:center;">
+        <td colspan="5">서버 라우팅 테이블 항목</td>
+    </tr>
+    <tr style="text-align:center;">
+        <td>10.10.20.0</td>
+        <td>24</td>
+        <td>10.10.10.1</td>
+        <td>eth1</td>
+        <td>10</td>
+    </tr>
+    <tr style="text-align:center;">
+        <td>목적지</td>
+        <td>서브넷</td>
+        <td>게이트웨이</td>
+        <td>인터페이스</td>
+        <td>우선순위</td>
+    </tr>
+</table>
+<ul>
+<li>어떤 OS에서 출력을 하든 차이점은 순서만 차이날 뿐, 위의 항목들이 대부분 출력된다.</li>
+</ul>
+<table>
+    <tr style="text-align:center;">
+        <td colspan="2">라우팅 테이블 항목 부가 설명</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>1. 목적지와 서브넷</td>
+        <td>서버가 통신하려는 목적지 IP 주소에 맞는 라우팅을 선택하는 기준점.<br/> 라우팅할 때 목적지 네트워크 주소와 서브넷으로 표현되는 목적지 네트워크 범위 내에 서버가 통신하려는 IP 주소가 속한 라우팅 테이블을 선택하게 된다.</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>2. 게이트웨이</td>
+        <td>선택된 목적지로 가기 위해 서버에서 선택하는 넥스트 홉.<br/> 만약 서버에 두 개 이상의 네트워크 카드(NIC)가 존재한다면 원하는 네트워크 카드의 게이트웨이로 지정해 주어야 한다.</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>3. 인터페이스</td>
+        <td>서버의 네트워크 카드를 의미하며, 라우팅에서 어떤 물리적인 경로로 패킷을 내보낼지 설정한다.</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>4. 우선순위</td>
+        <td>동일한 라우팅 테이블이 두 개 이상 존재할 때 어떤 라우팅 테이블을 선택할지 정하는 값이다. 이 값이 낮을 수록 우선순위가 높아진다.</td>
+    </tr>
+</table>
+<br/>
+<h4 id="2-리눅스-서버의-라우팅-확인-및-관리" style="position:relative;"><a href="#2-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%84%9C%EB%B2%84%EC%9D%98-%EB%9D%BC%EC%9A%B0%ED%8C%85-%ED%99%95%EC%9D%B8-%EB%B0%8F-%EA%B4%80%EB%A6%AC" aria-label="2 리눅스 서버의 라우팅 확인 및 관리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. 리눅스 서버의 라우팅 확인 및 관리</h4>
+<h5 id="1-라우팅-테이블-확인" style="position:relative;"><a href="#1-%EB%9D%BC%EC%9A%B0%ED%8C%85-%ED%85%8C%EC%9D%B4%EB%B8%94-%ED%99%95%EC%9D%B8" aria-label="1 라우팅 테이블 확인 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 라우팅 테이블 확인</h5>
+<ol>
+<li>
+<p>ip route</p>
+<ul>
+<li>ip route 명령어를 사용한 결괏값은 다음과 같다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 15%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAIAAAAcOLh5AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAmklEQVQI1xXNWQ6DIBQAQA/UxVi1uIFsjWB94AOk3v8ijcn8T4E5Q4zWOb2uywbWe2XtyMUo5CTUJOXIRcc4oexRt2X7fjaXW1XfX02x7t442BA3RJ9SyD9/pP04XEouRczZxbgALABfxC2gAaeMJZTV/VBACPE8rfcGHNOfK5RqFJIqPXBx5UL2M+/YTKWmSveMV6SrSF+25A/HPjD8CtVtmwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="image-20220804094620919"
+        title="image-20220804094620919"
+        src="/static/1206834b46ca2e044e3022701df096a9/37523/CentOS_iproute.png"
+        srcset="/static/1206834b46ca2e044e3022701df096a9/e9ff0/CentOS_iproute.png 180w,
+/static/1206834b46ca2e044e3022701df096a9/f21e7/CentOS_iproute.png 360w,
+/static/1206834b46ca2e044e3022701df096a9/37523/CentOS_iproute.png 720w,
+/static/1206834b46ca2e044e3022701df096a9/63ec5/CentOS_iproute.png 812w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+</li>
+</ol>
+<p>​	<br/></p>
+<ol start="2">
+<li>
+<p>netstat -r</p>
+<ul>
+<li>netstat을 사용해 확인할 땐 r 옵션을 추가하면 라우팅 테이블을 편하게 확인할 수 있다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 20.555555555555554%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAIAAAABPYjBAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAyklEQVQI1yXOSbKCMBQAQK5j/RI+hMwDQyIiYiKBFM9S7n8NF6570xkcR3q/l32/hWcEiACi7RGXWOpaqJLyigmiNJYKS02VwVL/qGIig+NzC4HqBjGxAkwh/JUor8m0LMN9zmtSUnadHxXj/XUc7jOWWvV2jtFNU/ZMafRBWVdgOno/ep/X5J8wv60hpccatXW8aU9FqToru/5UlFSZ9QVx37OwbStA2JJxrrkM3LR5TQpMtXXGXYxzWCrExRnh3/yMMOJCdVb39gv+Zj3JWHZFLwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="netstat -r"
+        title="netstat -r"
+        src="/static/bba4bc6fd88682d0e7c7a69543aa6f8c/37523/CentOS_netstat_r.png"
+        srcset="/static/bba4bc6fd88682d0e7c7a69543aa6f8c/e9ff0/CentOS_netstat_r.png 180w,
+/static/bba4bc6fd88682d0e7c7a69543aa6f8c/f21e7/CentOS_netstat_r.png 360w,
+/static/bba4bc6fd88682d0e7c7a69543aa6f8c/37523/CentOS_netstat_r.png 720w,
+/static/bba4bc6fd88682d0e7c7a69543aa6f8c/5a6dd/CentOS_netstat_r.png 802w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<ul>
+<li>n 옵션을 추가로 사용하면 화면에 표기될 때, 실제 IP 정보가 표기되어 좀 더 직관적인 라우팅 테이블을 확인할 수 있다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 20%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAIAAAABPYjBAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAz0lEQVQI1yXIW46DIBQAULfTTIxDGQrIywtYbRAfQalmatJ0/4uYjzmfpzg/n9/3O79e07rt57mfJ9w7aR03wA3cpL5JXTeWG6gbEGD/n+mGKlMsOXcxMm0Q5TGlNoQvhEtMHtPchlBigii/h+HKOHR9G8JPLSW4YVls/yjGtPZx1M5XhLYhdEP8JhRRNq7rvG0xJeU80+ZSIWW9aOBSIaZMOo4lP4tp3dKxz3mTYJdnNr4tMakIVc5r75XzREjM6xITIhQRssQEs1qAldb9AcfmPsxXKHeQAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="netstat -rn"
+        title="netstat -rn"
+        src="/static/0dbf06ff0b04c4465951040d88c8f1d4/37523/CentOS_netstat_rn.png"
+        srcset="/static/0dbf06ff0b04c4465951040d88c8f1d4/e9ff0/CentOS_netstat_rn.png 180w,
+/static/0dbf06ff0b04c4465951040d88c8f1d4/f21e7/CentOS_netstat_rn.png 360w,
+/static/0dbf06ff0b04c4465951040d88c8f1d4/37523/CentOS_netstat_rn.png 720w,
+/static/0dbf06ff0b04c4465951040d88c8f1d4/27b7a/CentOS_netstat_rn.png 804w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+</li>
+</ol>
+<br/>
+<h5 id="2-라우팅-테이블-추가하는-설정" style="position:relative;"><a href="#2-%EB%9D%BC%EC%9A%B0%ED%8C%85-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%B6%94%EA%B0%80%ED%95%98%EB%8A%94-%EC%84%A4%EC%A0%95" aria-label="2 라우팅 테이블 추가하는 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. 라우팅 테이블 추가하는 설정</h5>
+<ol>
+<li>
+<p>임시적 라우팅 테이블 추가</p>
+<ol>
+<li>
+<p>route add / del (추가 / 삭제)</p>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell">route <span class="token function">add</span> <span class="token punctuation">{</span> -host <span class="token operator">|</span> -net <span class="token punctuation">}</span> Target<span class="token punctuation">[</span>/prefix<span class="token punctuation">]</span> <span class="token punctuation">[</span>gw GW<span class="token punctuation">]</span> <span class="token punctuation">[</span>metric M<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>dev<span class="token punctuation">]</span> If<span class="token punctuation">]</span>   <span class="token comment"># 추가</span>
+route del <span class="token punctuation">{</span> -host <span class="token operator">|</span> -net <span class="token punctuation">}</span> Target<span class="token punctuation">[</span>/prefix<span class="token punctuation">]</span> <span class="token punctuation">[</span>gw GW<span class="token punctuation">]</span> <span class="token punctuation">[</span>metric M<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>dev<span class="token punctuation">]</span> If<span class="token punctuation">]</span>   <span class="token comment"># 삭제</span></code></pre></div>
+</li>
+<li>
+<p>이 명령어 뿐만 아니라 <code class="language-text">ip route</code> 옵션 뒤에 <code class="language-text">add</code> 옵션을 사용하는 것도 동일하게 추가할 수 있다.</p>
+</li>
+<li>
+<p>디폴트 라우팅 설정 - 일반 라우팅 설정과 동일하지만 목적지 네트워크를 <code class="language-text">default</code>로 표기해 설정할 수 있다.</p>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell">route <span class="token function">add</span> default gw <span class="token number">10.1</span>.1.1 dev eth0   <span class="token comment"># 추가</span>
+route del default gw <span class="token number">10.1</span>.1.1 dev eth0   <span class="token comment"># 추가</span></code></pre></div>
+</li>
+</ol>
+<ul>
+<li>위의 명령어로 추가한 라우팅 설정은 서버가 재부팅될 시 사라진다. 즉, 재부팅 시 초기 라우팅 설정만 남아있게 되는 특징이 있다.</li>
+</ul>
+</li>
+</ol>
+<br/>
+<ol start="2">
+<li>영구적 라우팅 설정</li>
+</ol>
+<h6 id="1-cent-os의-영구적-라우팅-설정" style="position:relative;"><a href="#1-cent-os%EC%9D%98-%EC%98%81%EA%B5%AC%EC%A0%81-%EB%9D%BC%EC%9A%B0%ED%8C%85-%EC%84%A4%EC%A0%95" aria-label="1 cent os의 영구적 라우팅 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1) Cent OS의 영구적 라우팅 설정</h6>
+<ul>
+<li>
+<p>CentOS에선 다음과 같이 별도 파일을 만들어 라우팅을 설정한다.</p>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell">/etc/sysconfig/network-scripts/route-장치명</code></pre></div>
+</li>
+<li>
+<p>예를 들어 <code class="language-text">et0</code> 인터페이스에 대한 영구적인 라우팅 설정 파일명은 <code class="language-text">route-eht0</code>이다.</p>
+</li>
+<li>
+<p>라우팅 설정 파일에는 <code class="language-text">ADDRESS</code>, <code class="language-text">NETMASK</code>, <code class="language-text">GATEWAY</code> 항목을 사용한다.</p>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell"><span class="token assign-left variable">ADDRESS0</span><span class="token operator">=</span><span class="token number">10.10</span>.10.0
+<span class="token assign-left variable">NETMASK0</span><span class="token operator">=</span><span class="token number">255.255</span>.255.0
+<span class="token assign-left variable">GATEWAY0</span><span class="token operator">=</span><span class="token number">10.1</span>.1.1
+<span class="token assign-left variable">ADDRESS1</span><span class="token operator">=</span><span class="token number">10.10</span>.20.0
+<span class="token assign-left variable">NETMASK1</span><span class="token operator">=</span><span class="token number">255.255</span>.255.128
+<span class="token assign-left variable">GATEWAY1</span><span class="token operator">=</span><span class="token number">10.1</span>.1.1
+
+<span class="token comment"># 또는 아래와 같이 설정</span>
+<span class="token number">10.10</span>.10.0/24 via <span class="token number">192.168</span>.0.1 dev eth1</code></pre></div>
+</li>
+</ul>
+<br/>
+<h6 id="2--우분투의-영구적-라우팅-설정" style="position:relative;"><a href="#2--%EC%9A%B0%EB%B6%84%ED%88%AC%EC%9D%98-%EC%98%81%EA%B5%AC%EC%A0%81-%EB%9D%BC%EC%9A%B0%ED%8C%85-%EC%84%A4%EC%A0%95" aria-label="2  우분투의 영구적 라우팅 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2)  우분투의 영구적 라우팅 설정</h6>
+<ul>
+<li>
+<p>우분투에서는 네트워크 설정에서 사용했던 <code class="language-text">interfaces</code> 파일에 라우팅 설정을 한다. 일반 라우팅 테이블 설정과 동일한 양식으로 한다.</p>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell">up route <span class="token function">add</span> <span class="token punctuation">[</span>-net<span class="token operator">|</span>-host<span class="token punctuation">]</span> <span class="token operator">&lt;</span>host/net<span class="token operator">></span>/<span class="token operator">&lt;</span>mask<span class="token operator">></span> gw <span class="token operator">&lt;</span>host/IP<span class="token operator">></span> dev <span class="token operator">&lt;</span>Interface<span class="token operator">></span></code></pre></div>
+<ul>
+<li>위 명령어 맨 앞의 <code class="language-text">up</code>은 인터페이스가 시작될 때 실행하라는 명령어로, CentOS와 마찬가지로 네트워크를 다시 시작하거나 서버를 재부팅하는 경우, 신규 라우팅 정보가 라우팅 테이블에 등록된다.</li>
+</ul>
+</li>
+</ul>
+<br/>
+<h6 id="3-윈도우-서버의-라우팅-설정" style="position:relative;"><a href="#3-%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%84%9C%EB%B2%84%EC%9D%98-%EB%9D%BC%EC%9A%B0%ED%8C%85-%EC%84%A4%EC%A0%95" aria-label="3 윈도우 서버의 라우팅 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3) 윈도우 서버의 라우팅 설정</h6>
+<ul>
+<li>윈도우에서는 라우팅 테이블을 확인하고 관리하기 위해 <code class="language-text">route</code>명령어를 사용한다. 4가지 옵션이 존재한다.
+<ol>
+<li>PRINT</li>
+<li>ADD</li>
+<li>DELETE</li>
+<li>CHANGE</li>
+</ol>
+</li>
+</ul>
+<br/>
+<ol>
+<li>
+<p>PRINT</p>
+<ul>
+<li>옵션 없이 <code class="language-text">route print</code>를 입력할 경우, 모든 인터페이스 목록을 확인할 수 있다.</li>
+</ul>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 56.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAA7CAAAOwgEVKEqAAAACGUlEQVQoz42Qa0/TYBiG367t2q3tDmwgDMZkJzZWYMpIUMBDMoEoGBSmHBznSMTww/zuTxA/CZJ4IAYFv/gnEHOZtotAjIYmV54nffNeud9bxHsfEbcfEipMohdqGNkJgukxgpkxjOw42tUq/vwsnUNLxEpThLofoHWNo3RWMYuPUQvzyPmnKPk5dwohKQghPBK3z/ZzKMk7hBL232dmCpGbR2RmEZmah8/swKdHka0ESmoM2WjBF4ghB5vxBePumT99n1B7X0MkNRAIqwspt4CUqSFln7iIjtFtmoe2sK5tYJXXMfpWsPqXCdh1dxq9dcz+NULtva5Ekv0In9/bIzmk/AJS9pzQSt1AS1RQ2obQEwNuSidRuDiNmqoSTN8jUq7TfP0ZUXuGcGkGkZwgkJuidbCOSNfOnuvwpw9Z92akiFJconNkE8NepGVwjaaBVdJ3t2mqbBAqr6KV6ph9K8Qq62jFBfSeRRdnF5KsISQfQrU8YZON2rNMx83nRAc2SAy/JFxe4dXrHb4c/WD34zf2D47Z/3zM3qcj9g++X0AIpxOnZNX0hNGSmzA5vOk+N9w1gmXP8e7DEZf5hHASiosJHWFqdAsp2Or+M/KTvNk9dC+cnPzk9PTXPxFCkhsdBhod9njCW1tIRltDOMXb919doXPpvwkVI46sR5DNNmRVx3elglZaJjnyAjXWjeQ3MQrT7OwdXkr4G3+7pLL9tHROAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="route print"
+        title="route print"
+        src="/static/89469c3a93ee2496b1ebecc4e7af0c00/37523/Window_routeprint.png"
+        srcset="/static/89469c3a93ee2496b1ebecc4e7af0c00/e9ff0/Window_routeprint.png 180w,
+/static/89469c3a93ee2496b1ebecc4e7af0c00/f21e7/Window_routeprint.png 360w,
+/static/89469c3a93ee2496b1ebecc4e7af0c00/37523/Window_routeprint.png 720w,
+/static/89469c3a93ee2496b1ebecc4e7af0c00/302a4/Window_routeprint.png 1080w,
+/static/89469c3a93ee2496b1ebecc4e7af0c00/07a9c/Window_routeprint.png 1440w,
+/static/89469c3a93ee2496b1ebecc4e7af0c00/fa601/Window_routeprint.png 1569w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<br/>
+<ul>
+<li>
+<p>필요한 라우팅 정보만 확인하기 위해 특정 목적지 네트워크를 인자값으로 직접 지정하거나 <code class="language-text">*</code>와 <code class="language-text">?</code>를 이용해 특정 패턴에 맞는 네트워크 대역을 확인할 수 있다.</p>
+<div class="gatsby-highlight" data-language="powershell"><pre class="language-powershell"><code class="language-powershell">route print 10<span class="token punctuation">.</span>10<span class="token punctuation">.</span><span class="token operator">*</span>		<span class="token comment"># 10.10.0.0/16 에 대한 전체 라우팅 테이블 확인</span>
+route print 10<span class="token punctuation">.</span>10<span class="token punctuation">.</span>1?<span class="token punctuation">.</span>0	<span class="token comment"># 10.10.10.0/24 ~ 10.10.19.0/24 에 대한 라우팅 테이블 확인</span></code></pre></div>
+</li>
+</ul>
+<br/>
+</li>
+<li>
+<p>ADD</p>
+<ul>
+<li>
+<p>라우팅 테이블을 추가하는 명령어다. 다만, 리눅스처럼 <strong>명령으로 입력해 생성한 라우팅 테이블</strong>은 <strong>서버가 재부팅된 이후에는 라우팅 테이블에서 사라진다는 특징</strong>이 있다.</p>
+<div class="gatsby-highlight" data-language="powershell"><pre class="language-powershell"><code class="language-powershell">ROUTE <span class="token punctuation">[</span> <span class="token operator">-</span>p <span class="token punctuation">]</span> ADD <span class="token punctuation">[</span> dest <span class="token punctuation">]</span> <span class="token punctuation">[</span> MASK netmask <span class="token punctuation">]</span> <span class="token punctuation">[</span> gateway <span class="token punctuation">]</span> <span class="token punctuation">[</span> METRIC metric <span class="token punctuation">]</span> <span class="token punctuation">[</span> <span class="token keyword">IF</span> interface <span class="token punctuation">]</span></code></pre></div>
+</li>
+<li>
+<p>생성 시, <code class="language-text">-p</code> 옵션을 추가해 생성하면 영구 경로로 등록할 수 있다. 즉, 리눅스처럼 설정 파일을 별도로 만들거나 입력하지 않고도 영구 경로 생성이 가능하다는 것이다.</p>
+</li>
+</ul>
+<br/>
+</li>
+<li>
+<p>DELETE</p>
+<ul>
+<li>라우팅 테이블을 삭제하는 명령어다. 추가와 달리 <code class="language-text">MASK</code> 나 <code class="language-text">gateway</code> 정보를 입력하지 않아도 된다.</li>
+<li>단, 세부 정보를 입력하지 않고 삭제할 경우 유의할 점이 존재한다. 입력한 정보만으로 해당하는 정보가 2가지 이상 존재한다면 해당된 라우팅 테이블이 모두 삭제된다.</li>
+</ul>
+<br/>
+</li>
+<li>
+<p>CHANGE</p>
+<ul>
+<li>라우팅 테이블을 변경하는 명령어다.</li>
+<li>삭제와 마찬가지로 세부 정보를 입력하지 않고 변경할 때 유의할 점이 존재한다. 입력한 정보 값에 해당되는 라우팅 테이블 정보가 모두 변경된다는 점이다.</li>
+</ul>
+</li>
+</ol>
+<br/>
+<hr>
+<h3 id="3-네트워크-확인을-위한-명령어" style="position:relative;"><a href="#3-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%ED%99%95%EC%9D%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EB%AA%85%EB%A0%B9%EC%96%B4" aria-label="3 네트워크 확인을 위한 명령어 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. 네트워크 확인을 위한 명령어</h3>
+<h4 id="1-ping-packet-internet-groper" style="position:relative;"><a href="#1-ping-packet-internet-groper" aria-label="1 ping packet internet groper permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1) ping (Packet InterNet Groper)</h4>
+<ul>
+<li>네트워크 상태를 확인할 때 사용하는 명령어다.</li>
+<li><code class="language-text">ICMP (Internet Control Message Protocol)</code> 프로토콜을 사용하고 ICMP의 제어 메시지를 통해 여러 가지 네트워크 상태를 파악할 수 있다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell"><span class="token function">ping</span> <span class="token punctuation">[</span>옵션<span class="token punctuation">]</span> 목적지_IP 주소</code></pre></div>
+<ul>
+<li>별도 옵션 없이 <code class="language-text">ping</code>을 체크하는 방법을 통상적인 <code class="language-text">기본 ping</code>이라 하며, 옵션을 사용해 <code class="language-text">ping</code>을 체크하는 방법을 <code class="language-text">확장 ping</code>이라 한다.</li>
+</ul>
+<br/>
+<h5 id="1-리눅스-ping-옵션" style="position:relative;"><a href="#1-%EB%A6%AC%EB%88%85%EC%8A%A4-ping-%EC%98%B5%EC%85%98" aria-label="1 리눅스 ping 옵션 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(1) 리눅스 ping 옵션</h5>
+<table>
+    <tr>
+        <td style="text-align:center;" colspan="2">리눅스 ping 명령어 옵션</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-c<br/>count</td>
+        <td>ping을 보내는 패킷(ECHO_REQUEST)을 몇 번 보내고 종료할 것인지를 지정</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-i<br/>interval</td>
+        <td>패킷을 보내는 시간 간격. 기본 설정값은 1초. 슈퍼 유저의 경우, 0.2 이하로 설정 가능</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-I<br/>interface</td>
+        <td>패킷을 보낼 때, 출발지 주소를 지정. 실제 IP 값을 지정하거나 인터페이스 이름을 지정하면 출발지 주소가 변경됨. 이 옵션을 사용하지 않는 경우, 라우팅 테이블에 의해 나가는 인터페이스(Outgoint-Interface)의 IP 주소가 출발지 주소가 됨.</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-s<br/>packetsize</td>
+        <td>패킷 크기를 지정. 기본 설정값은 56바이트(8바이트의 ICMP 헤더가 추가로 붙어 64바이트를 송신)</td>
+    </tr>
+</table>
+<br/>
+<h5 id="2-윈도우-ping-옵션" style="position:relative;"><a href="#2-%EC%9C%88%EB%8F%84%EC%9A%B0-ping-%EC%98%B5%EC%85%98" aria-label="2 윈도우 ping 옵션 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(2) 윈도우 ping 옵션</h5>
+<table>
+    <tr>
+        <td style="text-align:center;" colspan="2">윈도우 ping 명령어 옵션</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-n<br/>count</td>
+        <td>ping을 보내는 패킷(ECHO_REQUEST)을 몇 번 보내고 종료할 것인지를 지정<br/>기본 설정은 4회 전송</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-t</td>
+        <td>중지할 때까지 지정한 호스트로 ping을 지속적으로 전송</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-S<br/>srcaddr</td>
+        <td>사용할 원본 IP 주소로, 리눅스의 -I 옵션과 동일</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-l<br/>size</td>
+        <td>패킷 크기를 지정. 기본 설정값은 32바이트</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-r<br/>count</td>
+        <td>count 홉의 경로 기록(최대 9홉까지 설정 가능)</td>
+    </tr>
+</table>
+<br/>
+<h4 id="2-netstat-network-statistics" style="position:relative;"><a href="#2-netstat-network-statistics" aria-label="2 netstat network statistics permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2) netstat (network statistics)</h4>
+<ul>
+<li>서버의 다양한 네트워크 상태를 확인할 때 사용하는 명령어다. 주로, 현재 서버의 서비스 포트 상태를 확인하는 용도로 사용한다. 윈도우 계열과 리눅스 계열에서의 기본적인 사용법은 동일하며, 일부 옵션만 차이가 있다.</li>
+<li>개인적으로 <code class="language-text">netstat -antp | grep LISTENING</code> 을 통해 상태를 확인하고자 많이 사용했다.</li>
+</ul>
+<h5 id="1-리눅스-netstat-옵션" style="position:relative;"><a href="#1-%EB%A6%AC%EB%88%85%EC%8A%A4-netstat-%EC%98%B5%EC%85%98" aria-label="1 리눅스 netstat 옵션 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(1) 리눅스 netstat 옵션</h5>
+<table>
+    <tr>
+        <td style="text-align:center;" colspan="2">리눅스 netstat 명령어 옵션</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-a<br/>--all</td>
+        <td>모든 연결과 수신 대기 포트 표시</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-n<br/>--numeric</td>
+        <td>주소와 포트 번호를 숫자 형식으로 표시 (예: http → 80 )</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-r<br/>--route</td>
+        <td>라우팅 테이블 표시</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-i<br/>--interfaces</td>
+        <td>인터페이스별 입출력 패킷 통계</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-s<br/>--statistics</td>
+        <td>네트워크에 통계 데이터 출력</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-p<br/>--programs</td>
+        <td>PID와 프로그램 이름 출력</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-t<br/>--tcp</td>
+        <td>TCP만 출력 (TCP, TCPv6)</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-4 / -6</td>
+        <td>IPv4나 IPv6에 대해 출력</td>
+    </tr>
+</table>
+<br/>
+<h5 id="2-윈도우-netstat-옵션" style="position:relative;"><a href="#2-%EC%9C%88%EB%8F%84%EC%9A%B0-netstat-%EC%98%B5%EC%85%98" aria-label="2 윈도우 netstat 옵션 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>(2) 윈도우 netstat 옵션</h5>
+<table>
+    <tr>
+        <td style="text-align:center;" colspan="2">윈도우 netstat 명령어 옵션</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-a</td>
+        <td>모든 연결과 수신 대기 포트 표시</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-n</td>
+        <td>주소와 포트 번호를 숫자 형식으로 표시 (예: http → 80 )</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-r</td>
+        <td>라우팅 테이블 표시</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-e</td>
+        <td>이더넷 통계를 표시. 이 옵션은 -s 옵션과 함께 사용 가능</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-s</td>
+        <td>프로토콜별 통계를 표시. 기본적으로 IP, IPv6, ICMP, ICMPv6, TCP, TCPv6, UDP 및 UDPv6에 대한 통계를 표시한다.<br/>-p 옵션을 사용해 기본값의 일부 집합에 대한 통계만 표시</td>
+    </tr>
+    <tr style="text-align:left;">
+        <td>-p<br/>--proto</td>
+        <td>proto로 지정한 프로토콜의 연결을 표시.<br/>proto는 TCP, UDP, TCPv6, UDPv6 중 하나로, -s 옵션과 함께 사용해 프로토콜별 통계를 표시할 경우, proto는 IP, IPv6, ICMP, ICMPv6, TCP, TCPv6, UDP 및 UDPv6 중 하나를 사용</td>
+    </tr>
+</table>
+<br/>
+<hr>
+<div class="table-of-contents">
+<ul>
+<li>
+<p><a href="#til-08-%EC%84%9C%EB%B2%84-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B8%B0%EB%B3%B8">TIL 08. 서버 네트워크 기본</a></p>
+<ul>
+<li>
+<p><a href="#1-%EC%84%9C%EB%B2%84%EC%9D%98-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95-%EB%B0%8F-%ED%99%95%EC%9D%B8-os-%EB%B3%84%EB%A1%9C-%EC%A0%95%EB%A6%AC">1. 서버의 네트워크 설정 및 확인 (OS 별로 정리)</a></p>
+<ul>
+<li>
+<p><a href="#1-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%84%9C%EB%B2%84-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC">1) 리눅스 서버 네트워크</a></p>
+<ul>
+<li>
+<p><a href="#1-centos%EC%9D%98-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%84%A4%EC%A0%95">(1) CentOS의 네트워크 설정</a></p>
+<ul>
+<li><a href="#-ifconfig-linux--ipconfig-window">* ifconfig (Linux) &#x26; ipconfig (Window)</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#2-%EC%9A%B0%EB%B6%84%ED%88%AC-%EC%84%9C%EB%B2%84-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC">(2) 우분투 서버 네트워크</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#2-%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%84%9C%EB%B2%84-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC">2) 윈도우 서버 네트워크</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#2-%EC%84%9C%EB%B2%84%EC%9D%98-%EB%9D%BC%EC%9A%B0%ED%8C%85-%ED%85%8C%EC%9D%B4%EB%B8%94">2. 서버의 라우팅 테이블</a></p>
+<ul>
+<li>
+<p><a href="#1-%EB%9D%BC%EC%9A%B0%ED%8C%85-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%B6%9C%EB%A0%A5-%EC%8B%9C-%EC%B6%9C%EB%A0%A5-%ED%95%AD%EB%AA%A9">1. 라우팅 테이블 출력 시 출력 항목</a></p>
+</li>
+<li>
+<p><a href="#2-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%84%9C%EB%B2%84%EC%9D%98-%EB%9D%BC%EC%9A%B0%ED%8C%85-%ED%99%95%EC%9D%B8-%EB%B0%8F-%EA%B4%80%EB%A6%AC">2. 리눅스 서버의 라우팅 확인 및 관리</a></p>
+<ul>
+<li>
+<p><a href="#1-%EB%9D%BC%EC%9A%B0%ED%8C%85-%ED%85%8C%EC%9D%B4%EB%B8%94-%ED%99%95%EC%9D%B8">1. 라우팅 테이블 확인</a></p>
+</li>
+<li>
+<p><a href="#2-%EB%9D%BC%EC%9A%B0%ED%8C%85-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%B6%94%EA%B0%80%ED%95%98%EB%8A%94-%EC%84%A4%EC%A0%95">2. 라우팅 테이블 추가하는 설정</a></p>
+<ul>
+<li><a href="#1-cent-os%EC%9D%98-%EC%98%81%EA%B5%AC%EC%A0%81-%EB%9D%BC%EC%9A%B0%ED%8C%85-%EC%84%A4%EC%A0%95">1) Cent OS의 영구적 라우팅 설정</a></li>
+<li><a href="#2--%EC%9A%B0%EB%B6%84%ED%88%AC%EC%9D%98-%EC%98%81%EA%B5%AC%EC%A0%81-%EB%9D%BC%EC%9A%B0%ED%8C%85-%EC%84%A4%EC%A0%95">2)  우분투의 영구적 라우팅 설정</a></li>
+<li><a href="#3-%EC%9C%88%EB%8F%84%EC%9A%B0-%EC%84%9C%EB%B2%84%EC%9D%98-%EB%9D%BC%EC%9A%B0%ED%8C%85-%EC%84%A4%EC%A0%95">3) 윈도우 서버의 라우팅 설정</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="#3-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%ED%99%95%EC%9D%B8%EC%9D%84-%EC%9C%84%ED%95%9C-%EB%AA%85%EB%A0%B9%EC%96%B4">3. 네트워크 확인을 위한 명령어</a></p>
+<ul>
+<li>
+<p><a href="#1-ping-packet-internet-groper">1) ping (Packet InterNet Groper)</a></p>
+<ul>
+<li><a href="#1-%EB%A6%AC%EB%88%85%EC%8A%A4-ping-%EC%98%B5%EC%85%98">(1) 리눅스 ping 옵션</a></li>
+<li><a href="#2-%EC%9C%88%EB%8F%84%EC%9A%B0-ping-%EC%98%B5%EC%85%98">(2) 윈도우 ping 옵션</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#2-netstat-network-statistics">2) netstat (network statistics)</a></p>
+<ul>
+<li><a href="#1-%EB%A6%AC%EB%88%85%EC%8A%A4-netstat-%EC%98%B5%EC%85%98">(1) 리눅스 netstat 옵션</a></li>
+<li><a href="#2-%EC%9C%88%EB%8F%84%EC%9A%B0-netstat-%EC%98%B5%EC%85%98">(2) 윈도우 netstat 옵션</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/IT엔지니어를_위한_네트워크_입문_05/"><div class="direction">이전 글</div><div class="title">TIL 05. 라우터의 역할과 동작</div></a></div><div class="post-navigator-card-wrapper"></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/Shim8934">심기영</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/IT엔지니어를_위한_네트워크_입문_08/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-9121d1ade616ed7c4ab1.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-0604aeb3cd8f0def35f4.js" async=""></script><script src="/app-9121d1ade616ed7c4ab1.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-0dbf47222db3936e0d98.js" async=""></script></body></html>
